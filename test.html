@@ -209,7 +209,7 @@
   <section id="prayer" class="mt-12 container mx-auto px-4" data-aos="fade-up">
     <h2 class="text-3xl font-bold text-gray-900 text-center mb-6">Submit a Prayer Request</h2>
     <form id="prayerForm" class="bg-white p-6 rounded shadow" 
-    name="prayerForm" method="POST" data-netlify="true">
+    name="prayerForm" method="POST" data-netlify="true"  onsubmit="submit">
       <textarea class="w-full p-2 border rounded focus:outline-none focus:ring" placeholder="Enter your prayer request..." required></textarea>
       <button type="submit" class="mt-4 bg-primary text-white px-4 py-2 rounded hover:bg-secondary transition-colors">Submit</button>
     </form>
@@ -219,7 +219,7 @@
   <section id="registration" class="mt-12 container mx-auto px-4" data-aos="fade-up">
     <h2 class="text-3xl font-bold text-gray-900 text-center mb-6">Event Registration</h2>
     <form id="registrationForm" class="bg-white p-6 rounded shadow" 
-    name="registrationForm" method="POST" data-netlify="true">
+    name="registrationForm" method="POST" data-netlify="true"  onsubmit="submit">
       <div class="mb-4">
         <label class="block text-gray-700 font-bold mb-2" for="name">Name</label>
         <input type="text" id="name" name="name" class="w-full p-2 border rounded focus:outline-none focus:ring" placeholder="Your full name" required>
