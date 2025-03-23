@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Submission Requests</title>
+  <link rel="icon" type="image/x-icon" href="pics/logo.JPG">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/aca9f57730.js" crossorigin="anonymous"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#4B93A2',
+            secondary: '#317a86',
+            accent: '#72b5c1'
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+    body {
+      font-family: 'Montserrat', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-900 min-h-screen flex">
+  <!-- Sidebar -->
+  <aside class="w-64 bg-primary text-white flex-shrink-0">
+    <div class="p-6">
+      <a href="index.html" class="flex items-center space-x-3">
+        <img src="pics/logo.JPG" alt="Logo" class="h-12 w-12 rounded-full shadow-lg">
+        <div>
+          <h1 class="text-2xl font-bold">Admin Panel</h1>
+        </div>
+      </a>
+    </div>
+    <nav class="mt-6">
+      <a href="#" class="block py-2.5 px-4 bg-secondary">Submission Requests</a>
+      <a href="#" class="block py-2.5 px-4 hover:bg-secondary transition-colors">Log Out</a>
+    </nav>
+  </aside>
+  
+  <!-- Main Content -->
+  <div class="flex-1 flex flex-col">
+    <!-- Header -->
+    <header class="bg-white shadow px-6 py-4 flex justify-between items-center">
+      <h2 class="text-xl font-semibold">Submission Requests</h2>
+      <div class="flex items-center space-x-4">
+        <span class="text-gray-600">Welcome, Admin</span>
+        <img src="pics/cross.avif" alt="Admin Avatar" class="h-8 w-8 rounded-full">
+      </div>
+    </header>
+    
+    <!-- Main Content: Three Separate Submission Tables -->
+    <main class="flex-1 overflow-y-auto p-6 space-y-12">
+      
+      <!-- Registration Form Submissions -->
+      <div class="bg-white shadow rounded-lg p-6">
+        <h3 class="text-lg font-bold mb-4">Registration Form Submissions</h3>
+        <div class="overflow-x-auto">
+          <table class="min-w-full table-auto">
+            <thead class="bg-gray-200">
+              <tr>
+                <th class="px-4 py-2 text-left text-gray-700">ID</th>
+                <th class="px-4 py-2 text-left text-gray-700">Name</th>
+                <th class="px-4 py-2 text-left text-gray-700">Email</th>
+                <th class="px-4 py-2 text-left text-gray-700">Event</th>
+                <th class="px-4 py-2 text-left text-gray-700">Additional Info</th>
+                <th class="px-4 py-2 text-left text-gray-700">Submitted On</th>
+                <th class="px-4 py-2 text-left text-gray-700">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b">
+                <td class="px-4 py-2">#001</td>
+                <td class="px-4 py-2">John Doe</td>
+                <td class="px-4 py-2">john@example.com</td>
+                <td class="px-4 py-2">Sunday Service</td>
+                <td class="px-4 py-2">Looking forward to the event.</td>
+                <td class="px-4 py-2">2025-02-15</td>
+                <td class="px-4 py-2">
+                  <span class="text-green-600 font-medium">Approved</span>
+                </td>
+              </tr>
+              <!-- Additional registration rows can be added here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      <!-- Contact Form Submissions -->
+      <div class="bg-white shadow rounded-lg p-6">
+        <h3 class="text-lg font-bold mb-4">Contact Form Submissions</h3>
+        <div class="overflow-x-auto">
+          <table class="min-w-full table-auto">
+            <thead class="bg-gray-200">
+              <tr>
+                <th class="px-4 py-2 text-left text-gray-700">ID</th>
+                <th class="px-4 py-2 text-left text-gray-700">Full Name</th>
+                <th class="px-4 py-2 text-left text-gray-700">Email</th>
+                <th class="px-4 py-2 text-left text-gray-700">Subject</th>
+                <th class="px-4 py-2 text-left text-gray-700">Message</th>
+                <th class="px-4 py-2 text-left text-gray-700">Attachment</th>
+                <th class="px-4 py-2 text-left text-gray-700">Submitted On</th>
+                <th class="px-4 py-2 text-left text-gray-700">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b">
+                <td class="px-4 py-2">#002</td>
+                <td class="px-4 py-2">Jane Smith</td>
+                <td class="px-4 py-2">jane@example.com</td>
+                <td class="px-4 py-2">General Inquiry</td>
+                <td class="px-4 py-2">I would like more information about your services.</td>
+                <td class="px-4 py-2">inquiry.pdf</td>
+                <td class="px-4 py-2">2025-02-16</td>
+                <td class="px-4 py-2">
+                  <span class="text-orange-600 font-medium">Pending</span>
+                </td>
+              </tr>
+              <!-- Additional contact form rows can be added here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      <!-- Prayer Request Submissions -->
+      <div class="bg-white shadow rounded-lg p-6">
+        <h3 class="text-lg font-bold mb-4">Prayer Request Submissions</h3>
+        <div class="overflow-x-auto">
+          <table class="min-w-full table-auto">
+            <thead class="bg-gray-200">
+              <tr>
+                <th class="px-4 py-2 text-left text-gray-700">ID</th>
+                <th class="px-4 py-2 text-left text-gray-700">Prayer Request</th>
+                <th class="px-4 py-2 text-left text-gray-700">Submitted On</th>
+                <th class="px-4 py-2 text-left text-gray-700">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b">
+                <td class="px-4 py-2">#003</td>
+                <td class="px-4 py-2">Please pray for my family during this difficult time.</td>
+                <td class="px-4 py-2">2025-02-17</td>
+                <td class="px-4 py-2">
+                  <span class="text-red-600 font-medium">Rejected</span>
+                </td>
+              </tr>
+              <!-- Additional prayer request rows can be added here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-white shadow px-6 py-4">
+      <p class="text-center text-gray-600 text-sm">&copy; 2025 Northampton PIWC Admin. All Rights Reserved.</p>
+    </footer>
+  </div>
+</body>
+</html>
