@@ -303,23 +303,12 @@
 
   <!-- Background Image Carousel Script -->
   <script>
-      let bgImages;
-      
-      if (window.innerWidth <= 768) {
-        bgImages = [
-          'mobile pics/bible.JPG',
-          'mobile pics/girl.JPG',
-          'mobile pics/sing.JPG',
-          'mobile pics/talk.JPG'
-        ];
-      } else {
-        bgImages = [
-          'pics/Drums.jpeg',
-          'pics/audience old .jpeg',
-          'pics/friends.jpeg',
-          'pics/Stage.jpeg'
-        ];
-      }
+    const bgImages = [
+      'pics/Drums.jpeg',
+      'pics/audience old .jpeg',
+      'pics/friends.jpeg',
+      'pics/Stage.jpeg'
+    ];
     let currentIndex = 0;
     
     // Preload images
@@ -394,5 +383,3 @@
   </script>
 </body>
 </html>
-
-

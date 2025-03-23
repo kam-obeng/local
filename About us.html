@@ -93,11 +93,7 @@
           </div>
         </a>
         
-        <!-- Live Service Indicator updated to use secondary colour -->
-        <div class="hidden md:flex items-center space-x-2 service-time-badge px-4 py-2 rounded-full bg-secondary text-white">
-          <span class="animate-pulse inline-block h-3 w-3 rounded-full bg-white"></span>
-          <span class="text-sm font-medium">Live Now: Sunday Service</span>
-        </div>
+        
 
         <div class="flex items-center space-x-6">
           <nav class="hidden md:flex space-x-6 text-white items-center">
@@ -116,7 +112,7 @@
       </div>
 
       <!-- Enhanced Mobile Menu with updated background -->
-      <div id="mobileNav" class="hidden md:hidden mt-4 rounded-lg overflow-hidden bg-primary">
+      <div id="mobileNav" class="max-h-0 overflow-hidden transition-all duration-500 md:hidden mt-4 rounded-lg bg-primary">
         <div class="p-4 space-y-4">
           <a href="index.html" class="block text-white hover:text-accent py-2 transition-colors">Home</a>
           <a href="About us.html" class="block text-white hover:text-accent py-2 transition-colors">About</a>
@@ -139,14 +135,25 @@
       <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto animate-slide-up">
         Find a community where your talents are celebrated and your spirit can thrive.
       </p>
-      <a href="https://forms.gle/bGKUwb8sVXDsAbeNA" class="bg-primary text-white px-8 py-3 rounded-full font-medium hover:bg-secondary transition-all transform hover:scale-105 inline-flex items-center">
+      <a href="#join-us" class="bg-primary text-white px-8 py-3 rounded-full font-medium hover:bg-secondary transition-all transform hover:scale-105 inline-flex items-center">
         <i class="fas fa-handshake mr-2"></i> Join Us Today
       </a>
     </div>
   </section>
 
+  <script>
+    document.querySelector('a[href="#join-us"]').addEventListener('click', function (event) {
+      event.preventDefault();
+      const joinUsSection = document.getElementById('join-us');
+      window.scrollTo({
+        top: joinUsSection.offsetTop - 80,
+        behavior: 'smooth'
+      });
+    });
+  </script>
+
   <!-- About Us Section -->
-  <section id="about" class="container mx-auto px-4 py-12">
+  <section id="about" class="container mx-auto px-4 py-4">
     <div class="bg-white rounded-xl shadow-lg p-8">
       <h2 class="text-3xl font-bold text-primary text-center">About Us</h2>
       <p class="mt-4 text-gray-700 text-center">
@@ -156,7 +163,7 @@
   </section>
 
   <!-- Mission Section -->
-  <section id="mission" class="container mx-auto px-4 py-12">
+  <section id="mission" class="container mx-auto px-4 py-4">
     <div class="bg-gray-200 rounded-xl shadow-lg p-8">
       <h2 class="text-3xl font-bold text-primary">Our Mission</h2>
       <p class="mt-2 text-gray-700">At Northampton PIWC, our mission is to:</p>
@@ -171,7 +178,7 @@
   </section>
 
   <!-- Vision Section -->
-  <section id="vision" class="container mx-auto px-4 py-12">
+  <section id="vision" class="container mx-auto px-4 py-4">
     <div class="bg-white rounded-xl shadow-lg p-8">
       <h2 class="text-3xl font-bold text-primary">Our Vision</h2>
       <p class="mt-2 text-gray-700">We envision a church where people grow in faith, impact society, and live Christ-centred lives.</p>
@@ -179,7 +186,7 @@
   </section>
 
   <!-- Beliefs Section -->
-  <section id="beliefs" class="container mx-auto px-4 py-12">
+  <section id="beliefs" class="container mx-auto px-4 py-4">
     <div class="bg-gray-200 rounded-xl shadow-lg p-8">
       <h2 class="text-3xl font-bold text-primary">What We Believe</h2>
       <ul class="mt-4 text-gray-700 list-disc list-inside">
@@ -193,14 +200,13 @@
   </section>
 
   <!-- Worship Services Section -->
-  <section id="services" class="container mx-auto px-4 py-12">
+  <section id="services" class="container mx-auto px-4 py-4">
     <div class="bg-white rounded-xl shadow-lg p-8">
       <h2 class="text-3xl font-bold text-primary">Our Worship Services</h2>
       <ul class="mt-4 text-gray-700 list-disc list-inside">
         <li><strong>Sunday Celebration Service:</strong> Uplifting worship, teaching, and fellowship.</li>
         <li><strong>Midweek Bible Studies &amp; Prayer:</strong> In-depth study and spiritual empowerment.</li>
         <li><strong>Youth &amp; Young Adults Ministry:</strong> Faith, mentorship, and personal development.</li>
-        <li><strong>Evangelism &amp; Community Outreach:</strong> Spreading the gospel and making a difference.</li>
       </ul>
     </div>
   </section>
@@ -255,18 +261,56 @@
     </div>
   </section>
 
-  <!-- News & Events Section -->
-  <section id="news" class="container mx-auto px-4 py-12">
-    <div class="bg-white rounded-xl shadow-lg p-8 text-center">
-      <h2 class="text-3xl font-bold text-primary">News &amp; Events</h2>
-      <p class="mt-4 text-gray-700">
-        Stay updated with our latest events and news. Visit our <a href="blog.html" class="text-primary underline hover:text-accent">blog</a> for more details.
-      </p>
+  <!-- Join Us Form Section -->
+  <section id="join-us" class="container mx-auto px-4 py-12">
+    <div class="bg-white rounded-xl shadow-lg p-8">
+        <h2 class="text-3xl font-bold text-primary text-center">Join Our Church</h2>
+        <form id="joinForm" class="mt-6 space-y-4">
+            <label for="name" class="block font-medium text-gray-700">Full Name:</label>
+            <input type="text" id="name" name="name" required class="w-full px-4 py-2 border rounded-lg focus:ring-primary focus:border-primary">
+
+            <label for="email" class="block font-medium text-gray-700">Email:</label>
+            <input type="email" id="email" name="email" required class="w-full px-4 py-2 border rounded-lg focus:ring-primary focus:border-primary">
+
+            <label for="phone" class="block font-medium text-gray-700">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required class="w-full px-4 py-2 border rounded-lg focus:ring-primary focus:border-primary">
+
+            <label for="dob" class="block font-medium text-gray-700">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required class="w-full px-4 py-2 border rounded-lg focus:ring-primary focus:border-primary">
+
+            <label for="dateJoined" class="block font-medium text-gray-700">Date Joined:</label>
+            <input type="date" id="dateJoined" name="dateJoined" class="w-full px-4 py-2 border rounded-lg focus:ring-primary focus:border-primary">
+
+            <label for="category" class="block font-medium text-gray-700">Category:</label>
+            <select id="category" name="category" class="w-full px-4 py-2 border rounded-lg focus:ring-primary focus:border-primary">
+                <option value="adult">Adult</option>
+                <option value="uni_student">Uni Student</option>
+                <option value="youth">Youth</option>
+                <option value="u18">Under 18</option>
+            </select>
+
+            <button type="submit" class="w-full bg-primary text-white px-6 py-2 rounded-full hover:bg-secondary transition-colors">
+                Submit
+            </button>
+        </form>
     </div>
-  </section>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        let today = new Date().toISOString().split('T')[0];
+        document.getElementById("dateJoined").value = today;
+    });
+
+    document.getElementById("joinForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        alert("Thank you for joining! We will get in touch soon.");
+        this.reset();
+    });
+</script>
 
   <!-- Visit / Map Section -->
-  <section id="visit" class="container mx-auto px-4 py-12">
+  <section id="visit" class="container mx-auto px-4 py-4">
     <div class="bg-gray-200 rounded-xl shadow-lg p-8">
       <h2 class="text-3xl font-bold text-primary text-center">Visit Us</h2>
       <p class="mt-2 text-center text-gray-700">Find us at Unit H5 Kingsfield Way, Kings Heath Industrial Estate, Northampton NN5 7QS</p>
@@ -293,7 +337,7 @@
 
   <!-- Footer -->
   <footer class="bg-gray-900 text-white">
-    <div class="container mx-auto px-4 py-12">
+    <div class="container mx-auto px-4 py-4">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
         <div>
           <h3 class="text-xl font-bold mb-4">About Us</h3>
@@ -312,13 +356,13 @@
         <div>
           <h3 class="text-xl font-bold mb-4">Connect</h3>
           <div class="flex space-x-4">
-            <a href="https://www.facebook.com/" class="text-gray-400 hover:text-white transition-colors">
-              <i class="fab fa-facebook text-2xl"></i>
+            <a href="https://www.tiktok.com/@northampton_piwc" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fab fa-tiktok text-2xl"></i>
             </a>
-            <a href="https://www.instagram.com/" class="text-gray-400 hover:text-white transition-colors">
+            <a href="https://www.instagram.com/northampton.piwc/" class="text-gray-400 hover:text-white transition-colors">
               <i class="fab fa-instagram text-2xl"></i>
             </a>
-            <a href="https://www.youtube.com/" class="text-gray-400 hover:text-white transition-colors">
+            <a href="https://www.youtube.com/@NorthamptonPIWC" class="text-gray-400 hover:text-white transition-colors">
               <i class="fab fa-youtube text-2xl"></i>
             </a>
           </div>
@@ -348,12 +392,23 @@
 
   <!-- Background Carousel Script -->
   <script>
-    const bgImages = [
-      'pics/image1.1.JPG',
-      'pics/image2.1.JPG',
-      'pics/image3.1.JPG',
-      'pics/image4.1.JPG'
-    ];
+      let bgImages;
+      
+      if (window.innerWidth <= 768) {
+        bgImages = [
+          'mobile pics/bible.JPG',
+          'mobile pics/girl.JPG',
+          'mobile pics/sing.JPG',
+          'mobile pics/talk.JPG'
+        ];
+      } else {
+        bgImages = [
+          'pics/Drums.jpeg',
+          'pics/audience old .jpeg',
+          'pics/friends.jpeg',
+          'pics/Stage.jpeg'
+        ];
+      }
     let currentIndex = 0;
     
     // Preload images
@@ -394,7 +449,13 @@
 
       // Toggle mobile navigation
       navToggle.addEventListener('click', function () {
-        mobileNav.classList.toggle('hidden');
+        if (mobileNav.classList.contains('max-h-0')) {
+          mobileNav.classList.remove('max-h-0');
+          mobileNav.classList.add('max-h-[500px]');
+        } else {
+          mobileNav.classList.remove('max-h-[500px]');
+          mobileNav.classList.add('max-h-0');
+        }
       });
 
       // Show/hide back-to-top button on scroll

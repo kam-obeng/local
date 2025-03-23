@@ -80,11 +80,7 @@
           </div>
         </a>
         
-        <!-- Live Service Indicator -->
-        <div class="hidden md:flex items-center space-x-2 service-time-badge px-4 py-2 rounded-full bg-secondary text-white">
-          <span class="animate-pulse inline-block h-3 w-3 rounded-full bg-white"></span>
-          <span class="text-sm font-medium">Live Now: Sunday Service</span>
-        </div>
+      
   
         <div class="flex items-center space-x-6">
           <nav class="hidden md:flex space-x-6 text-white items-center">
@@ -103,7 +99,7 @@
       </div>
   
       <!-- Mobile Menu -->
-      <div id="mobileNav" class="hidden md:hidden mt-4 rounded-lg overflow-hidden bg-primary">
+      <div id="mobileNav" class="max-h-0 overflow-hidden transition-all duration-500 md:hidden mt-4 rounded-lg bg-primary">
         <div class="p-4 space-y-4">
           <a href="index.html" class="block text-white hover:text-accent py-2 transition-colors">Home</a>
           <a href="About us.html" class="block text-white hover:text-accent py-2 transition-colors">About</a>
@@ -183,13 +179,13 @@
         <div>
           <h3 class="text-xl font-bold mb-4">Connect</h3>
           <div class="flex space-x-4">
-            <a href="https://www.facebook.com/" class="text-gray-400 hover:text-white transition-colors">
-              <i class="fab fa-facebook text-2xl"></i>
+            <a href="https://www.tiktok.com/@northampton_piwc" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fab fa-tiktok text-2xl"></i>
             </a>
-            <a href="https://www.instagram.com/" class="text-gray-400 hover:text-white transition-colors">
+            <a href="https://www.instagram.com/northampton.piwc/" class="text-gray-400 hover:text-white transition-colors">
               <i class="fab fa-instagram text-2xl"></i>
             </a>
-            <a href="https://www.youtube.com/" class="text-gray-400 hover:text-white transition-colors">
+            <a href="https://www.youtube.com/@NorthamptonPIWC" class="text-gray-400 hover:text-white transition-colors">
               <i class="fab fa-youtube text-2xl"></i>
             </a>
           </div>
@@ -221,7 +217,14 @@
   <script>
     // Mobile Navigation Toggle
     document.getElementById('navToggle').addEventListener('click', function () {
-      document.getElementById('mobileNav').classList.toggle('hidden');
+      const mobileNav = document.getElementById('mobileNav');
+      if (mobileNav.classList.contains('max-h-0')) {
+        mobileNav.classList.remove('max-h-0');
+        mobileNav.classList.add('max-h-[500px]');
+      } else {
+        mobileNav.classList.remove('max-h-[500px]');
+        mobileNav.classList.add('max-h-0');
+      }
     });
     
     // Back to Top Button

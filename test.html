@@ -60,6 +60,20 @@
     .scrollbar-hide::-webkit-scrollbar {
       display: none;
     }
+    .progress-bar {
+      height: 6px;
+      background-color: #e5e7eb;
+      border-radius: 9999px;
+      overflow: hidden;
+      position: relative;
+      margin-top: 1rem;
+    }
+    .progress-value {
+      height: 100%;
+      background-color: #4B93A2;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
@@ -76,12 +90,7 @@
         </div>
       </a>
       
-      <!-- Live Service Indicator updated to use secondary colour -->
-      <div class="hidden md:flex items-center space-x-2 service-time-badge px-4 py-2 rounded-full bg-secondary text-white">
-        <span class="animate-pulse inline-block h-3 w-3 rounded-full bg-white"></span>
-        <span class="text-sm font-medium">Live Now: Sunday Service</span>
-      </div>
-
+     
       <div class="flex items-center space-x-6">
         <nav class="hidden md:flex space-x-6 text-white items-center">
           <a href="index.html" class="hover:text-accent transition-colors py-2">Home</a>
@@ -99,7 +108,7 @@
     </div>
 
     <!-- Enhanced Mobile Menu with updated background -->
-    <div id="mobileNav" class="hidden md:hidden mt-4 rounded-lg overflow-hidden bg-primary">
+    <div id="mobileNav" class="max-h-0 overflow-hidden transition-all duration-500 md:hidden mt-4 rounded-lg bg-primary">
       <div class="p-4 space-y-4">
         <a href="index.html" class="block text-white hover:text-accent py-2 transition-colors">Home</a>
         <a href="About us.html" class="block text-white hover:text-accent py-2 transition-colors">About</a>
@@ -127,7 +136,7 @@
 
       </p>
       <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
-        <a href="#live" class="bg-primary text-white px-8 py-3 rounded-full font-medium hover:bg-secondary transition-all transform hover:scale-105 flex items-center">
+        <a href="https://www.youtube.com/@NorthamptonPIWC/streams" class="bg-primary text-white px-8 py-3 rounded-full font-medium hover:bg-secondary transition-all transform hover:scale-105 flex items-center">
           <i class="fas fa-play-circle mr-2"></i>
           Watch Live
         </a>
@@ -152,12 +161,13 @@
   <!-- About Section: Bible Verse of the Day -->
   <section id="about" class="mt-12 container mx-auto px-4" data-aos="fade-up">
     <h2 class="text-3xl font-bold text-gray-900 text-center mb-6">Bible Verse of the Day</h2>
-    <p id="bibleVerse" class="text-xl text-gray-700 text-center"></p>
+    <p id="bibleVerse" class="text-xl text-gray-700 text-center  mb-2"></p>
+    <p id="bibleReference" class="text-lg text-gray-600 text-center"></p>
   </section>
 
   <!-- Ministries Section -->
   <section id="ministries" class="mt-12 container mx-auto px-4" data-aos="fade-up">
-    <h2 class="text-3xl font-bold text-gray-900 text-center mb-6">Our Ministries</h2>
+    <h2 class="text-3xl font-bold text-gray-900 text-center mb-6"></h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <!-- Live Stream -->
       <div class="bg-white p-6 rounded shadow hover:shadow-lg transition-shadow">
@@ -172,7 +182,7 @@
       <div class="bg-white p-6 rounded shadow hover:shadow-lg transition-shadow">
         <h3 class="text-xl font-bold text-gray-900 text-center mb-4">Latest Sermons</h3>
         <div class="aspect-video">
-          <iframe class="w-full h-full rounded" src="https://www.youtube.com/embed/KgSIbnegeSQ"
+          <iframe class="w-full h-full rounded" src="https://www.youtube.com/embed/tF6l7-1CPXE"
             title="Sermon Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen></iframe>
         </div>
@@ -180,68 +190,235 @@
     </div>
   </section>
 
-  <!-- Event Calendar Section -->
-  <section id="contact" class="mt-12 container mx-auto px-4" data-aos="fade-up">
-    <h2 class="text-3xl font-bold text-gray-900 text-center mb-6">Upcoming Events</h2>
-    <div class="bg-white rounded shadow overflow-hidden">
-      <iframe src="https://calendar.google.com/calendar/embed?src=YOUR_CALENDAR_ID"
-        style="border: 0" width="100%" height="400" frameborder="0" scrolling="no"></iframe>
+ <!-- Upcoming Events Section - Calendar with List View Toggle -->
+ <section id="events" class="py-16 container mx-auto px-4" data-aos="fade-up">
+  <div class="text-center mb-12">
+    <h2 class="text-3xl font-bold text-gray-900 mb-4">Upcoming Events</h2>
+    <p class="text-gray-600 max-w-2xl mx-auto">Join us for these special gatherings and grow in faith and fellowship.</p>
+    
+    <!-- View toggle buttons -->
+    <div class="flex justify-center mt-6 space-x-2">
+      <button id="calendarViewBtn" class="px-4 py-2 bg-primary text-white rounded-l-lg">
+        <i class="fas fa-calendar-alt mr-2"></i>Calendar
+      </button>
+      <button id="listViewBtn" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-r-lg">
+        <i class="fas fa-list mr-2"></i>List
+      </button>
     </div>
-  </section>
-
-  <!-- Community Testimonies -->
-  <section id="testimonies" class="mt-12 container mx-auto px-4" data-aos="fade-up">
-    <h2 class="text-3xl font-bold text-gray-900 text-center mb-6">Community Testimonies</h2>
-    <div id="testimonialCarousel" class="bg-white p-6 rounded shadow text-center">
-      <div class="testimonial text-lg">
-        <p>"God has been faithful in my life!" - Member 1</p>
+  </div>
+  
+  <!-- Calendar View -->
+  <div id="calendarView" class="bg-white rounded-lg shadow-lg overflow-hidden">
+    <iframe src="https://calendar.google.com/calendar/embed?src=YOUR_CALENDAR_ID"
+      style="border: 0" width="100%" height="500" frameborder="0" scrolling="no"></iframe>
+  </div>
+  
+  <!-- List View -->
+  <div id="listView" class="hidden">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Event 1 -->
+      <div class="bg-white rounded-lg shadow-md overflow-hidden flex hover:shadow-lg transition-shadow">
+        <div class="bg-primary text-white p-4 flex flex-col items-center justify-center min-w-[80px]">
+          <span class="text-2xl font-bold">23</span>
+          <span class="uppercase text-sm">Mar</span>
+        </div>
+        <div class="p-4">
+          <h3 class="text-xl font-bold mb-2">Prayer & Fasting Day</h3>
+          <p class="text-gray-600 mb-2">6:00 PM - 8:00 PM</p>
+          <p class="text-gray-500 mb-3">Join us as we seek God's presence through prayer and fasting.</p>
+          <a href="#" class="text-primary hover:text-secondary inline-flex items-center">
+            <i class="fas fa-plus-circle mr-1"></i> Add to calendar
+          </a>
+        </div>
       </div>
-      <div class="testimonial text-lg hidden">
-        <p>"I experienced a breakthrough through prayer!" - Member 2</p>
+      
+      <!-- Event 2 -->
+      <div class="bg-white rounded-lg shadow-md overflow-hidden flex hover:shadow-lg transition-shadow">
+        <div class="bg-primary text-white p-4 flex flex-col items-center justify-center min-w-[80px]">
+          <span class="text-2xl font-bold">26</span>
+          <span class="uppercase text-sm">Mar</span>
+        </div>
+        <div class="p-4">
+          <h3 class="text-xl font-bold mb-2">Youth Fellowship</h3>
+          <p class="text-gray-600 mb-2">5:30 PM - 7:30 PM</p>
+          <p class="text-gray-500 mb-3">An evening of worship, games, and Bible study for young people.</p>
+          <a href="#" class="text-primary hover:text-secondary inline-flex items-center">
+            <i class="fas fa-plus-circle mr-1"></i> Add to calendar
+          </a>
+        </div>
       </div>
-      <div class="testimonial text-lg hidden">
-        <p>"The community here has truly uplifted me." - Member 3</p>
+      
+      <!-- Event 3 -->
+      <div class="bg-white rounded-lg shadow-md overflow-hidden flex hover:shadow-lg transition-shadow">
+        <div class="bg-primary text-white p-4 flex flex-col items-center justify-center min-w-[80px]">
+          <span class="text-2xl font-bold">28</span>
+          <span class="uppercase text-sm">Mar</span>
+        </div>
+        <div class="p-4">
+          <h3 class="text-xl font-bold mb-2">Community Outreach</h3>
+          <p class="text-gray-600 mb-2">10:00 AM - 2:00 PM</p>
+          <p class="text-gray-500 mb-3">Serving our local community through various outreach activities.</p>
+          <a href="#" class="text-primary hover:text-secondary inline-flex items-center">
+            <i class="fas fa-plus-circle mr-1"></i> Add to calendar
+          </a>
+        </div>
+      </div>
+      
+      <!-- Event 4 -->
+      <div class="bg-white rounded-lg shadow-md overflow-hidden flex hover:shadow-lg transition-shadow">
+        <div class="bg-primary text-white p-4 flex flex-col items-center justify-center min-w-[80px]">
+          <span class="text-2xl font-bold">02</span>
+          <span class="uppercase text-sm">Apr</span>
+        </div>
+        <div class="p-4">
+          <h3 class="text-xl font-bold mb-2">Bible Study Group</h3>
+          <p class="text-gray-600 mb-2">7:00 PM - 8:30 PM</p>
+          <p class="text-gray-500 mb-3">Deepening our understanding of God's Word together.</p>
+          <a href="#" class="text-primary hover:text-secondary inline-flex items-center">
+            <i class="fas fa-plus-circle mr-1"></i> Add to calendar
+          </a>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Prayer Request Form -->
-  <section id="prayer" class="mt-12 container mx-auto px-4" data-aos="fade-up" >
-    <h2 class="text-3xl font-bold text-gray-900 text-center mb-6">Submit a Prayer Request</h2>
-    <form id="prayerForm" class="bg-white p-6 rounded shadow" netlify >
-      <textarea class="w-full p-2 border rounded focus:outline-none focus:ring" placeholder="Enter your prayer request..." required></textarea>
-      <button type="submit" class="mt-4 bg-primary text-white px-4 py-2 rounded hover:bg-secondary transition-colors">Submit</button>
-    </form>
-  </section>
+<!-- Community Testimonies - Improved Design -->
+<section id="testimonies" class="py-16 bg-gray-50" data-aos="fade-up">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">Community Testimonies</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">Hear how God is working in the lives of our church members.</p>
+    </div>
+    
+    <div id="testimonialCarousel" class="bg-white p-8 rounded-lg shadow-lg max-w-3xl mx-auto">
+      <div class="mb-6 text-center">
+        <i class="fas fa-quote-left text-4xl text-primary opacity-30"></i>
+      </div>
+      
+      <div class="relative overflow-hidden" style="min-height: 150px;">
+        <div class="testimonial text-lg text-center">
+          <p class="mb-4">"God has been faithful in my life through every season. I've seen His hand guiding me through difficult times and blessing me beyond measure."</p>
+          <div class="mt-6">
+            <p class="font-medium text-gray-900">- Person 1.</p>
+            <p class="text-sm text-gray-500">Church Member</p>
+          </div>
+        </div>
+        
+        <div class="testimonial text-lg text-center hidden">
+          <p class="mb-4">"I experienced a breakthrough through prayer when I was facing a health challenge. The support from our church family made all the difference."</p>
+          <div class="mt-6">
+            <p class="font-medium text-gray-900">- Person 2.</p>
+            <p class="text-sm text-gray-500">Worship Team</p>
+          </div>
+        </div>
+        
+        <div class="testimonial text-lg text-center hidden">
+          <p class="mb-4">"The community here has truly uplifted me during my studies. I found a spiritual home away from home that keeps me grounded in faith."</p>
+          <div class="mt-6">
+            <p class="font-medium text-gray-900">- Person 3.</p>
+            <p class="text-sm text-gray-500">Student</p>
+          </div>
+        </div>
+      </div>
+      
+    <!-- Testimonial Controls -->
+    <div class="flex justify-between items-center mt-8">
+        <button id="prevTestimonial" class="text-primary hover:text-secondary transition-colors" aria-label="Previous testimony">
+          <i class="fas fa-chevron-left text-xl"></i>
+        </button>
+        
+        <div class="w-3/4 mx-auto">
+          <div class="progress-bar">
+            <div class="progress-value" style="width: 33%;"></div>
+          </div>
+        </div>
+        
+        <button id="nextTestimonial" class="text-primary hover:text-secondary transition-colors" aria-label="Next testimony">
+          <i class="fas fa-chevron-right text-xl"></i>
+        </button>
+      </div>
+    </div>
+    
+    
+  </div>
+   
+</section>
 
-  <!-- Event Registration Form -->
-  <section id="registration" class="mt-12 container mx-auto px-4" data-aos="fade-up">
-    <h2 class="text-3xl font-bold text-gray-900 text-center mb-6">Event Registration</h2>
-    <form id="registrationForm" class="bg-white p-6 rounded shadow" netlify>
-      <div class="mb-4">
-        <label class="block text-gray-700 font-bold mb-2" for="name">Name</label>
-        <input type="text" id="name" name="name" class="w-full p-2 border rounded focus:outline-none focus:ring" placeholder="Your full name" required>
+<!-- Forms Section - Two Columns -->
+<section id="connect" class="py-16 container mx-auto px-4" data-aos="fade-up">
+  <div class="text-center mb-12">
+    <h2 class="text-3xl font-bold text-gray-900 mb-4">Connect With Us</h2>
+    <p class="text-gray-600 max-w-2xl mx-auto">Whether you need prayer or want to join an event, we're here for you.</p>
+  </div>
+  
+  
+
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <!-- Prayer Request Form - Enhanced Design -->
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+      <div class="flex items-center mb-6">
+        <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4">
+          <i class="fas fa-pray text-xl"></i>
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900">Prayer Request / Share your testimony</h3>
       </div>
-      <div class="mb-4">
-        <label class="block text-gray-700 font-bold mb-2" for="email">Email</label>
-        <input type="email" id="email" name="email" class="w-full p-2 border rounded focus:outline-none focus:ring" placeholder="Your email address" required>
+      <p class="text-gray-600 mb-6">You are welcome to share your prayer request or testimony with us. If you wish, everything you share will be kept private and only seen by our prayer team.</p>
+      <form id="prayerForm" class="space-y-4" netlify>
+        <div>
+          <label for="prayer-name" class="block text-gray-700 mb-2">Your Name (Optional)</label>
+          <input type="text" id="prayer-name" name="name" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors" placeholder="Your name">
+        </div>
+        <div>
+          <label for="prayer-request" class="block text-gray-700 mb-2">Prayer Request / testimony</label>
+          <textarea id="prayer-request" name="request" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors" rows="4" placeholder="Enter your prayer request..." required></textarea>
+        </div>
+        <div class="flex items-center">
+          <input type="checkbox" id="prayer-confidential" name="confidential" class="rounded text-primary focus:ring-primary mr-2">
+          <label for="prayer-confidential" class="text-gray-700">Keep my request confidential</label>
+        </div>
+        <button type="submit" class="w-full bg-primary text-white px-6 py-3 rounded-lg hover:bg-secondary transition-colors font-medium shadow-md flex items-center justify-center">
+          <i class="fas fa-paper-plane mr-2"></i>Submit Prayer Request
+        </button>
+      </form>
+    </div>
+    
+    <!-- Event Registration Form - Enhanced Design -->
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+      <div class="flex items-center mb-6">
+        <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4">
+          <i class="fas fa-calendar-check text-xl"></i>
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900">Event Registration</h3>
       </div>
-      <div class="mb-4">
-        <label class="block text-gray-700 font-bold mb-2" for="event">Select Event</label>
-        <select id="event" name="event" class="w-full p-2 border rounded focus:outline-none focus:ring" required>
-          <option value="">Choose an event</option>
-          <option value="service">Sunday Service</option>
-          <option value="workshop">Faith Workshop</option>
-          <option value="community">Community Outreach</option>
-        </select>
-      </div>
-      <div class="mb-4">
-        <label class="block text-gray-700 font-bold mb-2" for="message">Additional Information</label>
-        <textarea id="message" name="message" class="w-full p-2 border rounded focus:outline-none focus:ring" placeholder="Any additional details..."></textarea>
-      </div>
-      <button type="submit" class="bg-primary text-white px-4 py-2 rounded hover:bg-secondary transition-colors">Register</button>
-    </form>
-  </section>
+      <p class="text-gray-600 mb-6">Register for upcoming events and activities at our church.</p>
+      <form id="eventForm" class="space-y-4" netlify>
+        <div>
+          <label for="event-name" class="block text-gray-700 mb-2">Full Name</label>
+          <input type="text" id="event-name" name="name" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors" placeholder="Your name" required>
+        </div>
+        <div>
+          <label for="event-email" class="block text-gray-700 mb-2">Email Address</label>
+          <input type="email" id="event-email" name="email" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors" placeholder="you@example.com" required>
+        </div>
+        <div>
+          <label for="event-type" class="block text-gray-700 mb-2">Select Event</label>
+          <select id="event-type" name="event" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors" required>
+            <option value="">-- Please choose an event --</option>
+            <option value="prayer-fasting">Prayer & Fasting Day</option>
+            <option value="youth-fellowship">Youth Fellowship</option>
+            <option value="outreach">Community Outreach</option>
+            <option value="bible-study">Bible Study Group</option>
+          </select>
+        </div>
+        <button type="submit" class="w-full bg-primary text-white px-6 py-3 rounded-lg hover:bg-secondary transition-colors font-medium shadow-md flex items-center justify-center">
+          <i class="fas fa-check-circle mr-2"></i>Register
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
 
   <!-- FAQ Section -->
   <section id="faq" class="mt-12 container mx-auto px-4" data-aos="fade-up">
@@ -252,7 +429,7 @@
           What time are the services?
         </button>
         <div id="faq1" class="mt-2 text-gray-700 hidden">
-          <p>Our services are held at 9am and 11am on Sundays.</p>
+          <p>Our services are held at 9am on Sundays.</p>
         </div>
       </div>
       <div class="border-b pb-2">
@@ -295,13 +472,13 @@
       <div>
         <h3 class="text-xl font-bold mb-4">Connect</h3>
         <div class="flex space-x-4">
-          <a href="https://www.facebook.com/" class="text-gray-400 hover:text-white transition-colors">
-            <i class="fab fa-facebook text-2xl"></i>
+          <a href="https://www.tiktok.com/@northampton_piwc" class="text-gray-400 hover:text-white transition-colors">
+            <i class="fab fa-tiktok text-2xl"></i>
           </a>
-          <a href="https://www.instagram.com/" class="text-gray-400 hover:text-white transition-colors">
+          <a href="https://www.instagram.com/northampton.piwc/" class="text-gray-400 hover:text-white transition-colors">
             <i class="fab fa-instagram text-2xl"></i>
           </a>
-          <a href="https://www.youtube.com/" class="text-gray-400 hover:text-white transition-colors">
+          <a href="https://www.youtube.com/@NorthamptonPIWC" class="text-gray-400 hover:text-white transition-colors">
             <i class="fab fa-youtube text-2xl"></i>
           </a>
         </div>
@@ -340,12 +517,23 @@
     AOS.init({ duration: 800, once: true });
 
     // Background Image Carousel
-    const bgImages = [
-      'pics/image1.1.JPG',
-      'pics/image2.1.JPG',
-      'pics/image3.1.JPG',
-      'pics/image4.1.JPG'
-    ];
+    let bgImages;
+      
+      if (window.innerWidth <= 768) {
+        bgImages = [
+          'mobile pics/bible.JPG',
+          'mobile pics/girl.JPG',
+          'mobile pics/sing.JPG',
+          'mobile pics/talk.JPG'
+        ];
+      } else {
+        bgImages = [
+          'pics/Drums.jpeg',
+          'pics/audience old .jpeg',
+          'pics/friends.jpeg',
+          'pics/Stage.jpeg'
+        ];
+      }
     let currentIndex = 0;
     // Preload images
     bgImages.forEach(src => {
@@ -374,7 +562,13 @@
     const navToggle = document.getElementById('navToggle');
     const mobileNav = document.getElementById('mobileNav');
     navToggle.addEventListener('click', () => {
-      mobileNav.classList.toggle('hidden');
+      if (mobileNav.classList.contains('max-h-0')) {
+        mobileNav.classList.remove('max-h-0');
+        mobileNav.classList.add('max-h-[500px]');
+      } else {
+        mobileNav.classList.remove('max-h-[500px]');
+        mobileNav.classList.add('max-h-0');
+      }
     });
 
     // Back to Top Button
@@ -390,36 +584,82 @@
       window.scrollTo({ top: 0, behaviour: 'smooth' });
     });
 
+     // Toggle Calendar/List Views
+     document.getElementById("calendarViewBtn").addEventListener("click", () => {
+      document.getElementById("calendarView").classList.remove("hidden");
+      document.getElementById("listView").classList.add("hidden");
+      document.getElementById("calendarViewBtn").classList.add("bg-primary", "text-white");
+      document.getElementById("calendarViewBtn").classList.remove("bg-gray-200", "text-gray-700");
+      document.getElementById("listViewBtn").classList.add("bg-gray-200", "text-gray-700");
+      document.getElementById("listViewBtn").classList.remove("bg-primary", "text-white");
+    });
+    document.getElementById("listViewBtn").addEventListener("click", () => {
+      document.getElementById("calendarView").classList.add("hidden");
+      document.getElementById("listView").classList.remove("hidden");
+      document.getElementById("listViewBtn").classList.add("bg-primary", "text-white");
+      document.getElementById("listViewBtn").classList.remove("bg-gray-200", "text-gray-700");
+      document.getElementById("calendarViewBtn").classList.add("bg-gray-200", "text-gray-700");
+      document.getElementById("calendarViewBtn").classList.remove("bg-primary", "text-white");
+    });
+
     // Fetch and display Bible Verse of the Day
     async function fetchBibleVerse() {
       try {
         const response = await fetch('https://beta.ourmanna.com/api/v1/get/?format=json');
         const data = await response.json();
         const verse = data.verse.details.text;
+        const reference = data.verse.details.reference;
         document.getElementById('bibleVerse').innerText = verse;
+        document.getElementById('bibleReference').innerText = reference;
         document.getElementById('bibleVersePreview').innerText = verse.substring(0, 60) + '...';
       } catch (error) {
         console.error("Error fetching Bible verse:", error);
         document.getElementById('bibleVerse').innerText = "Unable to fetch verse.";
+        document.getElementById('bibleReference').innerText = "";
         document.getElementById('bibleVersePreview').innerText = "Unable to fetch verse.";
       }
     }
     fetchBibleVerse();
 
-    // Testimonial Carousel
+     // Testimonial carousel with auto-loop and progress bar
+    const testimonials = document.querySelectorAll('.testimonial');
+    const prevTestimonial = document.getElementById('prevTestimonial');
+    const nextTestimonial = document.getElementById('nextTestimonial');
+    const progress = document.querySelector('.progress-value');
     let testimonialIndex = 0;
-    const testimonials = document.querySelectorAll('#testimonialCarousel .testimonial');
+    let interval;
+
     function showTestimonial(index) {
-      testimonials.forEach((el, i) => {
-        el.classList.toggle('hidden', i !== index);
-      });
+      testimonials.forEach((t, i) => t.classList.toggle('hidden', i !== index));
+      progress.style.width = `${((index + 1) / testimonials.length) * 100}%`;
     }
-    function nextTestimonial() {
+
+    function startCarousel() {
+      interval = setInterval(() => {
+        testimonialIndex = (testimonialIndex + 1) % testimonials.length;
+        showTestimonial(testimonialIndex);
+      }, 20000); // 20 seconds
+    }
+
+    function resetCarousel() {
+      clearInterval(interval);
+      startCarousel();
+    }
+
+    prevTestimonial.addEventListener('click', () => {
+      testimonialIndex = (testimonialIndex - 1 + testimonials.length) % testimonials.length;
+      showTestimonial(testimonialIndex);
+      resetCarousel();
+    });
+
+    nextTestimonial.addEventListener('click', () => {
       testimonialIndex = (testimonialIndex + 1) % testimonials.length;
       showTestimonial(testimonialIndex);
-    }
+      resetCarousel();
+    });
+
     showTestimonial(testimonialIndex);
-    setInterval(nextTestimonial, 5000);
+    startCarousel();
 
     // Toggle FAQ Answers
     window.toggleFAQ = function(id) {
@@ -438,5 +678,10 @@
       this.reset();
     });
   </script>
+  
 </body>
 </html>
+
+
+
+

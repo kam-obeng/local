@@ -81,11 +81,7 @@
           </div>
         </a>
         
-        <!-- Live Service Indicator -->
-        <div class="hidden md:flex items-center space-x-2 service-time-badge px-4 py-2 rounded-full bg-secondary text-white">
-          <span class="animate-pulse inline-block h-3 w-3 rounded-full bg-white"></span>
-          <span class="text-sm font-medium">Live Now: Sunday Service</span>
-        </div>
+        
   
         <div class="flex items-center space-x-6">
           <nav class="hidden md:flex space-x-6 text-white items-center">
@@ -104,7 +100,7 @@
       </div>
   
       <!-- Enhanced Mobile Menu -->
-      <div id="mobileNav" class="hidden md:hidden mt-4 rounded-lg overflow-hidden bg-primary">
+      <div id="mobileNav" class="max-h-0 overflow-hidden transition-all duration-500 md:hidden mt-4 rounded-lg bg-primary">
         <div class="p-4 space-y-4">
           <a href="index.html" class="block text-white hover:text-accent py-2 transition-colors">Home</a>
           <a href="About us.html" class="block text-white hover:text-accent py-2 transition-colors">About</a>
@@ -134,58 +130,135 @@
     </div>
   </section>
 
- <!-- Ministries Section -->
+<!-- Ministries Section -->
 <section id="ministries" class="container mx-auto my-10 p-6 bg-gray-200 rounded shadow">
   <h2 class="text-3xl font-bold text-primary text-center mb-8">Our Ministries</h2>
   <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
     <!-- Ministry Item 1 -->
     <a href="generic.html" class="block bg-white p-6 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:bg-gray-100 cursor-pointer" data-aos="fade-up">
-      <img src="https://placehold.co/300x200" alt="Creative Arts" class="rounded-lg mb-4 w-full object-cover" />
-      <h3 class="text-xl font-semibold mb-2">Creative Arts</h3>
+      <img src="pics/Sermon.jpeg" alt="Music" class="rounded-lg mb-4 w-full object-cover" />
+      <h3 class="text-xl font-semibold mb-2">Music</h3>
       <p class="text-gray-700">
-        Our Creative Arts team harnesses music, drama, dance and visual arts to uplift worship and outreach experiences.
+        Our Music Ministry uplifts worship with powerful songs of praise and worship.
       </p>
     </a>
     <!-- Ministry Item 2 -->
     <a href="generic.html" class="block bg-white p-6 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:bg-gray-100 cursor-pointer" data-aos="fade-up" data-aos-delay="100">
-      <img src="https://placehold.co/300x200" alt="Discipleship &amp; Leadership" class="rounded-lg mb-4 w-full object-cover" />
-      <h3 class="text-xl font-semibold mb-2">Discipleship &amp; Leadership</h3>
+      <img src="https://placehold.co/300x200" alt="Media" class="rounded-lg mb-4 w-full object-cover" />
+      <h3 class="text-xl font-semibold mb-2">Media</h3>
       <p class="text-gray-700">
-        Guiding new believers and supporting spiritual growth through home cell groups, mentoring and leadership training.
+        Capturing and broadcasting church services, testimonies, and digital outreach.
       </p>
     </a>
     <!-- Ministry Item 3 -->
     <a href="generic.html" class="block bg-white p-6 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:bg-gray-100 cursor-pointer" data-aos="fade-up" data-aos-delay="200">
-      <img src="https://placehold.co/300x200" alt="Hope City Ladies" class="rounded-lg mb-4 w-full object-cover" />
-      <h3 class="text-xl font-semibold mb-2">Hope City Ladies</h3>
+      <img src="https://placehold.co/300x200" alt="Tech" class="rounded-lg mb-4 w-full object-cover" />
+      <h3 class="text-xl font-semibold mb-2">Tech</h3>
       <p class="text-gray-700">
-        Empowering women through Bible study, fellowship, service and outreach.
+        Managing church technology, audio-visuals, and digital infrastructure.
       </p>
     </a>
     <!-- Ministry Item 4 -->
     <a href="generic.html" class="block bg-white p-6 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:bg-gray-100 cursor-pointer" data-aos="fade-up" data-aos-delay="300">
-      <img src="https://placehold.co/300x200" alt="Youth Ministry" class="rounded-lg mb-4 w-full object-cover" />
-      <h3 class="text-xl font-semibold mb-2">Youth Ministry</h3>
+      <img src="min pics/mens.jpeg" alt="PEMA" class="rounded-lg mb-4 w-full object-cover" />
+      <h3 class="text-xl font-semibold mb-2">PEMA</h3>
       <p class="text-gray-700">
-        Inspiring the next generation with vibrant, engaging programmes designed to nurture faith and community.
+        Prayer, Evangelism, and Missionary work to spread the Gospel.
       </p>
     </a>
     <!-- Ministry Item 5 -->
     <a href="generic.html" class="block bg-white p-6 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:bg-gray-100 cursor-pointer" data-aos="fade-up" data-aos-delay="400">
-      <img src="https://placehold.co/300x200" alt="Men’s Fellowship" class="rounded-lg mb-4 w-full object-cover" />
-      <h3 class="text-xl font-semibold mb-2">Men’s Fellowship</h3>
+      <img src="min pics/woman.JPG" alt="Women's Ministry" class="rounded-lg mb-4 w-full object-cover" />
+      <h3 class="text-xl font-semibold mb-2">Women's Ministry</h3>
       <p class="text-gray-700">
-        Fostering brotherhood through fellowship, prayer and shared life experiences.
+        Empowering women in faith, fellowship, and community service.
       </p>
     </a>
     <!-- Ministry Item 6 -->
     <a href="generic.html" class="block bg-white p-6 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:bg-gray-100 cursor-pointer" data-aos="fade-up" data-aos-delay="500">
-      <img src="https://placehold.co/300x200" alt="Community Outreach" class="rounded-lg mb-4 w-full object-cover" />
-      <h3 class="text-xl font-semibold mb-2">Community Outreach</h3>
+      <img src="min pics/youth.jpeg" alt="Youth Ministry" class="rounded-lg mb-4 w-full object-cover" />
+      <h3 class="text-xl font-semibold mb-2">Youth Ministry</h3>
       <p class="text-gray-700">
-        Spreading hope and making a difference by engaging with local communities.
+        Inspiring the next generation with vibrant, faith-filled programs.
       </p>
     </a>
+    <!-- Ministry Item 7 -->
+    <a href="generic.html" class="block bg-white p-6 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:bg-gray-100 cursor-pointer" data-aos="fade-up" data-aos-delay="600">
+      <img src="https://placehold.co/300x200" alt="Ushering" class="rounded-lg mb-4 w-full object-cover" />
+      <h3 class="text-xl font-semibold mb-2">Ushering</h3>
+      <p class="text-gray-700">
+        Creating a welcoming atmosphere and ensuring smooth church services.
+      </p>
+    </a>
+    <!-- Ministry Item 8 -->
+    <a href="generic.html" class="block bg-white p-6 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:bg-gray-100 cursor-pointer" data-aos="fade-up" data-aos-delay="700">
+      <img src="min pics/sunday school.JPG" alt="Sunday School" class="rounded-lg mb-4 w-full object-cover" />
+      <h3 class="text-xl font-semibold mb-2">Sunday School</h3>
+      <p class="text-gray-700">
+        Teaching children Biblical values and fostering their spiritual growth.
+      </p>
+    </a>
+    <!-- Ministry Item 9 -->
+    <a href="generic.html" class="block bg-white p-6 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:bg-gray-100 cursor-pointer" data-aos="fade-up" data-aos-delay="800">
+      <img src="https://placehold.co/300x200" alt="Bible Study" class="rounded-lg mb-4 w-full object-cover" />
+      <h3 class="text-xl font-semibold mb-2">Bible Study</h3>
+      <p class="text-gray-700">
+        Deepening our understanding of Scripture through group study and discussion.
+      </p>
+    </a>
+  </div>
+</section>
+
+<!-- Sign Up to Ministries Form (Enhanced Layout) -->
+<section id="signup" class="relative py-16 bg-gradient-to-r from-gray-100 to-gray-200">
+  <div class="container mx-auto px-6">
+    <h2 class="text-4xl font-bold text-primary text-center mb-6">Join a Ministry</h2>
+    <p class="text-center text-gray-700 mb-8 max-w-2xl mx-auto">
+      Be a part of a ministry and use your gifts to serve the church community.
+    </p>
+
+    <div class="max-w-5xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+      <form onsubmit="submitMinistryForm(event)">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="mb-4">
+            <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
+            <input type="text" id="name" name="name" required class="mt-1 block w-full p-3 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary transition-all">
+          </div>
+          
+          <div class="mb-4">
+            <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+            <input type="email" id="email" name="email" required class="mt-1 block w-full p-3 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary transition-all">
+          </div>
+          
+          <div class="mb-4">
+            <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+            <input type="tel" id="phone" name="phone" required class="mt-1 block w-full p-3 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary transition-all">
+          </div>
+          
+          <div class="mb-4">
+            <label for="ministry" class="block text-sm font-medium text-gray-700">Select a Ministry</label>
+            <select id="ministry" name="ministry" required class="mt-1 block w-full p-3 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary transition-all">
+              <option value="">-- Choose a Ministry --</option>
+              <option value="Music">Music</option>
+              <option value="Media">Media</option>
+              <option value="Tech">Tech</option>
+              <option value="PEMA">PEMA</option>
+              <option value="Womans">Womans</option>
+              <option value="Youth">Youth</option>
+              <option value="Ushering">Ushering</option>
+              <option value="Sunday School">Sunday School</option>
+              <option value="Bible Study">Bible Study</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="text-center mt-6">
+          <button type="submit" class="bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-secondary transition-all transform hover:scale-105 shadow-md">
+            Sign Up Now
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
 </section>
 
@@ -219,17 +292,18 @@
       <div>
         <h3 class="text-xl font-bold mb-4">Connect</h3>
         <div class="flex space-x-4">
-          <a href="https://www.facebook.com/" class="text-gray-400 hover:text-white transition-colors">
-            <i class="fab fa-facebook text-2xl"></i>
+          <a href="https://www.tiktok.com/@northampton_piwc" class="text-gray-400 hover:text-white transition-colors">
+            <i class="fab fa-tiktok text-2xl"></i>
           </a>
-          <a href="https://www.instagram.com/" class="text-gray-400 hover:text-white transition-colors">
+          <a href="https://www.instagram.com/northampton.piwc/" class="text-gray-400 hover:text-white transition-colors">
             <i class="fab fa-instagram text-2xl"></i>
           </a>
-          <a href="https://www.youtube.com/" class="text-gray-400 hover:text-white transition-colors">
+          <a href="https://www.youtube.com/@NorthamptonPIWC" class="text-gray-400 hover:text-white transition-colors">
             <i class="fab fa-youtube text-2xl"></i>
           </a>
         </div>
       </div>
+      
       <div>
         <h3 class="text-xl font-bold mb-4">Newsletter</h3>
         <form class="space-y-4" onsubmit="event.preventDefault(); 
@@ -257,7 +331,14 @@
   <script>
     // Mobile Navigation Toggle
     document.getElementById('navToggle').addEventListener('click', function () {
-      document.getElementById('mobileNav').classList.toggle('hidden');
+      const mobileNav = document.getElementById('mobileNav');
+      if (mobileNav.classList.contains('max-h-0')) {
+        mobileNav.classList.remove('max-h-0');
+        mobileNav.classList.add('max-h-[500px]');
+      } else {
+        mobileNav.classList.remove('max-h-[500px]');
+        mobileNav.classList.add('max-h-0');
+      }
     });
     
     // Back to Top Button
@@ -296,12 +377,23 @@
     });
     
     // Background Image Carousel
-    const bgImages = [
-      'pics/image1.1.JPG',
-      'pics/image2.1.JPG',
-      'pics/image3.1.JPG',
-      'pics/image4.1.JPG'
-    ];
+    let bgImages;
+      
+      if (window.innerWidth <= 768) {
+        bgImages = [
+          'mobile pics/bible.JPG',
+          'mobile pics/girl.JPG',
+          'mobile pics/sing.JPG',
+          'mobile pics/talk.JPG'
+        ];
+      } else {
+        bgImages = [
+          'pics/Drums.jpeg',
+          'pics/audience old .jpeg',
+          'pics/friends.jpeg',
+          'pics/Stage.jpeg'
+        ];
+      }
     let currentIndex = 0;
     // Preload images
     bgImages.forEach(src => {
