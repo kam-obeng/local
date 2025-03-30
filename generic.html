@@ -226,7 +226,8 @@
         mobileNav.classList.add('max-h-0');
       }
     });
-    
+          // Set current year in footer
+          document.getElementById('currentYear').textContent = new Date().getFullYear();
     // Back to Top Button
     const backToTopButton = document.getElementById('backToTop');
     window.addEventListener('scroll', () => {

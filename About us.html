@@ -218,16 +218,16 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       <!-- Team Member 1 -->
       <div class="bg-white rounded-xl shadow-lg p-6 transform hover:-translate-y-2 transition-all">
-        <img src="https://placehold.co/300x300" alt="Pastor John Smith" class="rounded-full mx-auto w-32 h-32 object-cover mb-4">
-        <h3 class="text-xl font-semibold text-center">Pastor John Smith</h3>
+        <img src="team/Pastor.jpeg" alt="Pastor John Smith" class="rounded-full mx-auto w-32 h-32 object-cover mb-4">
+        <h3 class="text-xl font-semibold text-center">Pastor Abraham Sarfo</h3>  
         <p class="text-center text-primary">Senior Pastor</p>
         <p class="text-gray-700 mt-2 text-center">With over 20 years of ministry experience, Pastor John leads our congregation with wisdom and compassion.</p>
       </div>
       <!-- Team Member 2 -->
       <div class="bg-white rounded-xl shadow-lg p-6 transform hover:-translate-y-2 transition-all">
-        <img src="https://placehold.co/300x300" alt="Mary Johnson" class="rounded-full mx-auto w-32 h-32 object-cover mb-4">
-        <h3 class="text-xl font-semibold text-center">Mary Johnson</h3>
-        <p class="text-center text-primary">Worship Leader</p>
+        <img src="team/Pastor's wife.jpeg" alt="Mary Johnson" class="rounded-full mx-auto w-32 h-32 object-cover mb-4">
+        <h3 class="text-xl font-semibold text-center">Mrs Delphina Afrakomah Boachie</h3>
+        <p class="text-center text-primary">Pastor's wife</p>
         <p class="text-gray-700 mt-2 text-center">Mary inspires our community through her heartfelt music and creative leadership in worship.</p>
       </div>
       <!-- Team Member 3 -->
@@ -380,7 +380,7 @@
         </div>
       </div>
       <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-        <p>&copy; 2025 Northampton PIWC. All Rights Reserved.</p>
+        <p>&copy; <span id="currentYear"></span> Northampton PIWC. All Rights Reserved.</p>
       </div>
     </div>
   </footer>
@@ -472,6 +472,10 @@
         window.scrollTo({ top: 0, behavior: 'smooth' }); // Corrected property
       });
     });
+  </script>
+  <script>
+    // Set current year in footer
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>

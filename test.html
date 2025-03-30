@@ -74,6 +74,18 @@
       width: 0%;
       transition: width 0.3s ease;
     }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease, opacity 0.5s ease;
+      opacity: 0;
+    }
+
+    .faq-answer.open {
+      max-height: 200px;
+      opacity: 1;
+    }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
@@ -428,7 +440,7 @@
         <button class="w-full text-left font-bold text-gray-900 focus:outline-none" onclick="toggleFAQ('faq1')">
           What time are the services?
         </button>
-        <div id="faq1" class="mt-2 text-gray-700 hidden">
+        <div id="faq1" class="mt-2 text-gray-700 faq-answer">
           <p>Our services are held at 9am on Sundays.</p>
         </div>
       </div>
@@ -436,7 +448,7 @@
         <button class="w-full text-left font-bold text-gray-900 focus:outline-none" onclick="toggleFAQ('faq2')">
           How can I join a ministry?
         </button>
-        <div id="faq2" class="mt-2 text-gray-700 hidden">
+        <div id="faq2" class="mt-2 text-gray-700 faq-answer">
           <p>You can join a ministry by filling out our ministry sign-up form on the 'Ministries' page.</p>
         </div>
       </div>
@@ -444,7 +456,7 @@
         <button class="w-full text-left font-bold text-gray-900 focus:outline-none" onclick="toggleFAQ('faq3')">
           Where is the church located?
         </button>
-        <div id="faq3" class="mt-2 text-gray-700 hidden">
+        <div id="faq3" class="mt-2 text-gray-700 faq-answer">
           <p>Our church is located in the heart of Northampton, near the city centre.</p>
         </div>
       </div>
@@ -496,7 +508,7 @@
       </div>
     </div>
     <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-      <p>&copy; 2025 Northampton PIWC. All Rights Reserved.</p>
+      <p>&copy; <script>document.write(new Date().getFullYear())</script> Northampton PIWC. All Rights Reserved.</p>
     </div>
   </div>
 </footer>
@@ -663,7 +675,8 @@
 
     // Toggle FAQ Answers
     window.toggleFAQ = function(id) {
-      document.getElementById(id).classList.toggle('hidden');
+      const el = document.getElementById(id);
+      el.classList.toggle('open');
     };
 
     // Enhanced Form Submission (simulate with alert)

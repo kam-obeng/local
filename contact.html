@@ -67,6 +67,7 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 <body class="bg-gray-50 text-gray-900">
   <!-- Header with updated colours -->
@@ -197,16 +198,43 @@
     </a>
   </section>
   
-  <!-- Gallery Section -->
-  <section class="text-center my-10 px-4" data-aos="fade-up">
-    <h2 class="text-2xl font-bold mb-4">Gallery</h2>
-    <a data-flickr-embed="true" href="https://www.flickr.com/photos/202256807@N06/albums/72177720323734372" title="Northampton PIWC">
-      <img src="https://live.staticflickr.com/65535/54319179046_761554c870.jpg"
-           class="w-full max-w-lg mx-auto rounded-lg shadow-md" alt="Northampton PIWC" />
-    </a>
-    <script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+  <!-- Gallery Section as Swiper Carousel -->
+  <section class="max-w-6xl mx-auto my-10 px-4" data-aos="fade-up">
+    <h2 class="text-3xl font-bold text-primary text-center mb-8">Gallery</h2>
+    <div class="swiper mySwiper rounded-lg shadow-lg overflow-hidden">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="Gallery/drum.jpeg" alt="Drum used in service" class="w-full h-72 object-cover cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105">
+        </div>
+        <div class="swiper-slide">
+          <img src="Gallery/drums2.JPG" alt="Close-up of worship drums" class="w-full h-72 object-cover cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105">
+        </div>
+        <div class="swiper-slide">
+          <img src="Gallery/people.JPG" alt="Congregation during worship" class="w-full h-72 object-cover cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105">
+        </div>
+        <div class="swiper-slide">
+          <img src="Gallery/piano.JPG" alt="Keyboard used in music ministry" class="w-full h-72 object-cover cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105">
+        </div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div>
   </section>
-  
+
+  <!-- Image Modal -->
+  <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 hidden p-2">
+    <div class="relative w-full h-full flex flex-col items-center justify-center">
+      <button id="closeModal" class="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full w-12 h-12 flex items-center justify-center text-3xl hover:bg-opacity-70 transition-all z-20">&times;</button>
+      <div class="w-full h-full flex flex-col items-center justify-center">
+        <img id="modalImage" src="" alt="" class="max-h-[80vh] max-w-full object-contain mx-auto">
+        <p id="modalDescription" class="text-white text-sm sm:text-base mt-4 text-center bg-black bg-opacity-70 px-4 py-2 rounded max-w-full sm:max-w-lg absolute bottom-4 left-1/2 transform -translate-x-1/2"></p>
+        <button id="prevImage" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-4xl z-20 hover:text-accent">&#10094;</button>
+        <button id="nextImage" class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-4xl z-20 hover:text-accent">&#10095;</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Footer -->
 <footer class="bg-gray-900 text-white">
   <div class="container mx-auto px-4 py-12">
@@ -252,7 +280,7 @@
       </div>
     </div>
     <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-      <p>&copy; 2025 Northampton PIWC. All Rights Reserved.</p>
+      <p>&copy; <span id="currentYear"></span> Northampton PIWC. All Rights Reserved.</p>
     </div>
   </div>
 </footer>
@@ -277,6 +305,36 @@
         mobileNav.classList.add('max-h-0');
       }
     });
+  
+  const images = Array.from(document.querySelectorAll('.swiper-slide img'));
+  let currentImageIndex = 0;
+
+  images.forEach((img, index) => {
+    img.addEventListener('click', () => {
+      const modalImg = document.getElementById('modalImage');
+      modalImg.src = img.src;
+      document.getElementById('modalDescription').textContent = img.alt || "Image from gallery";
+      modal.classList.remove('hidden');
+      currentImageIndex = index;
+    });
+  });
+
+  function showImage(index) {
+    const img = images[index];
+    if (!img) return;
+    document.getElementById('modalImage').src = img.src;
+    document.getElementById('modalDescription').textContent = img.alt || "Image from gallery";
+  }
+
+  document.getElementById('prevImage').addEventListener('click', () => {
+    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+    showImage(currentImageIndex);
+  });
+
+  document.getElementById('nextImage').addEventListener('click', () => {
+    currentImageIndex = (currentImageIndex + 1) % images.length;
+    showImage(currentImageIndex);
+  });
     
     // Back to Top Button
     const backToTopButton = document.getElementById('backToTop');
@@ -344,9 +402,81 @@
       document.getElementById('confirmation-message').classList.remove('hidden');
       e.target.reset();
     });
+
+    // Enhanced Image Modal Functionality with Swipe Detection
+    let touchStartY = 0;
+    let touchEndY = 0;
+    const modal = document.getElementById('imageModal');
+    
+    modal.addEventListener('touchstart', e => {
+      touchStartY = e.changedTouches[0].screenY;
+    }, false);
+    
+    modal.addEventListener('touchend', e => {
+      touchEndY = e.changedTouches[0].screenY;
+      handleSwipe();
+    }, false);
+    
+    function handleSwipe() {
+      const swipeDistance = touchStartY - touchEndY;
+      if (swipeDistance > 50) { // Swipe up detected
+        modal.classList.add('hidden');
+      }
+    }
+
+    document.querySelectorAll('.swiper-slide img').forEach(img => {
+      img.addEventListener('click', () => {
+        const modalImg = document.getElementById('modalImage');
+        modalImg.src = img.src;
+        document.getElementById('modalDescription').textContent = img.alt || "Image from gallery";
+        modal.classList.remove('hidden');
+      });
+    });
+
+    document.getElementById('closeModal').addEventListener('click', () => {
+      modal.classList.add('hidden');
+      modal.querySelector('#modalImage').src = '';
+      modal.querySelector('#modalDescription').textContent = '';
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+      modal.classList.add('hidden');
+      modal.querySelector('#modalImage').src = '';
+      modal.querySelector('#modalDescription').textContent = '';
+        modal.querySelector('#modalImage').src = '';
+        modal.querySelector('#modalDescription').textContent = '';
+      }
+    });
   </script>
   
- 
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    const swiper = new Swiper('.mySwiper', {
+      slidesPerView: 1,
+      spaceBetween: 10,
+      loop: true,
+      speed: 1000,
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
+        640: { slidesPerView: 1 },
+        768: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 },
+      },
+    });
+  // Set current year in footer
+  document.getElementById('currentYear').textContent = new Date().getFullYear();
   </script>
   
 </body>

@@ -198,7 +198,7 @@
     <!-- Quick Access Cards -->
     <section class="hidden lg:block relative -mt-32 z-50 container mx-auto px-4">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <a href="test.html" class="block">
+        <a href="About us.html" class="block">
           <div class="card bg-white rounded-xl shadow-lg p-6">
             <div class="flex items-center space-x-4">
               <div class="bg-primary/10 p-3 rounded-full">
@@ -289,7 +289,7 @@
       </div>
     </div>
     <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-      <p>&copy; 2025 Northampton PIWC. All Rights Reserved.</p>
+      <p>&copy; <span id="currentYear"></span> Northampton PIWC. All Rights Reserved.</p>
     </div>
   </div>
   
@@ -391,6 +391,10 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     });
+  </script>
+  <script>
+    // Automatically set current year in footer
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
