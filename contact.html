@@ -1,31 +1,33 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Northampton PIWC</title>
   <link rel="icon" type="image/x-icon" href="pics/logo.JPG">
-  
-  <!-- Tailwind CSS, Font Awesome, AOS and Google reCAPTCHA -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+  <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/aca9f57730.js" crossorigin="anonymous"></script>
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <!-- AOS Animation -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  
+  
   <script>
     tailwind.config = {
       darkMode: 'class',
       theme: {
         extend: {
           colors: {
-            primary: '#4B93A2',
+            primary: '#395886',
             secondary: '#317a86',
             accent: '#72b5c1'
           },
           animation: {
             'fade-in': 'fadeIn 0.5s ease-out',
-            'slide-up': 'slideUp 0.5s ease-out'
+            'slide-up': 'slideUp 0.5s ease-out',
+            'zoom-in': 'zoomIn 20s infinite alternate'
           },
           keyframes: {
             fadeIn: {
@@ -35,6 +37,10 @@
             slideUp: {
               '0%': { transform: 'translateY(20px)', opacity: '0' },
               '100%': { transform: 'translateY(0)', opacity: '1' }
+            },
+            zoomIn: {
+              '0%': { transform: 'scale(1)' },
+              '100%': { transform: 'scale(1.05)' }
             }
           }
         }
@@ -49,15 +55,21 @@
       font-family: 'Montserrat', sans-serif;
       scroll-behaviour: smooth;
     }
-    
-    .hero-gradient {
-      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
+
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
     }
-    
+
+    .hero-gradient {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
+    }
+
     .service-time-badge {
       animation: pulse-glow 2s infinite;
     }
-    
+
     @keyframes pulse-glow {
       0%, 100% { 
         box-shadow: 0 0 5px rgba(75, 147, 162, 0.5);
@@ -66,68 +78,186 @@
         box-shadow: 0 0 20px rgba(75, 147, 162, 0.8);
       }
     }
+
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Header enhancements: smooth transition and shadow on scroll */
+    #mainHeader {
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* Hero background zoom effect */
+    #hero-bg-current, #hero-bg-next {
+      animation: zoom-in;
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* Quick Access Cards enhancement */
+    .card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Footer social icons enhancement */
+    .footer-social a {
+      transition: transform 0.3s ease;
+    }
+    .footer-social a:hover {
+      transform: scale(1.1);
+    }
+
+    /* Mobile menu transitions */
+    #mobileNav {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      max-height: 0;
+      opacity: 0;
+      visibility: hidden;
+    }
+    
+    #mobileNav.open {
+      max-height: 100vh;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    @media (orientation: landscape) and (max-width: 768px) {
+      .landscape\:hidden {
+        display: none !important;
+      }
+    }
+
+    .dropdown-menu {
+      transform: translateY(-10px);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .group:hover .dropdown-menu {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .nav-link {
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: currentColor;
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
   </style>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
-<body class="bg-gray-50 text-gray-900">
-  <!-- Header with updated colours -->
-  <header class="fixed w-full top-0 z-50 transition-all duration-300" id="mainHeader">
+
+
+<body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col pt-20">
+  
+  <!-- Header -->
+  <header class="fixed w-full top-0 z-50" id="mainHeader">
     <nav class="bg-primary px-6 py-4">
       <div class="container mx-auto flex justify-between items-center">
         <a href="index.html" class="flex items-center space-x-3">
           <img src="pics/logo.JPG" alt="Church Logo" class="h-12 w-12 rounded-full shadow-lg">
           <div>
-            <h1 class="text-2xl font-bold text-white">Northampton PIWC</h1>
-            <p class="text-sm text-white/80">Pentecost International Worship Centre</p>
+            <h1 class="text-2xl md:text-4xl font-bold text-white">Northampton PIWC</h1>
+          
           </div>
         </a>
         
+        
+
         <div class="flex items-center space-x-6">
           <nav class="hidden md:flex space-x-6 text-white items-center">
-            <a href="index.html" class="hover:text-accent transition-colors py-2">Home</a>
-            <a href="About us.html" class="hover:text-accent transition-colors py-2">About</a>
-            <a href="Ministries.html" class="hover:text-accent transition-colors py-2">Ministries</a>
-            <a href="contact.html" class="hover:text-accent transition-colors py-2">Contact</a>
+            <a href="index.html" class="nav-link hover:text-accent transition-colors py-2">Home</a>
+            <div class="relative group">
+              <button class="nav-link hover:text-accent transition-colors py-2 flex items-center" aria-expanded="false">
+                About us
+                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </button>
+              <div class="dropdown-menu absolute bg-white text-primary mt-2 rounded-lg shadow-lg min-w-[200px] z-50">
+                <a href="new.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition">New here</a>
+                <a href="heart.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition">Our Heart &amp; Purpose</a>
+                <a href="team.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition">Meet the Team</a>
+              </div>
+            </div>
+            <div class="relative group">
+              <button class="nav-link hover:text-accent transition-colors py-2 flex items-center">
+                Ministries
+                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </button>
+              <div class="dropdown-menu absolute bg-white text-primary mt-2 rounded-lg shadow-lg min-w-[200px] z-50">
+                <a href="Ministries.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition">Our Ministries & Teams</a>
+                <a href="join.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition">Join a Ministry</a>
+              </div>
+            </div>
+            <a href="contact.html" class="nav-link hover:text-accent transition-colors py-2">Contact</a>
+            <a href="gallery.html" class="nav-link hover:text-accent transition-colors py-2">Gallery</a>
             <a href="give.html" class="bg-white text-primary px-6 py-2 rounded-full font-medium hover:bg-gray-100 transition-all transform hover:scale-105">Give</a>
           </nav>
           
           <!-- Mobile nav toggle button -->
-          <button id="navToggle" class="md:hidden text-white focus:outline-none">
+          <button id="navToggle" class="md:hidden text-white focus:outline-none" aria-label="Toggle navigation" aria-expanded="false">
             <i class="fas fa-bars text-2xl"></i>
           </button>
         </div>
       </div>
-  
-      <!-- Enhanced Mobile Menu with updated background -->
-      <div id="mobileNav" class="max-h-0 overflow-hidden transition-all duration-500 md:hidden mt-4 rounded-lg bg-primary">
-        <div class="p-4 space-y-4">
-          <a href="index.html" class="block text-white hover:text-accent py-2 transition-colors">Home</a>
-          <a href="About us.html" class="block text-white hover:text-accent py-2 transition-colors">About</a>
-          <a href="Ministries.html" class="block text-white hover:text-accent py-2 transition-colors">Ministries</a>
-          <a href="contact.html" class="block text-white hover:text-accent py-2 transition-colors">Contact</a>
+
+      <!-- Mobile Menu -->
+      <div id="mobileNav" class="md:hidden mt-4 rounded-lg bg-primary shadow-lg" aria-hidden="true">
+        <div class="p-4 space-y-4 text-white">
+          <a href="index.html" class="block hover:text-accent py-2 transition-colors">Home</a>
+          <details class="group">
+            <summary class="cursor-pointer hover:text-accent py-2 transition-colors flex justify-between items-center">
+              About us
+              <svg class="w-4 h-4 transform group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <div class="pl-4 mt-2 space-y-2 animate-fade-in">
+              <a href="new.html" class="block hover:text-accent transition-colors py-1">New here</a>
+              <a href="heart.html" class="block hover:text-accent transition-colors py-1">Our Heart & Purpose</a>
+              <a href="team.html" class="block hover:text-accent transition-colors py-1">Meet the Team</a>
+            </div>
+          </details>
+          
+          <details class="group">
+            <summary class="cursor-pointer hover:text-accent py-2 transition-colors flex justify-between items-center">
+              Ministries
+              <svg class="w-4 h-4 transform group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <div class="pl-4 mt-2 space-y-2">
+              <a href="Ministries.html" class="block hover:text-accent transition-colors">Our Ministries & Teams</a>
+              <a href="join.html" class="block hover:text-accent transition-colors">Join a Ministry</a>
+            </div>
+          </details>
+          
+          <a href="contact.html" class="block hover:text-accent py-2 transition-colors">Contact</a>
+          <a href="gallery.html" class="block hover:text-accent py-2 transition-colors">Gallery</a>
           <a href="give.html" class="block bg-white text-primary px-6 py-2 rounded-full text-center font-medium hover:bg-gray-100 transition-all">Give</a>
         </div>
       </div>
     </nav>
   </header>
 
-  <!-- Hero Section with Background Carousel -->
-  <section id="hero" class="relative h-screen flex items-center justify-center overflow-hidden">
-    <!-- Background Images -->
-    <div id="hero-bg-current" class="absolute inset-0 bg-cover bg-center opacity-100 transition-opacity duration-1000"></div>
-    <div id="hero-bg-next" class="absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-1000"></div>
-    <!-- Overlay Gradient -->
-    <div class="absolute inset-0 hero-gradient z-10"></div>
-    <div class="relative z-20 text-center text-white px-4">
-      <h2 class="text-4xl md:text-5xl font-bold mb-6 animate-fade-in">Contact Us</h2>
-      <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto animate-slide-up">
-        We’d love to hear from you. Reach out with your queries or feedback.
-      </p>
-    </div>
-  </section>
+  
   
   <!-- Contact Section -->
-  <section class="max-w-2xl mx-auto my-10 p-8 bg-white shadow-md rounded-lg" data-aos="fade-up">
+  <section class="w-full max-w-3xl mx-auto my-10 p-8 bg-white shadow-md rounded-lg" data-aos="fade-up">
     <h2 class="text-2xl font-bold mb-6 text-primary">Contact Us</h2>
     
     <!-- Primary Contact Details & Operating Hours -->
@@ -188,39 +318,9 @@
     </div>
   </section>
   
-  <section id="parking-registration" class="container mx-auto my-10 p-6 bg-gray-200 rounded shadow text-center" data-aos="fade-up">
-    <h2 class="text-2xl font-bold text-primary">Register to Reserve Your Parking Spot</h2>
-    <p class="mt-4 text-gray-700">
-      To secure your parking, please register with us. After you sign up, you will be automatically redirected to the parking search page with your selected details.
-    </p>
-    <a href="https://www.parkinggenie.co.uk/82679" class="mt-6 inline-block bg-primary text-white px-6 py-2 rounded shadow hover:bg-accent transition-colors">
-      Register Now
-    </a>
-  </section>
+ 
   
-  <!-- Gallery Section as Swiper Carousel -->
-  <section class="max-w-6xl mx-auto my-10 px-4" data-aos="fade-up">
-    <h2 class="text-3xl font-bold text-primary text-center mb-8">Gallery</h2>
-    <div class="swiper mySwiper rounded-lg shadow-lg overflow-hidden">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <img src="Gallery/drum.jpeg" alt="Drum used in service" class="w-full h-72 object-cover cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105">
-        </div>
-        <div class="swiper-slide">
-          <img src="Gallery/drums2.JPG" alt="Close-up of worship drums" class="w-full h-72 object-cover cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105">
-        </div>
-        <div class="swiper-slide">
-          <img src="Gallery/people.JPG" alt="Congregation during worship" class="w-full h-72 object-cover cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105">
-        </div>
-        <div class="swiper-slide">
-          <img src="Gallery/piano.JPG" alt="Keyboard used in music ministry" class="w-full h-72 object-cover cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105">
-        </div>
-      </div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-pagination"></div>
-    </div>
-  </section>
+  
 
   <!-- Image Modal -->
   <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 hidden p-2">
@@ -295,14 +395,22 @@
   <!-- Scripts -->
   <script>
     // Mobile Navigation Toggle
-    document.getElementById('navToggle').addEventListener('click', function () {
-      const mobileNav = document.getElementById('mobileNav');
-      if (mobileNav.classList.contains('max-h-0')) {
-        mobileNav.classList.remove('max-h-0');
-        mobileNav.classList.add('max-h-[500px]');
-      } else {
-        mobileNav.classList.remove('max-h-[500px]');
-        mobileNav.classList.add('max-h-0');
+    const navToggle = document.getElementById('navToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    
+    navToggle.addEventListener('click', () => {
+      const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', !isExpanded);
+      mobileNav.classList.toggle('open');
+      mobileNav.setAttribute('aria-hidden', isExpanded);
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!mobileNav.contains(e.target) && !navToggle.contains(e.target) && mobileNav.classList.contains('open')) {
+        mobileNav.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        mobileNav.setAttribute('aria-hidden', 'true');
       }
     });
   
@@ -349,45 +457,7 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
     
-    // Background Image Carousel for Hero Section
-    let bgImages;
-      
-      if (window.innerWidth <= 768) {
-        bgImages = [
-          'mobile pics/bible.JPG',
-          'mobile pics/girl.JPG',
-          'mobile pics/sing.JPG',
-          'mobile pics/talk.JPG'
-        ];
-      } else {
-        bgImages = [
-          'pics/Drums.jpeg',
-          'pics/audience old .jpeg',
-          'pics/friends.jpeg',
-          'pics/Stage.jpeg'
-        ];
-      }
-    let currentIndex = 0;
-    bgImages.forEach(src => {
-      const img = new Image();
-      img.src = src;
-    });
-    const currentBg = document.getElementById('hero-bg-current');
-    const nextBg = document.getElementById('hero-bg-next');
-    currentBg.style.backgroundImage = `url('${bgImages[currentIndex]}')`;
-    function changeBackground() {
-      const nextIndex = (currentIndex + 1) % bgImages.length;
-      nextBg.style.backgroundImage = `url('${bgImages[nextIndex]}')`;
-      nextBg.classList.remove('opacity-0');
-      nextBg.classList.add('opacity-100');
-      setTimeout(() => {
-        currentBg.style.backgroundImage = `url('${bgImages[nextIndex]}')`;
-        nextBg.classList.remove('opacity-100');
-        nextBg.classList.add('opacity-0');
-        currentIndex = nextIndex;
-      }, 1000);
-    }
-    setInterval(changeBackground, 5000);
+    
     
     // Initialise AOS
     AOS.init({

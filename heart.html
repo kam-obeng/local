@@ -115,40 +115,24 @@
     @media (orientation: landscape) and (max-width: 768px) {
       .landscape\:hidden {
         display: none !important;
-    }
-  }
-    .dropdown-menu {
-      display: none;
-      position: absolute;
-      left: 0;
-      top: 100%;
-      background: white;
-      color: #395886;
-      min-width: 220px;
-      border-radius: 0.5rem;
-      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-      padding: 0.5rem;
-      z-index: 50;
-    }
- 
-    .group:hover .dropdown-menu,
-    .group:focus-within .dropdown-menu {
-      display: block;
-    }
- 
-    .dropdown-menu a {
-      display: block;
-      padding: 0.5rem 1rem;
-      border-radius: 0.375rem;
-      transition: background-color 0.2s, color 0.2s;
-    }
- 
-    .dropdown-menu a:hover {
-      background-color: #395886;
-      color: white;
+      }
     }
 
-    /* Mobile Navigation Enhancements */
+    /* Add these new dropdown styles */
+    .dropdown-menu {
+      transform: translateY(-10px);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .group:hover .dropdown-menu {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Mobile nav enhancement */
     #mobileNav {
       transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
       background: rgba(57, 88, 134, 0.98);
@@ -195,7 +179,7 @@
     details summary::-webkit-details-marker {
       display: none;
     }
-</style>
+  </style>
 </head>
 
 
@@ -204,35 +188,56 @@
   <!-- Header -->
   <header class="fixed w-full top-0 z-50" id="mainHeader">
     <nav class="bg-primary px-6 py-4">
-      <div class="container mx-auto flex justify-between items-center flex-wrap">
+      <div class="container mx-auto flex justify-between items-center">
         <a href="index.html" class="flex items-center space-x-3">
-          <img src="pics/logo.JPG" alt="Church Logo" class="h-10 w-10 md:h-12 md:w-12 rounded-full shadow-lg">
-          <h1 class="text-2xl md:text-4xl font-bold text-white">Northampton PIWC</h1>
-        </a>
- 
-        <div class="flex items-center space-x-6 ml-auto">
-          <div class="hidden md:flex space-x-6 text-white items-center">
-            <div class="group relative">
-              <button class="hover:text-accent transition-colors py-2">About us</button>
-              <div class="dropdown-menu">
-                <a href="new.html">New here</a>
-                <a href="heart.html">Our Heart &amp; Purpose</a>
-                <a href="team.html">Meet the Team</a>
-              </div>
-            </div>
-            <div class="group relative">
-              <button class="hover:text-accent transition-colors py-2">Ministries</button>
-              <div class="dropdown-menu">
-                <a href="Ministries.html">Our Ministries & Teams</a>
-                <a href="join.html">Join a Ministry</a>
-              </div>
-            </div>
-            <a href="contact.html" class="hover:text-accent transition-colors py-2">Contact</a>
-            <a href="gallery.html" class="hover:text-accent transition-colors py-2">Gallery</a>
-            <a href="give.html" class="bg-white text-primary px-6 py-2 rounded-full font-medium hover:bg-gray-100 transition-all transform hover:scale-105">Give</a>
+          <img src="pics/logo.JPG" alt="Church Logo" class="h-12 w-12 rounded-full shadow-lg">
+          <div>
+            <h1 class="text-2xl md:text-4xl font-bold text-white">Northampton PIWC</h1>
+
           </div>
- 
-          <button id="navToggle" class="md:hidden text-white focus:outline-none p-2 rounded-lg hover:bg-white/10 transition-colors" aria-label="Toggle navigation">
+        </a>
+
+        <div class="flex items-center space-x-6">
+          <nav class="hidden md:flex space-x-6 text-white items-center">
+            <a href="index.html" class="nav-link hover:text-accent transition-colors py-2">Home</a>
+            
+            <div class="relative group">
+              <button class="nav-link flex items-center hover:text-accent transition-colors py-2">
+                About us
+                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div class="dropdown-menu absolute left-0 bg-white text-primary rounded-lg shadow-lg min-w-[200px] z-50">
+                <div class="py-1">
+                  <a href="new.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition">New here</a>
+                  <a href="heart.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition">Our Heart &amp; Purpose</a>
+                  <a href="team.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition">Meet the Team</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="relative group">
+              <button class="nav-link flex items-center hover:text-accent transition-colors py-2">
+                Ministries
+                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div class="dropdown-menu absolute left-0 bg-white text-primary rounded-lg shadow-lg min-w-[200px] z-50">
+                <div class="py-1">
+                  <a href="Ministries.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition">Our Ministries & Teams</a>
+                  <a href="join.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition">Join a Ministry</a>
+                </div>
+              </div>
+            </div>
+
+            <a href="contact.html" class="nav-link hover:text-accent transition-colors py-2">Contact</a>
+            <a href="gallery.html" class="nav-link hover:text-accent transition-colors py-2">Gallery</a>
+            <a href="give.html" class="bg-white text-primary px-6 py-2 rounded-full font-medium hover:bg-gray-100 transition-all transform hover:scale-105">Give</a>
+          </nav>
+
+          <button id="navToggle" class="md:hidden text-white focus:outline-none" aria-label="Toggle navigation">
             <i class="fas fa-bars text-2xl"></i>
           </button>
         </div>
@@ -288,155 +293,157 @@
     </nav>
   </header>
 
-  <!-- Main Content -->
-  <main class="flex-grow pt-20">
-    <!-- Hero Section -->
-    <section id="hero" class="relative h-screen flex items-center justify-center overflow-hidden z-10">
-      <!-- Background images -->
-      <div id="hero-bg-current" class="absolute inset-0 opacity-100 transition-opacity duration-1000"></div>
-      <div id="hero-bg-next" class="absolute inset-0 opacity-0 transition-opacity duration-1000"></div>
-      <!-- Overlay gradient -->
-      <div class="absolute inset-0 hero-gradient z-10"></div>
-      
-      <div class="relative z-20 text-center text-white px-4">
-        <h1 class="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">Welcome Home</h1>
-        <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto animate-slide-up">
-          Join us in worship every Sunday as we celebrate God's love and grace together.
-        </p>
-        <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
-          <a href="https://www.youtube.com/@NorthamptonPIWC/streams" class="bg-primary text-white px-8 py-3 rounded-full font-medium hover:bg-secondary transition-all transform hover:scale-105 flex items-center">
-            <i class="fas fa-play-circle mr-2"></i>
-            Watch Live
-          </a>
-         
-        </div>
-      </div>
-    </section>
-    
-    
-
-    <!-- Quick Access Cards -->
-    <section class="hidden lg:block relative -mt-32 z-50 container mx-auto px-4">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <a href="new.html" class="block">
-          <div class="card bg-white rounded-xl shadow-lg p-6">
-            <div class="flex items-center space-x-4">
-              <div class="bg-primary/10 p-3 rounded-full">
-                <i class="fas fa-church text-primary text-2xl"></i>
-              </div>
-              <div>
-                <h3 class="font-bold text-lg">New Here?</h3>
-                <p class="text-gray-600">Learn what to expect</p>
-              </div>
-            </div>
-          </div>
-        </a>
-    
-        <a href="Ministries.html" class="block">
-          <div class="card bg-white rounded-xl shadow-lg p-6">
-            <div class="flex items-center space-x-4">
-              <div class="bg-primary/10 p-3 rounded-full">
-                <i class="fas fa-hands-helping text-primary text-2xl"></i>
-              </div>
-              <div>
-                <h3 class="font-bold text-lg">Get Involved</h3>
-                <p class="text-gray-600">Join our ministries</p>
-              </div>
-            </div>
-          </div>
-        </a>
-    
-        <a href="test.html" class="block">
-          <div class="card bg-white rounded-xl shadow-lg p-6">
-            <div class="flex items-center space-x-4">
-              <div class="bg-primary/10 p-3 rounded-full">
-                <i class="fas fa-pray text-primary text-2xl"></i>
-              </div>
-              <div>
-                <h3 class="font-bold text-lg">Events</h3>
-                <p class="text-gray-600">see our events</p>
-              </div>
-            </div>
-          </div>
-        </a>
-
-        <a href="heart.html" class="block">
-          <div class="card bg-white rounded-xl shadow-lg p-6">
-            <div class="flex items-center space-x-4">
-              <div class="bg-primary/10 p-3 rounded-full">
-                <i class="fas fa-clock text-primary text-2xl"></i>
-              </div>
-              <div>
-                <h3 class="font-bold text-lg">Services</h3>
-                <p class="text-gray-600">Our Worship Services times</p>
-              </div>
-            </div>
-          </div>
-        </a>
-        
-      </div>
-    </section>
-  </main>
-
- <!-- Footer -->
-<footer class="bg-gray-900 text-white">
-  <div class="container mx-auto px-4 py-12">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-      <div>
-        <h3 class="text-xl font-bold mb-4">About Us</h3>
-        <p class="text-gray-400">
-          Northampton PIWC is a vibrant community of believers dedicated to spreading God's love.
-        </p>
-      </div>
-      <div>
-        <h3 class="text-xl font-bold mb-4">Quick Links</h3>
-        <ul class="space-y-2 text-gray-400">
-          <li><a href="Ministries.html" class="hover:text-white transition-colors">Ministries</a></li>
-          <li><a href="test.html" class="hover:text-white transition-colors">Events</a></li>
-          <li><a href="test.html" class="hover:text-white transition-colors">Sermons</a></li>
-          <li><a href="#admin" class="hover:text-white transition-colors">Admin</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="text-xl font-bold mb-4">Connect</h3>
-        <div class="flex space-x-4 footer-social">
-          <a href="https://www.tiktok.com/@northampton_piwc" class="text-gray-400 hover:text-white transition-colors">
-            <i class="fab fa-tiktok text-2xl"></i>
-          </a>
-          <a href="https://www.instagram.com/northampton.piwc/" class="text-gray-400 hover:text-white transition-colors">
-            <i class="fab fa-instagram text-2xl"></i>
-          </a>
-          <a href="https://www.youtube.com/@NorthamptonPIWC" class="text-gray-400 hover:text-white transition-colors">
-            <i class="fab fa-youtube text-2xl"></i>
-          </a>
-        </div>
-      </div>
-      <div>
-        <h3 class="text-xl font-bold mb-4">Newsletter</h3>
-        <form class="space-y-4" onsubmit="event.preventDefault(); 
-        const email = document.getElementById('user-email').value; 
-        window.location.href = 'mailto:Kobeng909@gmail.com?subject=Subscribe&body=' + encodeURIComponent('Email: ' + email);">
-          <input id="user-email" type="email" placeholder="Your email" required class="w-full px-4 py-2 rounded-full bg-gray-800 text-white border-none focus:ring-2 focus:ring-primary">
-          <button type="submit" class="w-full bg-primary text-white px-6 py-2 rounded-full hover:bg-secondary transition-transform transform hover:scale-105">
-            Subscribe
-          </button>
-        </form>
-      </div>
-    </div>
-    <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-      <p>&copy; <span id="currentYear"></span> Northampton PIWC. All Rights Reserved.</p>
-    </div>
-  </div>
   
 
-</footer>
+  <script>
+    document.querySelector('a[href="#join-us"]').addEventListener('click', function (event) {
+      event.preventDefault();
+      const joinUsSection = document.getElementById('join-us');
+      window.scrollTo({
+        top: joinUsSection.offsetTop - 100, // changed scroll offset to account for the fixed header
+        behavior: 'smooth'
+      });
+    });
+  </script>
+
+  <!-- Sections in Grid Layout -->
+  <div class="container mx-auto px-4 py-8 mt-20"> <!-- added mt-20 to push content below the fixed nav -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- About Us Card -->
+      <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow">
+        <h2 class="text-3xl font-bold text-primary text-center">About Us</h2>
+        <p class="mt-4 text-gray-700 text-center">
+          We are a community of believers dedicated to worship, service and spiritual growth. Join us as we make a difference in our community and beyond.
+        </p>
+      </div>
+
+      <!-- Mission Card -->
+      <div class="bg-gray-200 rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow">
+        <h2 class="text-3xl font-bold text-primary">Our Mission</h2>
+        <p class="mt-2 text-gray-700">At Northampton PIWC, our mission is to:</p>
+        <ul class="mt-4 text-gray-700 list-disc list-inside">
+          <li>Preach the Word of God and bring people to Christ.</li>
+          <li>Create an atmosphere for passionate worship and prayer.</li>
+          <li>Equip believers with biblical teachings.</li>
+          <li>Foster a strong community and support system.</li>
+          <li>Engage in evangelism and outreach programmes.</li>
+        </ul>
+      </div>
+
+      <!-- Vision Card -->
+      <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow">
+        <h2 class="text-3xl font-bold text-primary">Our Vision</h2>
+        <p class="mt-2 text-gray-700">We envision a church where people grow in faith, impact society, and live Christ-centred lives.</p>
+      </div>
+
+      <!-- Beliefs Card -->
+      <div class="bg-gray-200 rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow">
+        <h2 class="text-3xl font-bold text-primary">What We Believe</h2>
+        <ul class="mt-4 text-gray-700 list-disc list-inside">
+          <li>The Bible is the inspired Word of God.</li>
+          <li>Jesus Christ is the foundation of salvation.</li>
+          <li>The baptism of the Holy Spirit and the gifts of the Spirit empower us.</li>
+          <li>Holiness, righteousness, and love are central Christian virtues.</li>
+          <li>We believe in the second coming of Christ and eternal life for believers.</li>
+        </ul>
+      </div>
+
+      <!-- Worship Services Card -->
+      <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow md:col-span-2 lg:col-span-2">
+        <h2 class="text-3xl font-bold text-primary">Our Worship Services</h2>
+        <ul class="mt-4 text-gray-700 list-disc list-inside">
+          <li><strong>Sunday Celebration Service:</strong> Uplifting worship, teaching, and fellowship.</li>
+          <li><strong>Midweek Bible Studies &amp; Prayer:</strong> In-depth study and spiritual empowerment.</li>
+          <li><strong>Youth &amp; Young Adults Ministry:</strong> Faith, mentorship, and personal development.</li>
+          <li><strong>Morning Devotion:</strong> reading a short passage from the Bible, praying for guidance and strength for the day, and reflecting on God's presence and blessings.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  
+  
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        let today = new Date().toISOString().split('T')[0];
+        document.getElementById("dateJoined").value = today;
+    });
+
+    document.getElementById("joinForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        alert("Thank you for joining! We will get in touch soon.");
+        this.reset();
+    });
+</script>
+
+  
+
+  <!-- Contact Section -->
+  <section id="contact" class="container mx-auto px-4 py-12">
+    <div class="bg-gray-200 rounded-xl shadow-lg p-8 text-center">
+      <h2 class="text-2xl font-bold text-primary">Contact Us</h2>
+      <p>Email: <a href="mailto:info@northamptonpiwc.com" class="text-primary font-semibold hover:underline">info@northamptonpiwc.com</a></p>
+      <p>Address: Unit H5 Kingsfield Way, Kings Heath Industrial Estate, Northampton NN5 7QS</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white">
+    <div class="container mx-auto px-4 py-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4">About Us</h3>
+          <p class="text-gray-400">
+            Northampton PIWC is a vibrant community of believers dedicated to spreading God's love.
+          </p>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="Ministries.html" class="hover:text-white transition-colors">Ministries</a></li>
+            <li><a href="test.html" class="hover:text-white transition-colors">Events</a></li>
+            <li><a href="test.html" class="hover:text-white transition-colors">Sermons</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold mb-4">Connect</h3>
+          <div class="flex space-x-4">
+            <a href="https://www.tiktok.com/@northampton_piwc" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fab fa-tiktok text-2xl"></i>
+            </a>
+            <a href="https://www.instagram.com/northampton.piwc/" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fab fa-instagram text-2xl"></i>
+            </a>
+            <a href="https://www.youtube.com/@NorthamptonPIWC" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fab fa-youtube text-2xl"></i>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold mb-4">Newsletter</h3>
+          <form class="space-y-4" onsubmit="event.preventDefault(); 
+  const email = document.getElementById('user-email').value; 
+  window.location.href = 'mailto:Kobeng909@gmail.com?subject=Subscribe&body=' + encodeURIComponent('Email: ' + email);">
+            <input id="user-email" type="email" placeholder="Your email" required class="w-full px-4 py-2 rounded-full bg-gray-800 text-white border-none focus:ring-2 focus:ring-primary">
+            <button type="submit" class="w-full bg-primary text-white px-6 py-2 rounded-full hover:bg-secondary transition-colours">
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+        <p>&copy; <span id="currentYear"></span> Northampton PIWC. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
 
   <!-- Back to Top Button -->
-  <button id="backToTop" class="fixed bottom-8 right-8 bg-primary text-white p-4 rounded-full shadow-lg hover:bg-secondary transition-transform transform hover:scale-110 hidden" aria-label="Back to Top">
+  <button id="backToTop" class="fixed bottom-8 right-8 bg-primary text-white p-4 rounded-full shadow-lg hover:bg-secondary transition-colors hidden transform hover:scale-110" aria-label="Back to Top">
     <i class="fas fa-arrow-up"></i>
   </button>
 
-  <!-- Background Image Carousel Script -->
+  <!-- Background Carousel Script -->
   <script>
       let bgImages;
       
@@ -485,8 +492,8 @@
     
     setInterval(changeBackground, 5000);
   </script>
-  
-  <!-- Mobile Navigation Toggle, Back to Top, and Header Scroll Script -->
+
+  <!-- Mobile Navigation & Back to Top Script -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const navToggle = document.getElementById('navToggle');
@@ -518,30 +525,32 @@
         }
       });
 
-      // Show or hide the back-to-top button on scroll and update header style
+      // Show/hide back-to-top button on scroll
       window.addEventListener('scroll', function () {
         if (window.pageYOffset > 300) {
           backToTop.classList.remove('hidden');
         } else {
           backToTop.classList.add('hidden');
         }
-
-        // Change header style on scroll for better visibility
-        if (window.scrollY > 50) {
-          mainHeader.classList.add('bg-secondary', 'shadow-lg');
-        } else {
-          mainHeader.classList.remove('bg-secondary', 'shadow-lg');
-        }
       });
 
       // Smooth scroll back to top
       backToTop.addEventListener('click', function () {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 0, behavior: 'smooth' }); // Corrected property
       });
+    });
+
+    // Close mobile menu on window resize
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768 && mobileNav.classList.contains('max-h-[80vh]')) {
+        mobileNav.classList.add('max-h-0');
+        mobileNav.classList.remove('max-h-[80vh]');
+        navToggle.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
+      }
     });
   </script>
   <script>
-    // Automatically set current year in footer
+    // Set current year in footer
     document.getElementById('currentYear').textContent = new Date().getFullYear();
   </script>
 </body>

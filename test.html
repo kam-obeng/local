@@ -3,29 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Northampton PIWC</title>
+  <title>Northampton PIWC</title>
   <link rel="icon" type="image/x-icon" href="pics/logo.JPG">
-  <!-- Tailwind CSS, Font Awesome, and AOS -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+  <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/aca9f57730.js" crossorigin="anonymous"></script>
+  <!-- AOS Animation -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
   
-  <!-- Tailwind Configuration -->
+  
   <script>
     tailwind.config = {
       darkMode: 'class',
       theme: {
         extend: {
           colors: {
-            primary: '#4B93A2',
+            primary: '#395886',
             secondary: '#317a86',
             accent: '#72b5c1'
           },
           animation: {
             'fade-in': 'fadeIn 0.5s ease-out',
             'slide-up': 'slideUp 0.5s ease-out',
-            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+            'zoom-in': 'zoomIn 20s infinite alternate'
           },
           keyframes: {
             fadeIn: {
@@ -35,6 +37,10 @@
             slideUp: {
               '0%': { transform: 'translateY(20px)', opacity: '0' },
               '100%': { transform: 'translateY(0)', opacity: '1' }
+            },
+            zoomIn: {
+              '0%': { transform: 'scale(1)' },
+              '100%': { transform: 'scale(1.05)' }
             }
           }
         }
@@ -42,119 +48,174 @@
     };
   </script>
   
-  <!-- Global Styles -->
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+    
     body {
       font-family: 'Montserrat', sans-serif;
       scroll-behaviour: smooth;
+      padding-top: 80px; /* Add padding to account for fixed header */
     }
+
     .glass-effect {
       background: rgba(255, 255, 255, 0.2);
       backdrop-filter: blur(8px);
       border: 1px solid rgba(255, 255, 255, 0.3);
     }
+
     .hero-gradient {
-      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
     }
+
+    .service-time-badge {
+      animation: pulse-glow 2s infinite;
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { 
+        box-shadow: 0 0 5px rgba(75, 147, 162, 0.5);
+      }
+      50% { 
+        box-shadow: 0 0 20px rgba(75, 147, 162, 0.8);
+      }
+    }
+
     .scrollbar-hide::-webkit-scrollbar {
       display: none;
     }
-    .progress-bar {
-      height: 6px;
-      background-color: #e5e7eb;
-      border-radius: 9999px;
-      overflow: hidden;
-      position: relative;
-      margin-top: 1rem;
-    }
-    .progress-value {
-      height: 100%;
-      background-color: #4B93A2;
-      width: 0%;
-      transition: width 0.3s ease;
+
+    /* Header enhancements: smooth transition and shadow on scroll */
+    #mainHeader {
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      height: 80px; /* Set a fixed height for the header */
     }
 
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.5s ease, opacity 0.5s ease;
-      opacity: 0;
+    /* Hero background zoom effect */
+    #hero-bg-current, #hero-bg-next {
+      animation: zoom-in;
+      background-size: cover;
+      background-position: center;
     }
 
-    .faq-answer.open {
-      max-height: 200px;
-      opacity: 1;
+    /* Quick Access Cards enhancement */
+    .card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Footer social icons enhancement */
+    .footer-social a {
+      transition: transform 0.3s ease;
+    }
+    .footer-social a:hover {
+      transform: scale(1.1);
+    }
+
+    @media (orientation: landscape) and (max-width: 768px) {
+      .landscape\:hidden {
+        display: none !important;
+      }
     }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-900">
-
- <!-- Header with Mobile Navigation -->
- <header class="fixed w-full top-0 z-50 transition-all duration-300" id="mainHeader">
-  <nav class="bg-primary px-6 py-4">
-    <div class="container mx-auto flex justify-between items-center">
-      <a href="index.html" class="flex items-center space-x-3">
-        <img src="pics/logo.JPG" alt="Church Logo" class="h-12 w-12 rounded-full shadow-lg">
-        <div>
-          <h1 class="text-2xl font-bold text-white">Northampton PIWC</h1>
-          <p class="text-sm text-white/80">Pentecost International Worship Centre</p>
-        </div>
-      </a>
-      
-     
-      <div class="flex items-center space-x-6">
-        <nav class="hidden md:flex space-x-6 text-white items-center">
-          <a href="index.html" class="hover:text-accent transition-colors py-2">Home</a>
-          <a href="About us.html" class="hover:text-accent transition-colors py-2">About</a>
-          <a href="Ministries.html" class="hover:text-accent transition-colors py-2">Ministries</a>
-          <a href="contact.html" class="hover:text-accent transition-colors py-2">Contact</a>
-          <a href="give.html" class="bg-white text-primary px-6 py-2 rounded-full font-medium hover:bg-gray-100 transition-all transform hover:scale-105">Give</a>
-        </nav>
-        
-        <!-- Mobile nav toggle button -->
-        <button id="navToggle" class="md:hidden text-white focus:outline-none">
-          <i class="fas fa-bars text-2xl"></i>
-        </button>
-      </div>
-    </div>
-
-    <!-- Enhanced Mobile Menu with updated background -->
-    <div id="mobileNav" class="max-h-0 overflow-hidden transition-all duration-500 md:hidden mt-4 rounded-lg bg-primary">
-      <div class="p-4 space-y-4">
-        <a href="index.html" class="block text-white hover:text-accent py-2 transition-colors">Home</a>
-        <a href="About us.html" class="block text-white hover:text-accent py-2 transition-colors">About</a>
-        <a href="Ministries.html" class="block text-white hover:text-accent py-2 transition-colors">Ministries</a>
-        <a href="contact.html" class="block text-white hover:text-accent py-2 transition-colors">Contact</a>
-        <a href="give.html" class="block bg-white text-primary px-6 py-2 rounded-full text-center font-medium hover:bg-gray-100 transition-all">Give</a>
-      </div>
-    </div>
-  </nav>
-</header>
-
-  <!-- Hero Section with Background Carousel -->
-  <section id="hero" class="relative h-screen flex items-center justify-center overflow-hidden">
-    <!-- Two background divs for carousel -->
-    <div id="hero-bg-current" class="absolute inset-0 bg-cover bg-center opacity-100 transition-opacity duration-1000"></div>
-    <div id="hero-bg-next" class="absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-1000"></div>
-    <!-- Optional overlay gradient -->
-    <div class="absolute inset-0 hero-gradient z-10"></div>
-    <div class="relative z-20 text-center text-white px-4" data-aos="fade-up">
-      <h1 class="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">Discover Your Place to Serve, Grow, and Shine
-      </h1>
-      <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto animate-slide-up">
-        Find a community where your talents are celebrated and your spirit can thrive.
 
 
-      </p>
-      <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
-        <a href="https://www.youtube.com/@NorthamptonPIWC/streams" class="bg-primary text-white px-8 py-3 rounded-full font-medium hover:bg-secondary transition-all transform hover:scale-105 flex items-center">
-          <i class="fas fa-play-circle mr-2"></i>
-          Watch Live
+<body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
+  
+  <!-- Header -->
+  <header class="fixed w-full top-0 z-50 bg-primary shadow-lg" id="mainHeader">
+    <nav class="bg-primary px-6 py-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <a href="index.html" class="flex items-center space-x-3">
+          <img src="pics/logo.JPG" alt="Church Logo" class="h-12 w-12 rounded-full shadow-lg">
+          <div>
+            <h1 class="text-2xl md:text-4xl font-bold text-white">Northampton PIWC</h1>
+          </div>
         </a>
-        
+
+        <div class="flex items-center space-x-6">
+          <nav class="hidden md:flex space-x-6 text-white items-center">
+            <a href="index.html" class="hover:text-accent transition-colors py-2">Home</a>
+            <div class="relative group">
+              <button class="hover:text-accent transition-colors py-2 inline-flex items-center" aria-expanded="false">
+                About us
+                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </button>
+              <div class="absolute left-0 hidden group-hover:block bg-white text-primary mt-2 rounded-lg shadow-lg min-w-[200px] z-50 transform opacity-0 group-hover:opacity-100 transition-all duration-200">
+                <a href="new.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition-colors">New here</a>
+                <a href="heart.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition-colors">Our Heart &amp; Purpose</a>
+                <a href="team.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition-colors">Meet the Team</a>
+              </div>
+            </div>
+            <div class="relative group">
+              <button class="hover:text-accent transition-colors py-2 inline-flex items-center" aria-expanded="false">
+                Ministries
+                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </button>
+              <div class="absolute left-0 hidden group-hover:block bg-white text-primary mt-2 rounded-lg shadow-lg min-w-[200px] z-50 transform opacity-0 group-hover:opacity-100 transition-all duration-200">
+                <a href="Ministries.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition-colors">Our Ministries & Teams</a>
+                <a href="join.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition-colors">Join a Ministry</a>
+              </div>
+            </div>
+            <a href="contact.html" class="hover:text-accent transition-colors py-2">Contact</a>
+            <a href="gallery.html" class="hover:text-accent transition-colors py-2">Gallery</a>
+            <a href="give.html" class="bg-white text-primary px-6 py-2 rounded-full font-medium hover:bg-gray-100 transition-all transform hover:scale-105 active:scale-95">Give</a>
+          </nav>
+          
+          <button id="navToggle" class="md:hidden text-white focus:outline-none hover:text-accent transition-colors" aria-label="Toggle navigation" aria-expanded="false">
+            <i class="fas fa-bars text-2xl"></i>
+          </button>
+        </div>
       </div>
-    </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobileNav" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out md:hidden mt-4 rounded-lg bg-primary">
+        <div class="p-4 space-y-4 text-white">
+          <a href="index.html" class="block hover:text-accent py-2 transition-colors">Home</a>
+          <details class="group">
+            <summary class="cursor-pointer hover:text-accent py-2 transition-colors flex justify-between items-center list-none">
+              About us
+              <svg class="w-4 h-4 transform transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </summary>
+            <div class="pl-4 mt-2 space-y-2 border-l-2 border-accent/30">
+              <a href="new.html" class="block hover:text-accent transition-colors py-1">New here</a>
+              <a href="heart.html" class="block hover:text-accent transition-colors py-1">Our Heart & Purpose</a>
+              <a href="team.html" class="block hover:text-accent transition-colors py-1">Meet the Team</a>
+            </div>
+          </details>
+          <details class="group">
+            <summary class="cursor-pointer hover:text-accent py-2 transition-colors flex justify-between items-center list-none">
+              Ministries
+              <svg class="w-4 h-4 transform transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </summary>
+            <div class="pl-4 mt-2 space-y-2 border-l-2 border-accent/30">
+              <a href="Ministries.html" class="block hover:text-accent transition-colors py-1">Our Ministries & Teams</a>
+              <a href="join.html" class="block hover:text-accent transition-colors py-1">Join a Ministry</a>
+            </div>
+          </details>
+          <a href="contact.html" class="block hover:text-accent py-2 transition-colors">Contact</a>
+          <a href="gallery.html" class="block hover:text-accent py-2 transition-colors">Gallery</a>
+          <a href="give.html" class="block bg-white text-primary px-6 py-2 rounded-full text-center font-medium hover:bg-gray-100 transition-all">Give</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+ 
+
+    <!-- Two background divs for carousel -->
+   
+    
+   
+    <div class="relative z-20 text-center text-white px-4" data-aos="fade-up">
+      
   </section>
 
  
@@ -202,94 +263,75 @@
     </div>
   </section>
 
- <!-- Upcoming Events Section - Calendar with List View Toggle -->
- <section id="events" class="py-16 container mx-auto px-4" data-aos="fade-up">
+<!-- Upcoming Events Section -->
+<section id="events" class="py-16 container mx-auto px-4" data-aos="fade-up">
   <div class="text-center mb-12">
     <h2 class="text-3xl font-bold text-gray-900 mb-4">Upcoming Events</h2>
     <p class="text-gray-600 max-w-2xl mx-auto">Join us for these special gatherings and grow in faith and fellowship.</p>
-    
-    <!-- View toggle buttons -->
-    <div class="flex justify-center mt-6 space-x-2">
-      <button id="calendarViewBtn" class="px-4 py-2 bg-primary text-white rounded-l-lg">
-        <i class="fas fa-calendar-alt mr-2"></i>Calendar
-      </button>
-      <button id="listViewBtn" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-r-lg">
-        <i class="fas fa-list mr-2"></i>List
-      </button>
+  </div>
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <!-- Event 1 -->
+    <div class="bg-white rounded-lg shadow-md overflow-hidden flex hover:shadow-lg transition-shadow">
+      <div class="bg-primary text-white p-4 flex flex-col items-center justify-center min-w-[80px]">
+        <span class="text-2xl font-bold">23</span>
+        <span class="uppercase text-sm">Mar</span>
+      </div>
+      <div class="p-4">
+        <h3 class="text-xl font-bold mb-2 text-[#395886]">Prayer & Fasting Day</h3>
+        <p class="text-gray-600 mb-2">6:00 PM - 8:00 PM</p>
+        <p class="text-gray-500 mb-3">Join us as we seek God's presence through prayer and fasting.</p>
+        <a href="#" class="text-primary hover:text-secondary inline-flex items-center">
+          <i class="fas fa-plus-circle mr-1"></i> Add to calendar
+        </a>
+      </div>
     </div>
-  </div>
-  
-  <!-- Calendar View -->
-  <div id="calendarView" class="bg-white rounded-lg shadow-lg overflow-hidden">
-    <iframe src="https://calendar.google.com/calendar/embed?src=YOUR_CALENDAR_ID"
-      style="border: 0" width="100%" height="500" frameborder="0" scrolling="no"></iframe>
-  </div>
-  
-  <!-- List View -->
-  <div id="listView" class="hidden">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <!-- Event 1 -->
-      <div class="bg-white rounded-lg shadow-md overflow-hidden flex hover:shadow-lg transition-shadow">
-        <div class="bg-primary text-white p-4 flex flex-col items-center justify-center min-w-[80px]">
-          <span class="text-2xl font-bold">23</span>
-          <span class="uppercase text-sm">Mar</span>
-        </div>
-        <div class="p-4">
-          <h3 class="text-xl font-bold mb-2">Prayer & Fasting Day</h3>
-          <p class="text-gray-600 mb-2">6:00 PM - 8:00 PM</p>
-          <p class="text-gray-500 mb-3">Join us as we seek God's presence through prayer and fasting.</p>
-          <a href="#" class="text-primary hover:text-secondary inline-flex items-center">
-            <i class="fas fa-plus-circle mr-1"></i> Add to calendar
-          </a>
-        </div>
+    
+    <!-- Event 2 -->
+    <div class="bg-white rounded-lg shadow-md overflow-hidden flex hover:shadow-lg transition-shadow">
+      <div class="bg-primary text-white p-4 flex flex-col items-center justify-center min-w-[80px]">
+        <span class="text-2xl font-bold">26</span>
+        <span class="uppercase text-sm">Mar</span>
       </div>
-      
-      <!-- Event 2 -->
-      <div class="bg-white rounded-lg shadow-md overflow-hidden flex hover:shadow-lg transition-shadow">
-        <div class="bg-primary text-white p-4 flex flex-col items-center justify-center min-w-[80px]">
-          <span class="text-2xl font-bold">26</span>
-          <span class="uppercase text-sm">Mar</span>
-        </div>
-        <div class="p-4">
-          <h3 class="text-xl font-bold mb-2">Youth Fellowship</h3>
-          <p class="text-gray-600 mb-2">5:30 PM - 7:30 PM</p>
-          <p class="text-gray-500 mb-3">An evening of worship, games, and Bible study for young people.</p>
-          <a href="#" class="text-primary hover:text-secondary inline-flex items-center">
-            <i class="fas fa-plus-circle mr-1"></i> Add to calendar
-          </a>
-        </div>
+      <div class="p-4">
+        <h3 class="text-xl font-bold mb-2 text-[#395886]">Youth Fellowship</h3>
+        <p class="text-gray-600 mb-2">5:30 PM - 7:30 PM</p>
+        <p class="text-gray-500 mb-3">An evening of worship, games, and Bible study for young people.</p>
+        <a href="#" class="text-primary hover:text-secondary inline-flex items-center">
+          <i class="fas fa-plus-circle mr-1"></i> Add to calendar
+        </a>
       </div>
-      
-      <!-- Event 3 -->
-      <div class="bg-white rounded-lg shadow-md overflow-hidden flex hover:shadow-lg transition-shadow">
-        <div class="bg-primary text-white p-4 flex flex-col items-center justify-center min-w-[80px]">
-          <span class="text-2xl font-bold">28</span>
-          <span class="uppercase text-sm">Mar</span>
-        </div>
-        <div class="p-4">
-          <h3 class="text-xl font-bold mb-2">Community Outreach</h3>
-          <p class="text-gray-600 mb-2">10:00 AM - 2:00 PM</p>
-          <p class="text-gray-500 mb-3">Serving our local community through various outreach activities.</p>
-          <a href="#" class="text-primary hover:text-secondary inline-flex items-center">
-            <i class="fas fa-plus-circle mr-1"></i> Add to calendar
-          </a>
-        </div>
+    </div>
+    
+    <!-- Event 3 -->
+    <div class="bg-white rounded-lg shadow-md overflow-hidden flex hover:shadow-lg transition-shadow">
+      <div class="bg-primary text-white p-4 flex flex-col items-center justify-center min-w-[80px]">
+        <span class="text-2xl font-bold">28</span>
+        <span class="uppercase text-sm">Mar</span>
       </div>
-      
-      <!-- Event 4 -->
-      <div class="bg-white rounded-lg shadow-md overflow-hidden flex hover:shadow-lg transition-shadow">
-        <div class="bg-primary text-white p-4 flex flex-col items-center justify-center min-w-[80px]">
-          <span class="text-2xl font-bold">02</span>
-          <span class="uppercase text-sm">Apr</span>
-        </div>
-        <div class="p-4">
-          <h3 class="text-xl font-bold mb-2">Bible Study Group</h3>
-          <p class="text-gray-600 mb-2">7:00 PM - 8:30 PM</p>
-          <p class="text-gray-500 mb-3">Deepening our understanding of God's Word together.</p>
-          <a href="#" class="text-primary hover:text-secondary inline-flex items-center">
-            <i class="fas fa-plus-circle mr-1"></i> Add to calendar
-          </a>
-        </div>
+      <div class="p-4">
+        <h3 class="text-xl font-bold mb-2 text-[#395886]">Community Outreach</h3>
+        <p class="text-gray-600 mb-2">10:00 AM - 2:00 PM</p>
+        <p class="text-gray-500 mb-3">Serving our local community through various outreach activities.</p>
+        <a href="#" class="text-primary hover:text-secondary inline-flex items-center">
+          <i class="fas fa-plus-circle mr-1"></i> Add to calendar
+        </a>
+      </div>
+    </div>
+    
+    <!-- Event 4 -->
+    <div class="bg-white rounded-lg shadow-md overflow-hidden flex hover:shadow-lg transition-shadow">
+      <div class="bg-primary text-white p-4 flex flex-col items-center justify-center min-w-[80px]">
+        <span class="text-2xl font-bold">02</span>
+        <span class="uppercase text-sm">Apr</span>
+      </div>
+      <div class="p-4">
+        <h3 class="text-xl font-bold mb-2 text-[#395886]">Bible Study Group</h3>
+        <p class="text-gray-600 mb-2">7:00 PM - 8:30 PM</p>
+        <p class="text-gray-500 mb-3">Deepening our understanding of God's Word together.</p>
+        <a href="#" class="text-primary hover:text-secondary inline-flex items-center">
+          <i class="fas fa-plus-circle mr-1"></i> Add to calendar
+        </a>
       </div>
     </div>
   </div>
@@ -310,7 +352,7 @@
       
       <div class="relative overflow-hidden" style="min-height: 150px;">
         <div class="testimonial text-lg text-center">
-          <p class="mb-4">"God has been faithful in my life through every season. I've seen His hand guiding me through difficult times and blessing me beyond measure."</p>
+          <p class="mb-4 text-[#395886]">"God has been faithful in my life through every season. I've seen His hand guiding me through difficult times and blessing me beyond measure."</p>
           <div class="mt-6">
             <p class="font-medium text-gray-900">- Person 1.</p>
             <p class="text-sm text-gray-500">Church Member</p>
@@ -318,7 +360,7 @@
         </div>
         
         <div class="testimonial text-lg text-center hidden">
-          <p class="mb-4">"I experienced a breakthrough through prayer when I was facing a health challenge. The support from our church family made all the difference."</p>
+          <p class="mb-4 text-[#395886]">"I experienced a breakthrough through prayer when I was facing a health challenge. The support from our church family made all the difference."</p>
           <div class="mt-6">
             <p class="font-medium text-gray-900">- Person 2.</p>
             <p class="text-sm text-gray-500">Worship Team</p>
@@ -326,7 +368,7 @@
         </div>
         
         <div class="testimonial text-lg text-center hidden">
-          <p class="mb-4">"The community here has truly uplifted me during my studies. I found a spiritual home away from home that keeps me grounded in faith."</p>
+          <p class="mb-4 text-[#395886]">"The community here has truly uplifted me during my studies. I found a spiritual home away from home that keeps me grounded in faith."</p>
           <div class="mt-6">
             <p class="font-medium text-gray-900">- Person 3.</p>
             <p class="text-sm text-gray-500">Student</p>
@@ -437,27 +479,30 @@
     <h2 class="text-3xl font-bold text-gray-900 text-center mb-6">Frequently Asked Questions</h2>
     <div class="space-y-4">
       <div class="border-b pb-2">
-        <button class="w-full text-left font-bold text-gray-900 focus:outline-none" onclick="toggleFAQ('faq1')">
-          What time are the services?
+        <button class="w-full text-left font-bold text-gray-900 focus:outline-none flex justify-between items-center" onclick="toggleFAQ('faq1')">
+          <span>What time are the services?</span>
+          <i class="fas fa-chevron-down transition-transform"></i>
         </button>
-        <div id="faq1" class="mt-2 text-gray-700 faq-answer">
-          <p>Our services are held at 9am on Sundays.</p>
+        <div id="faq1" class="mt-2 text-gray-700 faq-answer hidden transition-all duration-300 ease-in-out pl-0">
+          <p class="text-left">Our services are held at 10 am on Sundays.</p>
         </div>
       </div>
       <div class="border-b pb-2">
-        <button class="w-full text-left font-bold text-gray-900 focus:outline-none" onclick="toggleFAQ('faq2')">
-          How can I join a ministry?
+        <button class="w-full text-left font-bold text-gray-900 focus:outline-none flex justify-between items-center" onclick="toggleFAQ('faq2')">
+          <span>How can I join a ministry?</span>
+          <i class="fas fa-chevron-down transition-transform"></i>
         </button>
-        <div id="faq2" class="mt-2 text-gray-700 faq-answer">
-          <p>You can join a ministry by filling out our ministry sign-up form on the 'Ministries' page.</p>
+        <div id="faq2" class="mt-2 text-gray-700 faq-answer hidden transition-all duration-300 ease-in-out pl-0">
+          <p class="text-left">You can join a ministry by filling out our ministry sign-up form on the 'Ministries' page.</p>
         </div>
       </div>
       <div class="border-b pb-2">
-        <button class="w-full text-left font-bold text-gray-900 focus:outline-none" onclick="toggleFAQ('faq3')">
-          Where is the church located?
+        <button class="w-full text-left font-bold text-gray-900 focus:outline-none flex justify-between items-center" onclick="toggleFAQ('faq3')">
+          <span>Where is the church located?</span>
+          <i class="fas fa-chevron-down transition-transform"></i>
         </button>
-        <div id="faq3" class="mt-2 text-gray-700 faq-answer">
-          <p>Our church is located in the heart of Northampton, near the city centre.</p>
+        <div id="faq3" class="mt-2 text-gray-700 faq-answer hidden transition-all duration-300 ease-in-out pl-0">
+          <p class="text-left">Our church is located in the heart of Northampton, near the city centre.</p>
         </div>
       </div>
     </div>
@@ -508,7 +553,7 @@
       </div>
     </div>
     <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-      <p>&copy; <script>document.write(new Date().getFullYear())</script> Northampton PIWC. All Rights Reserved.</p>
+      <p>&copy; <script>document.write(getCurrentYear())</script> Northampton PIWC. All Rights Reserved.</p>
     </div>
   </div>
 </footer>
@@ -528,47 +573,7 @@
     // Initialise AOS
     AOS.init({ duration: 800, once: true });
 
-    // Background Image Carousel
-    let bgImages;
-      
-      if (window.innerWidth <= 768) {
-        bgImages = [
-          'mobile pics/bible.JPG',
-          'mobile pics/girl.JPG',
-          'mobile pics/sing.JPG',
-          'mobile pics/talk.JPG'
-        ];
-      } else {
-        bgImages = [
-          'pics/Drums.jpeg',
-          'pics/audience old .jpeg',
-          'pics/friends.jpeg',
-          'pics/Stage.jpeg'
-        ];
-      }
-    let currentIndex = 0;
-    // Preload images
-    bgImages.forEach(src => {
-      const img = new Image();
-      img.src = src;
-    });
-    const currentBg = document.getElementById('hero-bg-current');
-    const nextBg = document.getElementById('hero-bg-next');
-    // Set initial background image
-    currentBg.style.backgroundImage = `url('${bgImages[currentIndex]}')`;
-    function changeBackground() {
-      const nextIndex = (currentIndex + 1) % bgImages.length;
-      nextBg.style.backgroundImage = `url('${bgImages[nextIndex]}')`;
-      nextBg.classList.remove('opacity-0');
-      nextBg.classList.add('opacity-100');
-      setTimeout(() => {
-        currentBg.style.backgroundImage = `url('${bgImages[nextIndex]}')`;
-        nextBg.classList.remove('opacity-100');
-        nextBg.classList.add('opacity-0');
-        currentIndex = nextIndex;
-      }, 1000);
-    }
-    setInterval(changeBackground, 5000);
+   
 
     // Mobile Navigation Toggle
     const navToggle = document.getElementById('navToggle');
@@ -594,24 +599,6 @@
     });
     backToTop.addEventListener('click', () => {
       window.scrollTo({ top: 0, behaviour: 'smooth' });
-    });
-
-     // Toggle Calendar/List Views
-     document.getElementById("calendarViewBtn").addEventListener("click", () => {
-      document.getElementById("calendarView").classList.remove("hidden");
-      document.getElementById("listView").classList.add("hidden");
-      document.getElementById("calendarViewBtn").classList.add("bg-primary", "text-white");
-      document.getElementById("calendarViewBtn").classList.remove("bg-gray-200", "text-gray-700");
-      document.getElementById("listViewBtn").classList.add("bg-gray-200", "text-gray-700");
-      document.getElementById("listViewBtn").classList.remove("bg-primary", "text-white");
-    });
-    document.getElementById("listViewBtn").addEventListener("click", () => {
-      document.getElementById("calendarView").classList.add("hidden");
-      document.getElementById("listView").classList.remove("hidden");
-      document.getElementById("listViewBtn").classList.add("bg-primary", "text-white");
-      document.getElementById("listViewBtn").classList.remove("bg-gray-200", "text-gray-700");
-      document.getElementById("calendarViewBtn").classList.add("bg-gray-200", "text-gray-700");
-      document.getElementById("calendarViewBtn").classList.remove("bg-primary", "text-white");
     });
 
     // Fetch and display Bible Verse of the Day
@@ -675,8 +662,25 @@
 
     // Toggle FAQ Answers
     window.toggleFAQ = function(id) {
-      const el = document.getElementById(id);
-      el.classList.toggle('open');
+      const answer = document.getElementById(id);
+      const button = answer.previousElementSibling;
+      const icon = button.querySelector('i');
+      
+      // Close all other FAQs
+      document.querySelectorAll('.faq-answer').forEach(el => {
+        if (el.id !== id && !el.classList.contains('hidden')) {
+          el.classList.add('hidden');
+          el.previousElementSibling.querySelector('i').style.transform = 'rotate(0deg)';
+        }
+      });
+
+      // Toggle current FAQ
+      answer.classList.toggle('hidden');
+      if (!answer.classList.contains('hidden')) {
+        icon.style.transform = 'rotate(180deg)';
+      } else {
+        icon.style.transform = 'rotate(0deg)';
+      }
     };
 
     // Enhanced Form Submission (simulate with alert)

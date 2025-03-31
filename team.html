@@ -13,6 +13,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
   
+  
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -26,8 +27,7 @@
           animation: {
             'fade-in': 'fadeIn 0.5s ease-out',
             'slide-up': 'slideUp 0.5s ease-out',
-            'zoom-in': 'zoomIn 20s infinite alternate',
-            'fade-down': 'fadeDown 0.2s ease-out'
+            'zoom-in': 'zoomIn 20s infinite alternate'
           },
           keyframes: {
             fadeIn: {
@@ -41,10 +41,6 @@
             zoomIn: {
               '0%': { transform: 'scale(1)' },
               '100%': { transform: 'scale(1.05)' }
-            },
-            fadeDown: {
-              '0%': { opacity: '0', transform: 'translateY(-10px)' },
-              '100%': { opacity: '1', transform: 'translateY(0)' }
             }
           }
         }
@@ -58,7 +54,6 @@
     body {
       font-family: 'Montserrat', sans-serif;
       scroll-behaviour: smooth;
-      padding-top: 80px; /* added to prevent fixed nav overlap */
     }
 
     .glass-effect {
@@ -123,37 +118,36 @@
       }
     }
 
-    /* Enhanced dropdown styles */
+    /* Add these styles to your existing style section */
     .dropdown-menu {
       transform-origin: top;
+      transform: scale(0.95);
       opacity: 0;
       visibility: hidden;
-      transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+      transition: all 0.2s ease-in-out;
     }
 
     .group:hover .dropdown-menu {
+      transform: scale(1);
       opacity: 1;
       visibility: visible;
-      transform: translateY(0);
     }
 
-    /* Active nav item indicator */
-    .nav-item.active {
+    .nav-link.active {
+      color: #72b5c1;
       position: relative;
     }
 
-    .nav-item.active::after {
+    .nav-link.active::after {
       content: '';
       position: absolute;
       bottom: -2px;
       left: 0;
       width: 100%;
       height: 2px;
-      background-color: currentColor;
-      transform: scaleX(1);
+      background-color: #72b5c1;
     }
 
-    /* Mobile Navigation Enhancements */
     #mobileNav {
       transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
       background: rgba(57, 88, 134, 0.98);
@@ -209,45 +203,43 @@
   <!-- Header -->
   <header class="fixed w-full top-0 z-50" id="mainHeader">
     <nav class="bg-primary px-6 py-4">
-      <div class="container mx-auto flex justify-between items-center">
+      <div class="container mx-auto flex justify-between items-center flex-wrap">
         <a href="index.html" class="flex items-center space-x-3">
-          <img src="pics/logo.JPG" alt="Church Logo" class="h-12 w-12 rounded-full shadow-lg">
-          <div>
-            <h1 class="text-2xl md:text-4xl font-bold text-white">Northampton PIWC</h1>
-          </div>
+          <img src="pics/logo.JPG" alt="Church Logo" class="h-10 w-10 md:h-12 md:w-12 rounded-full shadow-lg">
+          <h1 class="text-2xl md:text-4xl font-bold text-white">Northampton PIWC</h1>
         </a>
         
         <div class="flex items-center space-x-6">
           <nav class="hidden md:flex space-x-6 text-white items-center">
-            <a href="index.html" class="nav-item hover:text-accent transition-colors py-2">Home</a>
+            <a href="index.html" class="nav-link hover:text-accent transition-colors py-2">Home</a>
             <div class="relative group">
-              <button class="nav-item flex items-center hover:text-accent transition-colors py-2 space-x-1">
-                <span>About us</span>
-                <i class="fas fa-chevron-down text-xs transition-transform group-hover:rotate-180"></i>
+              <button class="nav-link hover:text-accent transition-colors py-2 flex items-center">
+                About us
+                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
               </button>
-              <div class="dropdown-menu absolute bg-white text-primary mt-2 rounded-lg shadow-lg min-w-[200px] z-50 animate-fade-down">
-                <div class="py-2">
-                  <a href="new.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition">New here</a>
-                  <a href="heart.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition">Our Heart &amp; Purpose</a>
-                  <a href="team.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition">Meet the Team</a>
-                </div>
+              <div class="dropdown-menu absolute bg-white text-primary mt-2 rounded-lg shadow-lg min-w-[200px] z-50">
+                <a href="new.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition-colors">New here</a>
+                <a href="heart.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition-colors">Our Heart &amp; Purpose</a>
+                <a href="team.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition-colors">Meet the Team</a>
               </div>
             </div>
             <div class="relative group">
-              <button class="nav-item flex items-center hover:text-accent transition-colors py-2 space-x-1">
-                <span>Ministries</span>
-                <i class="fas fa-chevron-down text-xs transition-transform group-hover:rotate-180"></i>
+              <button class="nav-link hover:text-accent transition-colors py-2 flex items-center">
+                Ministries
+                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
               </button>
-              <div class="dropdown-menu absolute bg-white text-primary mt-2 rounded-lg shadow-lg min-w-[200px] z-50 animate-fade-down">
-                <div class="py-2">
-                  <a href="Ministries.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition">Our Ministries & Teams</a>
-                  <a href="join.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition">Join a Ministry</a>
-                </div>
+              <div class="dropdown-menu absolute bg-white text-primary mt-2 rounded-lg shadow-lg min-w-[200px] z-50">
+                <a href="Ministries.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition">Our Ministries & Teams</a>
+                <a href="join.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition">Join a Ministry</a>
               </div>
             </div>
-            <a href="contact.html" class="nav-item hover:text-accent transition-colors py-2">Contact</a>
-            <a href="gallery.html" class="nav-item hover:text-accent transition-colors py-2">Gallery</a>
-            <a href="give.html" class="nav-item bg-white text-primary px-6 py-2 rounded-full font-medium hover:bg-gray-100 transition-all transform hover:scale-105">Give</a>
+            <a href="contact.html" class="nav-link hover:text-accent transition-colors py-2">Contact</a>
+            <a href="gallery.html" class="nav-link hover:text-accent transition-colors py-2">Gallery</a>
+            <a href="give.html" class="bg-white text-primary px-6 py-2 rounded-full font-medium hover:bg-gray-100 transition-all transform hover:scale-105">Give</a>
           </nav>
           
           <!-- Mobile nav toggle button -->
@@ -278,7 +270,7 @@
               <a href="team.html" class="block hover:text-accent transition-all transform hover:translate-x-2">Meet the Team</a>
             </div>
           </details>
-
+          
           <details class="group">
             <summary class="cursor-pointer hover:text-accent py-3 transition-all flex justify-between items-center">
               <span class="flex items-center">
@@ -292,7 +284,7 @@
               <a href="join.html" class="block hover:text-accent transition-all transform hover:translate-x-2">Join a Ministry</a>
             </div>
           </details>
-
+          
           <a href="contact.html" class="block hover:text-accent py-3 transition-all transform hover:translate-x-2">
             <i class="fas fa-envelope mr-3"></i>Contact
           </a>
@@ -307,43 +299,54 @@
     </nav>
   </header>
   
-  <!-- Hero Section with Background Carousel -->
-  
-  
-  <!-- About Section -->
-  <section class="container mx-auto my-10 p-6 bg-white rounded shadow" data-aos="fade-up">
-    <h2 class="text-2xl font-bold text-primary text-center">About Us</h2>
-    <p class="mt-4 text-gray-700 text-center">
-      We are a community of believers dedicated to worship, service, and spiritual growth. Join us as we make a difference.
-    </p>
-  </section>
-  
-  <!-- Donation Section -->
-  <section class="container mx-auto my-10 p-6 bg-gray-200 rounded shadow text-center" data-aos="fade-up">
-    <h2 class="text-2xl font-bold text-primary">Make a Donation</h2>
-    <p class="mt-4 text-gray-700">
-      Your contributions help us support those in need, run our church activities, and bring hope to our community.
-    </p>
-    <h3 class="mt-4 font-semibold">Ways to Give:</h3>
-    <ul class="mt-2 text-gray-700 list-disc list-inside">
-      <li>Online – Secure donations or Bank Transfer</li>
-      <li>In Person – Give by cash at our church</li>
-      <li>Direct Link – Use the link below to give now</li>
-    </ul>
-    <a href="https://revolut.me/kamron8i3u" target="_blank" rel="noopener noreferrer" class="mt-6 inline-block bg-primary text-white px-6 py-2 rounded shadow hover:bg-accent transition-colors">
-      Donate Now
-    </a>
-  </section>
-  
-  <!-- Contact Section -->
-  <section class="container mx-auto my-10 p-6 bg-white rounded shadow text-center" data-aos="fade-up">
-    <h2 class="text-xl font-bold text-primary">Contact Us</h2>
-    <p>
-      Email: <a href="mailto:info@northamptonpiwc.com" class="text-primary font-semibold hover:underline">info@northamptonpiwc.com</a>
-    </p>
-    <p>
-      Address: Unit H5 Kingsfield Way, Kings Heath Industrial Estate, Northampton NN5 7QS
-    </p>
+  <!-- Team Section -->
+  <section id="team" class="container mx-auto px-4 py-12 mt-20">
+    <h2 class="text-3xl font-bold text-primary text-center mb-8">Our Team</h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Team Member 1 -->
+      <div class="bg-white rounded-xl shadow-lg p-6 transform hover:-translate-y-2 transition-all">
+        <img src="team/Pastor.jpeg" alt="Pastor John Smith" class="rounded-full mx-auto w-32 h-32 object-cover mb-4">
+        <h3 class="text-xl font-semibold text-center">Pastor Abraham Sarfo</h3>  
+        <p class="text-center text-primary">Senior Pastor</p>
+        <p class="text-gray-700 mt-2 text-center">With over 20 years of ministry experience, Pastor John leads our congregation with wisdom and compassion.</p>
+      </div>
+      <!-- Team Member 2 -->
+      <div class="bg-white rounded-xl shadow-lg p-6 transform hover:-translate-y-2 transition-all">
+        <img src="team/pastor wife.jpeg" alt="Delphina Afrakomah" class="rounded-full mx-auto w-32 h-32 object-cover mb-4">
+        <h3 class="text-xl font-semibold text-center">Mrs Delphina Afrakomah Boachie</h3>
+        <p class="text-center text-primary">Pastor's wife</p>
+        <p class="text-gray-700 mt-2 text-center">Mary inspires our community through her heartfelt music and creative leadership in worship.</p>
+      </div>
+      <!-- Team Member 3 -->
+      <div class="bg-white rounded-xl shadow-lg p-6 transform hover:-translate-y-2 transition-all">
+        <img src="https://placehold.co/300x300" alt="Alex Brown" class="rounded-full mx-auto w-32 h-32 object-cover mb-4">
+        <h3 class="text-xl font-semibold text-center">Alex Brown</h3>
+        <p class="text-center text-primary">Youth Coordinator</p>
+        <p class="text-gray-700 mt-2 text-center">Alex engages our young people with innovative programmes that nurture both faith and friendship.</p>
+      </div>
+      <!-- Team Member 4 -->
+      <div class="bg-white rounded-xl shadow-lg p-6 transform hover:-translate-y-2 transition-all">
+        <img src="https://placehold.co/300x300" alt="Emily Davis" class="rounded-full mx-auto w-32 h-32 object-cover mb-4">
+        <h3 class="text-xl font-semibold text-center">Emily Davis</h3>
+        <p class="text-center text-primary">Children’s Ministry Leader</p>
+        <p class="text-gray-700 mt-2 text-center">Emily fosters a loving and supportive environment for our youngest members to grow in faith.</p>
+      </div>
+      <!-- Team Member 5 -->
+      <div class="bg-white rounded-xl shadow-lg p-6 transform hover:-translate-y-2 transition-all">
+        <img src="https://placehold.co/300x300" alt="David Wilson" class="rounded-full mx-auto w-32 h-32 object-cover mb-4">
+        <h3 class="text-xl font-semibold text-center">David Wilson</h3>
+        <p class="text-center text-primary">Music Director</p>
+        <p class="text-gray-700 mt-2 text-center">David leads our musical ensembles, ensuring every service is filled with uplifting and soul-stirring music.</p>
+      </div>
+      <!-- Team Member 6 -->
+      <div class="bg-white rounded-xl shadow-lg p-6 transform hover:-translate-y-2 transition-all">
+        <img src="https://placehold.co/300x300" alt="Sarah Thompson" class="rounded-full mx-auto w-32 h-32 object-cover mb-4">
+        <h3 class="text-xl font-semibold text-center">Sarah Thompson</h3>
+        <p class="text-center text-primary">Outreach Coordinator</p>
+        <p class="text-gray-700 mt-2 text-center">Sarah coordinates community outreach efforts, connecting our church with local initiatives and projects.</p>
+      </div>
+    </div>
   </section>
   
   <!-- Footer -->
@@ -407,10 +410,8 @@
     document.addEventListener('DOMContentLoaded', function () {
       const navToggle = document.getElementById('navToggle');
       const mobileNav = document.getElementById('mobileNav');
-      const backToTop = document.getElementById('backToTop');
       const mainHeader = document.getElementById('mainHeader');
 
-      // Toggle mobile navigation menu
       navToggle.addEventListener('click', function () {
         const icon = this.querySelector('i');
         if (mobileNav.classList.contains('max-h-0')) {
@@ -434,45 +435,48 @@
         }
       });
 
-      // Back to Top Button
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-          backToTop.classList.remove('hidden');
+      // Change header style on scroll
+      window.addEventListener('scroll', function () {
+        if (window.scrollY > 50) {
+          mainHeader.classList.add('bg-secondary', 'shadow-lg');
         } else {
-          backToTop.classList.add('hidden');
+          mainHeader.classList.remove('bg-secondary', 'shadow-lg');
         }
       });
-      backToTop.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
+    });
 
-      // Automatically set current year in footer
-      document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-      // Initialise AOS for animations
-      AOS.init({
-        duration: 800,
-        easing: 'slide',
-        once: true
-      });
-
-      // Header scroll effect
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 0) {
-          mainHeader.classList.add('shadow-lg');
-        } else {
-          mainHeader.classList.remove('shadow-lg');
+    // Add active state to current page
+    document.addEventListener('DOMContentLoaded', function() {
+      const currentPage = window.location.pathname.split('/').pop();
+      const navLinks = document.querySelectorAll('.nav-link');
+      navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+          link.classList.add('active');
         }
       });
+    });
 
-      // Set active nav item based on current page
-      const currentPath = window.location.pathname;
-      const navItems = document.querySelectorAll('.nav-item');
-      navItems.forEach(item => {
-        if (item.getAttribute('href') === currentPath.split('/').pop()) {
-          item.classList.add('active');
-        }
-      });
+    // Back to Top Button
+    const backToTopButton = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopButton.classList.remove('hidden');
+      } else {
+        backToTopButton.classList.add('hidden');
+      }
+    });
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    
+    // Automatically set current year in footer
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // Initialise AOS for animations
+    AOS.init({
+      duration: 800,
+      easing: 'slide',
+      once: true
     });
   </script>
 </body>
