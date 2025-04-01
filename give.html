@@ -311,7 +311,7 @@
   
   
   <!-- About Section -->
-  <section class="container mx-auto my-10 p-6 bg-white rounded shadow" data-aos="fade-up">
+  <section class="container mx-auto my-4 p-6 bg-white rounded shadow" data-aos="fade-up">
     <h2 class="text-2xl font-bold text-primary text-center">About Us</h2>
     <p class="mt-4 text-gray-700 text-center">
       We are a community of believers dedicated to worship, service, and spiritual growth. Join us as we make a difference.
@@ -319,7 +319,7 @@
   </section>
   
   <!-- Donation Section -->
-  <section class="container mx-auto my-10 p-6 bg-gray-200 rounded shadow text-center" data-aos="fade-up">
+  <section class="container mx-auto my-4 p-6 bg-gray-200 rounded shadow text-center" data-aos="fade-up">
     <h2 class="text-2xl font-bold text-primary">Make a Donation</h2>
     <p class="mt-4 text-gray-700">
       Your contributions help us support those in need, run our church activities, and bring hope to our community.
@@ -336,7 +336,7 @@
   </section>
   
   <!-- Contact Section -->
-  <section class="container mx-auto my-10 p-6 bg-white rounded shadow text-center" data-aos="fade-up">
+  <section class="container mx-auto my-4 p-6 bg-white rounded shadow text-center" data-aos="fade-up">
     <h2 class="text-xl font-bold text-primary">Contact Us</h2>
     <p>
       Email: <a href="mailto:info@northamptonpiwc.com" class="text-primary font-semibold hover:underline">info@northamptonpiwc.com</a>
@@ -403,6 +403,14 @@
   
   <!-- Scripts -->
   <script>
+    // Add this at the beginning of your script
+    if (history.scrollRestoration) {
+      history.scrollRestoration = 'manual';
+    }
+    window.onbeforeunload = function () {
+      window.scrollTo(0, 0);
+    };
+
     // Mobile Navigation Toggle
     document.addEventListener('DOMContentLoaded', function () {
       const navToggle = document.getElementById('navToggle');
