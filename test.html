@@ -172,37 +172,50 @@
       </div>
 
       <!-- Mobile Menu -->
-      <div id="mobileNav" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out md:hidden mt-4 rounded-lg bg-primary">
-        <div class="p-4 space-y-4 text-white">
-          <a href="index.html" class="block hover:text-accent py-2 transition-colors">Home</a>
+      <div id="mobileNav" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out md:hidden mt-4 rounded-lg backdrop-blur-md">
+        <div class="p-6 space-y-6 text-white">
+          <a href="index.html" class="block hover:text-accent py-3 transition-all transform hover:translate-x-2">
+            <i class="fas fa-home mr-3"></i>Home
+          </a>
+          
           <details class="group">
-            <summary class="cursor-pointer hover:text-accent py-2 transition-colors flex justify-between items-center list-none">
-              About us
-              <svg class="w-4 h-4 transform transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-              </svg>
+            <summary class="cursor-pointer hover:text-accent py-3 transition-all flex justify-between items-center">
+              <span class="flex items-center">
+                <i class="fas fa-info-circle mr-3"></i>
+                About us
+              </span>
+              <i class="fas fa-chevron-down group-open:rotate-180 transition-transform duration-300"></i>
             </summary>
-            <div class="pl-4 mt-2 space-y-2 border-l-2 border-accent/30">
-              <a href="new.html" class="block hover:text-accent transition-colors py-1">New here</a>
-              <a href="heart.html" class="block hover:text-accent transition-colors py-1">Our Heart & Purpose</a>
-              <a href="team.html" class="block hover:text-accent transition-colors py-1">Meet the Team</a>
+            <div class="pl-8 mt-3 space-y-3 border-l-2 border-accent/30">
+              <a href="new.html" class="block hover:text-accent transition-all transform hover:translate-x-2">New here</a>
+              <a href="heart.html" class="block hover:text-accent transition-all transform hover:translate-x-2">Our Heart & Purpose</a>
+              <a href="team.html" class="block hover:text-accent transition-all transform hover:translate-x-2">Meet the Team</a>
             </div>
           </details>
+
           <details class="group">
-            <summary class="cursor-pointer hover:text-accent py-2 transition-colors flex justify-between items-center list-none">
-              Ministries
-              <svg class="w-4 h-4 transform transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-              </svg>
+            <summary class="cursor-pointer hover:text-accent py-3 transition-all flex justify-between items-center">
+              <span class="flex items-center">
+                <i class="fas fa-hands-helping mr-3"></i>
+                Ministries
+              </span>
+              <i class="fas fa-chevron-down group-open:rotate-180 transition-transform duration-300"></i>
             </summary>
-            <div class="pl-4 mt-2 space-y-2 border-l-2 border-accent/30">
-              <a href="Ministries.html" class="block hover:text-accent transition-colors py-1">Our Ministries & Teams</a>
-              <a href="join.html" class="block hover:text-accent transition-colors py-1">Join a Ministry</a>
+            <div class="pl-8 mt-3 space-y-3 border-l-2 border-accent/30">
+              <a href="Ministries.html" class="block hover:text-accent transition-all transform hover:translate-x-2">Our Ministries & Teams</a>
+              <a href="join.html" class="block hover:text-accent transition-all transform hover:translate-x-2">Join a Ministry</a>
             </div>
           </details>
-          <a href="contact.html" class="block hover:text-accent py-2 transition-colors">Contact</a>
-          <a href="gallery.html" class="block hover:text-accent py-2 transition-colors">Gallery</a>
-          <a href="give.html" class="block bg-white text-primary px-6 py-2 rounded-full text-center font-medium hover:bg-gray-100 transition-all">Give</a>
+
+          <a href="contact.html" class="block hover:text-accent py-3 transition-all transform hover:translate-x-2">
+            <i class="fas fa-envelope mr-3"></i>Contact
+          </a>
+          <a href="gallery.html" class="block hover:text-accent py-3 transition-all transform hover:translate-x-2">
+            <i class="fas fa-images mr-3"></i>Gallery
+          </a>
+          <a href="give.html" class="block bg-white text-primary px-6 py-2 rounded-full text-center font-medium hover:bg-gray-100 transition-all">
+            <i class="fas fa-donate mr-3"></i>Give
+          </a>
         </div>
       </div>
     </nav>
@@ -337,70 +350,127 @@
   </div>
 </section>
 
-<!-- Community Testimonies - Improved Design -->
-<section id="testimonies" class="py-16 bg-gray-50" data-aos="fade-up">
+<!-- Community Testimonies & Announcements Section -->
+<section id="testimonies" class="py-12 bg-gradient-to-br from-gray-50 to-gray-100" data-aos="fade-up">
   <div class="container mx-auto px-4">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl font-bold text-gray-900 mb-4">Community Testimonies</h2>
-      <p class="text-gray-600 max-w-2xl mx-auto">Hear how God is working in the lives of our church members.</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Community Testimonies Column -->
+      <div class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
+        <div class="text-center mb-8">
+          <span class="inline-block p-3 bg-primary/10 rounded-full mb-4">
+            <i class="fas fa-quote-left text-3xl text-primary"></i>
+          </span>
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Community Testimonies</h2>
+          <p class="text-gray-600">Stories of faith, hope, and transformation</p>
+        </div>
+        
+        <div class="relative overflow-hidden h-[300px]">
+          <div class="testimonials-container">
+            <div class="testimonial transform transition-all duration-500 ease-out">
+              <div class="bg-gradient-to-r from-primary/5 to-secondary/5 p-6 rounded-xl">
+                <p class="mb-6 text-lg text-gray-700 italic">"God has been faithful in my life through every season. I've seen His hand guiding me through difficult times and blessing me beyond measure."</p>
+                <div class="flex items-center">
+                  <div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
+                    <i class="fas fa-user text-primary"></i>
+                  </div>
+                  <div class="ml-4">
+                    <p class="font-semibold text-gray-900">Sarah Johnson</p>
+                    <p class="text-sm text-gray-500">Church Member</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="testimonial hidden transform transition-all duration-500 ease-out">
+              <div class="bg-gradient-to-r from-primary/5 to-secondary/5 p-6 rounded-xl">
+                <p class="mb-6 text-lg text-gray-700 italic">"I experienced a breakthrough through prayer when I was facing a health challenge. The support from our church family made all the difference."</p>
+                <div class="flex items-center">
+                  <div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
+                    <i class="fas fa-user text-primary"></i>
+                  </div>
+                  <div class="ml-4">
+                    <p class="font-semibold text-gray-900">Michael Smith</p>
+                    <p class="text-sm text-gray-500">Worship Team</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="testimonial hidden transform transition-all duration-500 ease-out">
+              <div class="bg-gradient-to-r from-primary/5 to-secondary/5 p-6 rounded-xl">
+                <p class="mb-6 text-lg text-gray-700 italic">"The community here has truly uplifted me during my studies. I found a spiritual home away from home that keeps me grounded in faith."</p>
+                <div class="flex items-center">
+                  <div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
+                    <i class="fas fa-user text-primary"></i>
+                  </div>
+                  <div class="ml-4">
+                    <p class="font-semibold text-gray-900">Emily Chen</p>
+                    <p class="text-sm text-gray-500">Student</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Enhanced Testimonial Controls -->
+        <div class="mt-8">
+          <div class="flex justify-center space-x-3 mb-4">
+            <button class="testimonial-dot w-3 h-3 rounded-full bg-primary hover:bg-primary/80 active:bg-primary/60 cursor-pointer transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary" data-index="0"></button>
+            <button class="testimonial-dot w-3 h-3 rounded-full bg-primary/30 hover:bg-primary/50 active:bg-primary/60 cursor-pointer transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary" data-index="1"></button>
+            <button class="testimonial-dot w-3 h-3 rounded-full bg-primary/30 hover:bg-primary/50 active:bg-primary/60 cursor-pointer transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary" data-index="2"></button>
+          </div>
+          
+          <div class="flex justify-between items-center">
+            <button id="prevTestimonial" class="group p-3 hover:bg-primary/10 rounded-full transition-colors cursor-pointer">
+              <i class="fas fa-chevron-left text-xl text-primary group-hover:scale-110 transition-transform"></i>
+            </button>
+            
+            <button id="nextTestimonial" class="group p-3 hover:bg-primary/10 rounded-full transition-colors cursor-pointer">
+              <i class="fas fa-chevron-right text-xl text-primary group-hover:scale-110 transition-transform"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Church Announcements Column -->
+      <div class="bg-white p-8 rounded-lg shadow-lg">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Church Announcements</h2>
+          <p class="text-gray-600">Stay updated with the latest church news and updates.</p>
+        </div>
+
+        <div class="space-y-6">
+          <!-- Announcement 1 -->
+          <div class="border-l-4 border-primary pl-4 py-2">
+            <span class="text-sm text-gray-500">March 20, 2024</span>
+            <h3 class="text-lg font-semibold text-[#395886] mb-2">Easter Service Schedule</h3>
+            <p class="text-gray-700">Join us for special Easter services including Good Friday and Easter Sunday celebrations.</p>
+          </div>
+
+          <!-- Announcement 2 -->
+          <div class="border-l-4 border-primary pl-4 py-2">
+            <span class="text-sm text-gray-500">March 18, 2024</span>
+            <h3 class="text-lg font-semibold text-[#395886] mb-2">Children's Ministry Registration</h3>
+            <p class="text-gray-700">Register your children for our upcoming Sunday School term starting in April.</p>
+          </div>
+
+          <!-- Announcement 3 -->
+          <div class="border-l-4 border-primary pl-4 py-2">
+            <span class="text-sm text-gray-500">March 15, 2024</span>
+            <h3 class="text-lg font-semibold text-[#395886] mb-2">Special Guest Speaker</h3>
+            <p class="text-gray-700">Join us for a special service with guest speaker Pastor Johnson this Sunday.</p>
+          </div>
+        </div>
+
+    
+      </div>
     </div>
-    
-    <div id="testimonialCarousel" class="bg-white p-8 rounded-lg shadow-lg max-w-3xl mx-auto">
-      <div class="mb-6 text-center">
-        <i class="fas fa-quote-left text-4xl text-primary opacity-30"></i>
-      </div>
-      
-      <div class="relative overflow-hidden" style="min-height: 150px;">
-        <div class="testimonial text-lg text-center">
-          <p class="mb-4 text-[#395886]">"God has been faithful in my life through every season. I've seen His hand guiding me through difficult times and blessing me beyond measure."</p>
-          <div class="mt-6">
-            <p class="font-medium text-gray-900">- Person 1.</p>
-            <p class="text-sm text-gray-500">Church Member</p>
-          </div>
-        </div>
-        
-        <div class="testimonial text-lg text-center hidden">
-          <p class="mb-4 text-[#395886]">"I experienced a breakthrough through prayer when I was facing a health challenge. The support from our church family made all the difference."</p>
-          <div class="mt-6">
-            <p class="font-medium text-gray-900">- Person 2.</p>
-            <p class="text-sm text-gray-500">Worship Team</p>
-          </div>
-        </div>
-        
-        <div class="testimonial text-lg text-center hidden">
-          <p class="mb-4 text-[#395886]">"The community here has truly uplifted me during my studies. I found a spiritual home away from home that keeps me grounded in faith."</p>
-          <div class="mt-6">
-            <p class="font-medium text-gray-900">- Person 3.</p>
-            <p class="text-sm text-gray-500">Student</p>
-          </div>
-        </div>
-      </div>
-      
-    <!-- Testimonial Controls -->
-    <div class="flex justify-between items-center mt-8">
-        <button id="prevTestimonial" class="text-primary hover:text-secondary transition-colors" aria-label="Previous testimony">
-          <i class="fas fa-chevron-left text-xl"></i>
-        </button>
-        
-        <div class="w-3/4 mx-auto">
-          <div class="progress-bar">
-            <div class="progress-value" style="width: 33%;"></div>
-          </div>
-        </div>
-        
-        <button id="nextTestimonial" class="text-primary hover:text-secondary transition-colors" aria-label="Next testimony">
-          <i class="fas fa-chevron-right text-xl"></i>
-        </button>
-      </div>
-    </div>
-    
-    
   </div>
-   
 </section>
 
 <!-- Forms Section - Two Columns -->
-<section id="connect" class="py-16 container mx-auto px-4" data-aos="fade-up">
+<section id="connect" class="py-8 container mx-auto px-4" data-aos="fade-up">
   <div class="text-center mb-12">
     <h2 class="text-3xl font-bold text-gray-900 mb-4">Connect With Us</h2>
     <p class="text-gray-600 max-w-2xl mx-auto">Whether you need prayer or want to join an event, we're here for you.</p>
@@ -630,7 +700,17 @@
 
     function showTestimonial(index) {
       testimonials.forEach((t, i) => t.classList.toggle('hidden', i !== index));
-      progress.style.width = `${((index + 1) / testimonials.length) * 100}%`;
+      
+      // Update dot indicators
+      document.querySelectorAll('.testimonial-dot').forEach((dot, i) => {
+        if (i === index) {
+          dot.classList.remove('bg-primary/30');
+          dot.classList.add('bg-primary');
+        } else {
+          dot.classList.remove('bg-primary');
+          dot.classList.add('bg-primary/30');
+        }
+      });
     }
 
     function startCarousel() {
@@ -655,6 +735,26 @@
       testimonialIndex = (testimonialIndex + 1) % testimonials.length;
       showTestimonial(testimonialIndex);
       resetCarousel();
+    });
+
+    // Add testimonial dot functionality
+    document.querySelectorAll('.testimonial-dot').forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        testimonialIndex = index;
+        showTestimonial(testimonialIndex);
+        resetCarousel();
+        
+        // Update active dot
+        document.querySelectorAll('.testimonial-dot').forEach((d, i) => {
+          if (i === index) {
+            d.classList.remove('bg-primary/30');
+            d.classList.add('bg-primary');
+          } else {
+            d.classList.remove('bg-primary');
+            d.classList.add('bg-primary/30');
+          }
+        });
+      });
     });
 
     showTestimonial(testimonialIndex);

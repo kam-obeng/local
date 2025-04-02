@@ -25,7 +25,7 @@ File Structure
 	•	give.html – Provides information on giving and donations.
 	•	test.html – A testing page that may be used for service times or live stream previews.
 	•	generic.html – A template page used to display ministry details.
-	•	dfgh.html – An additional file, potentially for testing or supplementary content.
+	•	dfgh.html – An additional file, for testing or supplementary content.
 
 Open index.html in your web browser to view the website. For local development, you might consider using a local server (e.g. the VS Code Live Server extension or a simple Python HTTP server).
 The website utilises several external resources:
