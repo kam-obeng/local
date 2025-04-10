@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Northampton PIWC</title>
+  <title>Northampton PIWC - Ministries</title>
   <link rel="icon" type="image/x-icon" href="pics/logo.JPG">
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
@@ -208,21 +208,21 @@
         <a href="index.html" class="flex items-center space-x-3">
           <img src="pics/logo.JPG" alt="Church Logo" class="h-12 w-12 rounded-full shadow-lg">
           <div>
-            <h1 class="text-2xl md:text-4xl font-bold text-white">Northampton PIWC</h1>
+            <h1 class="text-2xl lg:text-4xl font-bold text-white">Northampton PIWC</h1>
           </div>
         </a>
         
         <div class="flex items-center space-x-6">
-          <nav class="hidden md:flex space-x-6 text-white items-center">
-            <a href="index.html" class="hover:text-accent transition-colors py-2">Home</a>
+          <nav class="hidden lg:flex space-x-4 xl:space-x-6 text-white items-center">
+            <a href="index.html" class="hover:text-accent transition-colors py-2 text-sm xl:text-base">Home</a>
             <div class="relative group" x-data="{ open: false }">
-              <button @click="open = !open" @click.away="open = false" class="hover:text-accent transition-colors py-2 flex items-center">
+              <button @click="open = !open" @click.away="open = false" class="hover:text-accent transition-colors py-2 flex items-center text-sm xl:text-base">
                 About us
-                <svg class="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <svg class="w-3 h-3 xl:w-4 xl:h-4 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a 1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                 </svg>
               </button>
-              <div x-show="open" x-transition class="absolute bg-white text-primary mt-2 rounded-lg shadow-lg min-w-[200px] z-50 py-2">
+              <div x-show="open" x-transition class="absolute bg-white text-primary mt-2 rounded-lg shadow-lg min-w-[180px] xl:min-w-[200px] z-50 py-2">
                 <a href="test.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition">Events</a>
                 <a href="new.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition">New here</a>
                 <a href="heart.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition">Our Heart &amp; Purpose</a>
@@ -230,31 +230,31 @@
               </div>
             </div>
             <div class="relative group" x-data="{ open: false }">
-              <button @click="open = !open" @click.away="open = false" class="hover:text-accent transition-colors py-2 flex items-center">
+              <button @click="open = !open" @click.away="open = false" class="hover:text-accent transition-colors py-2 flex items-center text-sm xl:text-base">
                 Ministries
-                <svg class="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <svg class="w-3 h-3 xl:w-4 xl:h-4 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a 1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                 </svg>
               </button>
-              <div x-show="open" x-transition class="absolute bg-white text-primary mt-2 rounded-lg shadow-lg min-w-[200px] z-50 py-2">
+              <div x-show="open" x-transition class="absolute bg-white text-primary mt-2 rounded-lg shadow-lg min-w-[180px] xl:min-w-[200px] z-50 py-2">
                 <a href="Ministries.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition">Our Ministries & Teams</a>
                 <a href="join.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition">Join a Ministry</a>
               </div>
             </div>
-            <a href="contact.html" class="hover:text-accent transition-colors py-2">Contact</a>
-            <a href="gallery.html" class="hover:text-accent transition-colors py-2">Gallery</a>
-            <a href="give.html" class="bg-white text-primary px-6 py-2 rounded-full font-medium hover:bg-gray-100 transition-all transform hover:scale-105">Give</a>
+            <a href="contact.html" class="hover:text-accent transition-colors py-2 text-sm xl:text-base">Contact</a>
+            <a href="gallery.html" class="hover:text-accent transition-colors py-2 text-sm xl:text-base">Gallery</a>
+            <a href="give.html" class="bg-white text-primary px-4 xl:px-6 py-2 rounded-full font-medium hover:bg-gray-100 transition-all transform hover:scale-105 text-sm xl:text-base">Give</a>
           </nav>
           
-          <!-- Mobile nav toggle button -->
-          <button id="navToggle" class="md:hidden text-white focus:outline-none" aria-label="Toggle navigation">
+          <!-- Mobile/Tablet nav toggle button -->
+          <button id="navToggle" class="lg:hidden text-white focus:outline-none" aria-label="Toggle navigation">
             <i class="fas fa-bars text-2xl"></i>
           </button>
         </div>
       </div>
 
-      <!-- Mobile Menu -->
-      <div id="mobileNav" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out md:hidden mt-4 rounded-lg backdrop-blur-md">
+      <!-- Mobile/Tablet Menu -->
+      <div id="mobileNav" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out lg:hidden mt-4 rounded-lg backdrop-blur-md">
         <div class="p-6 space-y-6 text-white">
           <a href="index.html" class="block hover:text-accent py-3 transition-all transform hover:translate-x-2">
             <i class="fas fa-home mr-3"></i>Home
@@ -269,6 +269,7 @@
               <i class="fas fa-chevron-down group-open:rotate-180 transition-transform duration-300"></i>
             </summary>
             <div class="pl-8 mt-3 space-y-3 border-l-2 border-accent/30">
+              <a href="test.html" class="block hover:text-accent transition-all transform hover:translate-x-2">Events</a>
               <a href="new.html" class="block hover:text-accent transition-all transform hover:translate-x-2">New here</a>
               <a href="heart.html" class="block hover:text-accent transition-all transform hover:translate-x-2">Our Heart & Purpose</a>
               <a href="team.html" class="block hover:text-accent transition-all transform hover:translate-x-2">Meet the Team</a>
