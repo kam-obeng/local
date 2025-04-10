@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Northampton PIWC</title>
+  <title>Northampton PIWC - New here</title>
   <link rel="icon" type="image/x-icon" href="pics/logo.JPG">
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
@@ -43,7 +43,14 @@
               '0%': { transform: 'scale(1)' },
               '100%': { transform: 'scale(1.05)' }
             }
-          }
+          },
+          screens: {
+            'sm': '640px',
+            'md': '768px',
+            'tablet': '1024px',
+            'lg': '1024px',
+            'xl': '1280px',
+          },
         }
       }
     };
@@ -166,6 +173,18 @@
     details summary::-webkit-details-marker {
       display: none;
     }
+
+    /* Tablet navigation optimization */
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .nav-text {
+        font-size: 0.9rem;
+      }
+      
+      .nav-spacing {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+      }
+    }
   </style>
 </head>
 
@@ -184,10 +203,10 @@
         </a>
         
         <div class="flex items-center space-x-6">
-          <nav class="hidden md:flex space-x-6 text-white items-center">
-            <a href="index.html" class="hover:text-accent transition-colors py-2">Home</a>
+          <nav class="hidden tablet:flex space-x-3 md:space-x-6 text-white items-center">
+            <a href="index.html" class="nav-text nav-spacing hover:text-accent transition-colors py-2">Home</a>
             <div class="relative group" x-data="{ open: false }">
-              <button @click="open = !open" @click.away="open = false" class="hover:text-accent transition-colors py-2 flex items-center">
+              <button @click="open = !open" @click.away="open = false" class="nav-text nav-spacing hover:text-accent transition-colors py-2 flex items-center">
                 About us
                 <svg class="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -201,7 +220,7 @@
               </div>
             </div>
             <div class="relative group" x-data="{ open: false }">
-              <button @click="open = !open" @click.away="open = false" class="hover:text-accent transition-colors py-2 flex items-center">
+              <button @click="open = !open" @click.away="open = false" class="nav-text nav-spacing hover:text-accent transition-colors py-2 flex items-center">
                 Ministries
                 <svg class="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -212,20 +231,20 @@
                 <a href="join.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition">Join a Ministry</a>
               </div>
             </div>
-            <a href="contact.html" class="hover:text-accent transition-colors py-2">Contact</a>
-            <a href="gallery.html" class="hover:text-accent transition-colors py-2">Gallery</a>
-            <a href="give.html" class="bg-white text-primary px-6 py-2 rounded-full font-medium hover:bg-gray-100 transition-all transform hover:scale-105">Give</a>
+            <a href="contact.html" class="nav-text nav-spacing hover:text-accent transition-colors py-2">Contact</a>
+            <a href="gallery.html" class="nav-text nav-spacing hover:text-accent transition-colors py-2">Gallery</a>
+            <a href="give.html" class="nav-text bg-white text-primary px-4 md:px-6 py-2 rounded-full font-medium hover:bg-gray-100 transition-all transform hover:scale-105">Give</a>
           </nav>
           
           <!-- Mobile nav toggle button -->
-          <button id="navToggle" class="md:hidden text-white focus:outline-none" aria-label="Toggle navigation">
+          <button id="navToggle" class="tablet:hidden text-white focus:outline-none" aria-label="Toggle navigation">
             <i class="fas fa-bars text-2xl"></i>
           </button>
         </div>
       </div>
 
       <!-- Mobile Menu -->
-      <div id="mobileNav" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out md:hidden mt-4 rounded-lg backdrop-blur-md">
+      <div id="mobileNav" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out tablet:hidden mt-4 rounded-lg backdrop-blur-md">
         <div class="p-6 space-y-6 text-white">
           <a href="index.html" class="block hover:text-accent py-3 transition-all transform hover:translate-x-2">
             <i class="fas fa-home mr-3"></i>Home
@@ -240,6 +259,7 @@
               <i class="fas fa-chevron-down group-open:rotate-180 transition-transform duration-300"></i>
             </summary>
             <div class="pl-8 mt-3 space-y-3 border-l-2 border-accent/30">
+              <a href="test.html" class="block hover:text-accent transition-all transform hover:translate-x-2">Events</a>
               <a href="new.html" class="block hover:text-accent transition-all transform hover:translate-x-2">New here</a>
               <a href="heart.html" class="block hover:text-accent transition-all transform hover:translate-x-2">Our Heart & Purpose</a>
               <a href="team.html" class="block hover:text-accent transition-all transform hover:translate-x-2">Meet the Team</a>

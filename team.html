@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Northampton PIWC</title>
+  <title>Northampton PIWC - Meet the Team</title>
   <link rel="icon" type="image/x-icon" href="pics/logo.JPG">
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
@@ -204,17 +204,17 @@
   
    <!-- Header -->
    <header class="fixed w-full top-0 z-50" id="mainHeader">
-    <nav class="bg-primary px-6 py-4">
+    <nav class="bg-primary px-4 sm:px-6 py-4">
       <div class="container mx-auto flex justify-between items-center">
-        <a href="index.html" class="flex items-center space-x-3">
-          <img src="pics/logo.JPG" alt="Church Logo" class="h-12 w-12 rounded-full shadow-lg">
+        <a href="index.html" class="flex items-center space-x-2 sm:space-x-3">
+          <img src="pics/logo.JPG" alt="Church Logo" class="h-10 w-10 sm:h-12 sm:w-12 rounded-full shadow-lg">
           <div>
-            <h1 class="text-2xl md:text-4xl font-bold text-white">Northampton PIWC</h1>
+            <h1 class="text-xl sm:text-2xl lg:text-4xl font-bold text-white">Northampton PIWC</h1>
           </div>
         </a>
         
-        <div class="flex items-center space-x-6">
-          <nav class="hidden md:flex space-x-6 text-white items-center">
+        <div class="flex items-center space-x-4 sm:space-x-6">
+          <nav class="hidden lg:flex space-x-4 sm:space-x-6 text-white items-center">
             <a href="index.html" class="hover:text-accent transition-colors py-2">Home</a>
             <div class="relative group" x-data="{ open: false }">
               <button @click="open = !open" @click.away="open = false" class="hover:text-accent transition-colors py-2 flex items-center">
@@ -247,15 +247,15 @@
             <a href="give.html" class="bg-white text-primary px-6 py-2 rounded-full font-medium hover:bg-gray-100 transition-all transform hover:scale-105">Give</a>
           </nav>
           
-          <!-- Mobile nav toggle button -->
-          <button id="navToggle" class="md:hidden text-white focus:outline-none" aria-label="Toggle navigation">
-            <i class="fas fa-bars text-2xl"></i>
+          <!-- Mobile/Tablet nav toggle button -->
+          <button id="navToggle" class="lg:hidden text-white focus:outline-none" aria-label="Toggle navigation">
+            <i class="fas fa-bars text-xl sm:text-2xl"></i>
           </button>
         </div>
       </div>
 
-      <!-- Mobile Menu -->
-      <div id="mobileNav" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out md:hidden mt-4 rounded-lg backdrop-blur-md">
+      <!-- Mobile/Tablet Menu -->
+      <div id="mobileNav" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out lg:hidden mt-4 rounded-lg backdrop-blur-md">
         <div class="p-6 space-y-6 text-white">
           <a href="index.html" class="block hover:text-accent py-3 transition-all transform hover:translate-x-2">
             <i class="fas fa-home mr-3"></i>Home
@@ -270,6 +270,7 @@
               <i class="fas fa-chevron-down group-open:rotate-180 transition-transform duration-300"></i>
             </summary>
             <div class="pl-8 mt-3 space-y-3 border-l-2 border-accent/30">
+              <a href="test.html" class="block hover:text-accent transition-all transform hover:translate-x-2">Events</a>
               <a href="new.html" class="block hover:text-accent transition-all transform hover:translate-x-2">New here</a>
               <a href="heart.html" class="block hover:text-accent transition-all transform hover:translate-x-2">Our Heart & Purpose</a>
               <a href="team.html" class="block hover:text-accent transition-all transform hover:translate-x-2">Meet the Team</a>
