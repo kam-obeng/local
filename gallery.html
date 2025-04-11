@@ -228,47 +228,76 @@
   </header>
 
   <main class="flex-grow">
-    <!-- Gallery Section as Swiper Carousel -->
-    <section class="max-w-6xl mx-auto my-10 px-4" data-aos="fade-up">
-      <h2 class="text-3xl font-bold text-primary text-center mb-8">Gallery</h2>
-      <div class="swiper mySwiper rounded-lg shadow-lg overflow-hidden">
-        <div class="swiper-wrapper">
-          <!-- Add your images below -->
-          <!-- Example image -->
-          <div class="swiper-slide">
-            <img src="Gallery/drum.jpeg" alt="Drum used in service" class="gallery-img" loading="lazy">
-          </div>
-          <div class="swiper-slide">
-            <img src="Gallery/drums2.JPG" alt="Close-up of worship drums" class="gallery-img" loading="lazy">
-          </div>
-          <div class="swiper-slide">
-            <img src="Gallery/people.JPG" alt="Congregation during worship" class="gallery-img" loading="lazy">
-          </div>
-          <div class="swiper-slide">
-            <img src="Gallery/piano.JPG" alt="Keyboard used in music ministry" class="gallery-img" loading="lazy">
-          </div>
-          <!-- Add more images here following the same format -->
-        </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-pagination"></div>
+    <!-- Hero Section -->
+    <section class="bg-secondary text-white py-16 mb-12">
+      <div class="container mx-auto px-4 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4  ">Our Gallery</h1>
+        <p class="text-lg text-gray-200 max-w-2xl mx-auto">Capturing moments of worship, fellowship, and community at Northampton PIWC</p>
       </div>
     </section>
 
-    <!-- Image Modal -->
-    <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 hidden p-2">
-      <div class="relative w-full h-full flex flex-col items-center justify-center">
-        <button id="closeModal" class="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full w-12 h-12 flex items-center justify-center text-3xl hover:bg-opacity-70 transition-all z-20">&times;</button>
-        <div class="w-full h-full flex flex-col items-center justify-center">
-          <img id="modalImage" src="" alt="" class="max-h-[80vh] max-w-full object-contain mx-auto">
-          <p id="modalDescription" class="text-white text-sm sm:text-base mt-4 text-center bg-black bg-opacity-70 px-4 py-2 rounded max-w-full sm:max-w-lg absolute bottom-4 left-1/2 transform -translate-x-1/2"></p>
-          <button id="prevImage" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-4xl z-20 hover:text-accent">&#10094;</button>
-          <button id="nextImage" class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-4xl z-20 hover:text-accent">&#10095;</button>
+    <!-- Gallery Filter -->
+    <div class="container mx-auto px-4 mb-8">
+      <div class="flex flex-wrap justify-center gap-4">
+        <button class="filter-btn active px-6 py-2 rounded-full bg-primary text-white hover:bg-secondary transition-colors" data-filter="all">All</button>
+        <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 hover:bg-primary hover:text-white transition-colors" data-filter="worship">Worship</button>
+        <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 hover:bg-primary hover:text-white transition-colors" data-filter="events">Events</button>
+        <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 hover:bg-primary hover:text-white transition-colors" data-filter="community">Community</button>
+      </div>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="container mx-auto px-4 mb-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" data-aos="fade-up">
+        <div class="gallery-item overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow" data-category="worship">
+          <img src="Gallery/drum.jpeg" alt="Drum used in service" class="w-full h-64 object-cover hover:scale-105 transition-transform duration-300">
+        </div>
+        <div class="gallery-item overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow" data-category="worship">
+          <img src="Gallery/drums2.JPG" alt="Close-up of worship drums" class="w-full h-96 object-cover hover:scale-105 transition-transform duration-300">
+        </div>
+        <div class="gallery-item overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow" data-category="community">
+          <img src="Gallery/people.JPG" alt="Congregation during worship" class="w-full h-64 object-cover hover:scale-105 transition-transform duration-300">
+        </div>
+        <div class="gallery-item overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow" data-category="worship">
+          <img src="Gallery/piano.JPG" alt="Keyboard used in music ministry" class="w-full h-80 object-cover hover:scale-105 transition-transform duration-300">
         </div>
       </div>
     </div>
+
+    <!-- Social Media Section -->
+    <section class="bg-gray-100 py-16">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-primary mb-4">Keep Up With Us</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">Follow us on social media to stay updated with our latest events, services, and community activities.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <a href="https://www.instagram.com/northampton.piwc/" class="group">
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow text-center">
+              <i class="fab fa-instagram text-5xl text-pink-500 mb-4 group-hover:scale-110 transition-transform"></i>
+              <h3 class="font-bold text-xl mb-2">Instagram</h3>
+              <p class="text-gray-600">Follow our visual journey</p>
+            </div>
+          </a>
+          <a href="https://www.tiktok.com/@northampton_piwc" class="group">
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow text-center">
+              <i class="fab fa-tiktok text-5xl text-black mb-4 group-hover:scale-110 transition-transform"></i>
+              <h3 class="font-bold text-xl mb-2">TikTok</h3>
+              <p class="text-gray-600">Watch our latest content</p>
+            </div>
+          </a>
+          <a href="https://www.youtube.com/@NorthamptonPIWC" class="group">
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow text-center">
+              <i class="fab fa-youtube text-5xl text-red-600 mb-4 group-hover:scale-110 transition-transform"></i>
+              <h3 class="font-bold text-xl mb-2">YouTube</h3>
+              <p class="text-gray-600">Watch our services</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
   </main>
-  
+
   <!-- Footer -->
   <footer class="bg-gray-900 text-white py-8">
     <div class="container mx-auto px-4">
@@ -485,6 +514,34 @@
         modal.querySelector('#modalImage').src = '';
         modal.querySelector('#modalDescription').textContent = '';
       }
+    });
+
+    // Gallery filtering
+    document.addEventListener('DOMContentLoaded', function() {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const galleryItems = document.querySelectorAll('.gallery-item');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // Remove active class from all buttons
+          filterBtns.forEach(b => b.classList.remove('active', 'bg-primary', 'text-white'));
+          filterBtns.forEach(b => b.classList.add('bg-gray-200'));
+          
+          // Add active class to clicked button
+          btn.classList.add('active', 'bg-primary', 'text-white');
+          btn.classList.remove('bg-gray-200');
+          
+          const filter = btn.dataset.filter;
+          
+          galleryItems.forEach(item => {
+            if (filter === 'all' || item.dataset.category === filter) {
+              item.style.display = 'block';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      });
     });
   </script>
   
