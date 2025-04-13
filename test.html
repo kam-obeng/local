@@ -673,16 +673,30 @@
 
     // Mobile Navigation Toggle
     const navToggle = document.getElementById('navToggle');
+    const navClose = document.getElementById('navClose');
     const mobileNav = document.getElementById('mobileNav');
+
+    // Open nav
     navToggle.addEventListener('click', () => {
-      if (mobileNav.classList.contains('max-h-0')) {
-        mobileNav.classList.remove('max-h-0');
-        mobileNav.classList.add('max-h-[500px]');
-      } else {
-        mobileNav.classList.remove('max-h-[500px]');
-        mobileNav.classList.add('max-h-0');
-      }
+      mobileNav.classList.remove('-translate-x-full');
     });
+
+    // Close nav
+    navClose.addEventListener('click', () => {
+      mobileNav.classList.add('-translate-x-full');
+    });
+
+    // Toggle submenus
+    function toggleSubmenu(id) {
+      const submenu = document.getElementById(id);
+      submenu.classList.toggle('hidden');
+
+      // Optional: flip the chevron icon
+      const icon = submenu.previousElementSibling.querySelector('i.fas.fa-chevron-down');
+      if (icon) {
+        icon.classList.toggle('rotate-180');
+      }
+    }
 
     // Back to Top Button
     const backToTop = document.getElementById('backToTop');
