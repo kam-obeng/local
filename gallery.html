@@ -7,7 +7,7 @@
   <link rel="icon" type="image/x-icon" href="pics/logo.JPG">
   
   <!-- Tailwind CSS, Font Awesome, AOS and Google reCAPTCHA -->
-  <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
   <script src="https://kit.fontawesome.com/aca9f57730.js" crossorigin="anonymous"></script>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
@@ -77,6 +77,9 @@
     .gallery-img:hover {
       transform: scale(1.05);
     }
+    .gallery-item > div {
+      pointer-events: none;
+    }
 
     /* Add new mobile navigation styles */
     #mainHeader {
@@ -144,7 +147,7 @@
         </a>
         <div class="flex items-center space-x-6">
           <nav class="hidden lg:flex space-x-6 text-white items-center">
-            <a href="index.html" class="hover:text-accent transition-colors py-2">Home</a>
+           
             <div class="relative group">
               <button aria-expanded="false" aria-haspopup="true" class="hover:text-accent transition-colors py-2 flex items-center gap-1">
                 About us <i class="fas fa-chevron-down text-xs ml-1"></i>
@@ -181,9 +184,7 @@
       </div>
       <div id="mobileNav" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out lg:hidden mt-4 rounded-lg backdrop-blur-md">
         <div class="p-6 space-y-6 text-white">
-          <a href="index.html" class="block hover:text-accent py-3 transition-all transform hover:translate-x-2">
-            <i class="fas fa-home mr-3"></i>Home
-          </a>
+          
           
           <details class="group">
             <summary class="cursor-pointer hover:text-accent py-3 transition-all flex justify-between items-center">
@@ -243,23 +244,56 @@
         <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 hover:bg-primary hover:text-white transition-colors" data-filter="worship">Worship</button>
         <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 hover:bg-primary hover:text-white transition-colors" data-filter="events">Events</button>
         <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 hover:bg-primary hover:text-white transition-colors" data-filter="community">Community</button>
+        <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 hover:bg-primary hover:text-white transition-colors" data-filter="Event Album ">Event Album</button>
       </div>
     </div>
 
     <!-- Gallery Grid -->
     <div class="container mx-auto px-4 mb-16">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" data-aos="fade-up">
-        <div class="gallery-item overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow" data-category="worship">
-          <img src="Gallery/drum.jpeg" alt="Drum used in service" class="w-full h-64 object-cover hover:scale-105 transition-transform duration-300">
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2" data-aos="fade-up" id="galleryGrid">
+        <div class="gallery-item relative aspect-square group overflow-hidden" data-category="worship">
+          <img src="Gallery/drum.jpeg" alt="Our dedicated drum set that helps lead worship with powerful rhythms" class="w-full h-full object-cover cursor-pointer">
+          <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+            <i class="fas fa-expand text-white text-2xl"></i>
+          </div>
         </div>
-        <div class="gallery-item overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow" data-category="worship">
-          <img src="Gallery/drums2.JPG" alt="Close-up of worship drums" class="w-full h-96 object-cover hover:scale-105 transition-transform duration-300">
+        <div class="gallery-item relative aspect-square group overflow-hidden" data-category="worship">
+          <img src="Gallery/drums2.JPG" alt="Close-up of worship drums" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </div>
-        <div class="gallery-item overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow" data-category="community">
-          <img src="Gallery/people.JPG" alt="Congregation during worship" class="w-full h-64 object-cover hover:scale-105 transition-transform duration-300">
+
+        <div class="gallery-item relative aspect-square group overflow-hidden" data-category="community">
+          <img src="Gallery/people.JPG" alt="Congregation during worship" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </div>
-        <div class="gallery-item overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow" data-category="worship">
-          <img src="Gallery/piano.JPG" alt="Keyboard used in music ministry" class="w-full h-80 object-cover hover:scale-105 transition-transform duration-300">
+
+        <div class="gallery-item relative aspect-square group overflow-hidden" data-category="worship">
+          <img src="Gallery/piano.JPG" alt="Keyboard used in music ministry" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Updated Image Modal -->
+    <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-95 z-50 hidden">
+      <div class="absolute inset-0 flex items-center justify-center">
+        <button id="closeModal" class="absolute top-4 right-4 text-white text-3xl hover:text-gray-300 z-20">
+          <i class="fas fa-times"></i>
+        </button>
+        
+        <button id="prevImage" class="absolute left-4 top-1/2 -translate-y-1/2 text-white text-4xl hover:text-gray-300 z-20">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        
+        <button id="nextImage" class="absolute right-4 top-1/2 -translate-y-1/2 text-white text-4xl hover:text-gray-300 z-20">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+
+        <div class="w-full max-w-5xl mx-auto px-4 flex flex-col items-center">
+          <img id="modalImage" src="" alt="" class="max-h-[80vh] w-auto object-contain">
+          <div class="mt-4 text-white text-center w-full max-w-2xl">
+            <p id="modalDescription" class="text-lg"></p>
+          </div>
         </div>
       </div>
     </div>
@@ -414,36 +448,8 @@
         }
       });
     });
-
-    const images = Array.from(document.querySelectorAll('.swiper-slide img'));
-    let currentImageIndex = 0;
-
-    images.forEach((img, index) => {
-      img.addEventListener('click', () => {
-        const modalImg = document.getElementById('modalImage');
-        modalImg.src = img.src;
-        document.getElementById('modalDescription').textContent = img.alt || "Image from gallery";
-        modal.classList.remove('hidden');
-        currentImageIndex = index;
-      });
-    });
-
-    function showImage(index) {
-      const img = images[index];
-      if (!img) return;
-      document.getElementById('modalImage').src = img.src;
-      document.getElementById('modalDescription').textContent = img.alt || "Image from gallery";
-    }
-
-    document.getElementById('prevImage').addEventListener('click', () => {
-      currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-      showImage(currentImageIndex);
-    });
-
-    document.getElementById('nextImage').addEventListener('click', () => {
-      currentImageIndex = (currentImageIndex + 1) % images.length;
-      showImage(currentImageIndex);
-    });
+    
+    
     
     // Back to Top Button
     const backToTopButton = document.getElementById('backToTop');
@@ -472,52 +478,9 @@
       e.target.reset();
     });
 
-    // Enhanced Image Modal Functionality with Swipe Detection
-    let touchStartY = 0;
-    let touchEndY = 0;
-    const modal = document.getElementById('imageModal');
-    
-    modal.addEventListener('touchstart', e => {
-      touchStartY = e.changedTouches[0].screenY;
-    }, false);
-    
-    modal.addEventListener('touchend', e => {
-      touchEndY = e.changedTouches[0].screenY;
-      handleSwipe();
-    }, false);
-    
-    function handleSwipe() {
-      const swipeDistance = touchStartY - touchEndY;
-      if (swipeDistance > 50) { // Swipe up detected
-        modal.classList.add('hidden');
-      }
-    }
-
-    document.querySelectorAll('.swiper-slide img').forEach(img => {
-      img.addEventListener('click', () => {
-        const modalImg = document.getElementById('modalImage');
-        modalImg.src = img.src;
-        document.getElementById('modalDescription').textContent = img.alt || "Image from gallery";
-        modal.classList.remove('hidden');
-      });
-    });
-
-    document.getElementById('closeModal').addEventListener('click', () => {
-      modal.classList.add('hidden');
-      modal.querySelector('#modalImage').src = '';
-      modal.querySelector('#modalDescription').textContent = '';
-    });
-
-    window.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.classList.add('hidden');
-        modal.querySelector('#modalImage').src = '';
-        modal.querySelector('#modalDescription').textContent = '';
-      }
-    });
 
     // Gallery filtering
-    document.addEventListener('DOMContentLoaded', function() {
+    (function() {
       const filterBtns = document.querySelectorAll('.filter-btn');
       const galleryItems = document.querySelectorAll('.gallery-item');
 
@@ -542,34 +505,91 @@
           });
         });
       });
-    });
+    })();
+
+    (function() {
+      const galleryGrid = document.getElementById('galleryGrid');
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImage');
+      const modalDesc = document.getElementById('modalDescription');
+      const prevBtn = document.getElementById('prevImage');
+      const nextBtn = document.getElementById('nextImage');
+      const closeBtn = document.getElementById('closeModal');
+      modalImg.addEventListener('click', () => { nextBtn.click(); });
+      
+      let currentIndex = 0;
+      const galleryItemContainers = Array.from(document.querySelectorAll('.gallery-item'));
+      
+      function showImage(index) {
+        const container = galleryItemContainers[index];
+        const img = container.querySelector('img');
+        modalImg.src = img.src;
+        modalDesc.textContent = img.alt;
+        currentIndex = index;
+      }
+      
+      function handleKeyboard(e) {
+        if (!modal.classList.contains('hidden')) {
+          if (e.key === 'ArrowLeft') prevBtn.click();
+          if (e.key === 'ArrowRight') nextBtn.click();
+          if (e.key === 'Escape') closeBtn.click();
+        }
+      }
+      
+      galleryItemContainers.forEach((container, index) => {
+        container.addEventListener('click', () => {
+          modal.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+          showImage(index);
+        });
+      });
+      
+      prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + galleryItemContainers.length) % galleryItemContainers.length;
+        showImage(currentIndex);
+      });
+      
+      nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % galleryItemContainers.length;
+        showImage(currentIndex);
+      });
+      
+      closeBtn.addEventListener('click', () => {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+      });
+      
+      document.addEventListener('keydown', handleKeyboard);
+      
+      // Touch swipe support
+      let touchStartX = 0;
+      let touchEndX = 0;
+      
+      modal.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, false);
+      
+      modal.addEventListener('touchend', e => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+      }, false);
+      
+      function handleSwipe() {
+        const swipeDistance = touchStartX - touchEndX;
+        if (Math.abs(swipeDistance) > 50) {
+          if (swipeDistance > 0) {
+            nextBtn.click(); // Swipe left
+          } else {
+            prevBtn.click(); // Swipe right
+          }
+        }
+      }
+    })();
   </script>
   
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  
   <script>
-    const swiper = new Swiper('.mySwiper', {
-      slidesPerView: 1,
-      spaceBetween: 10,
-      loop: true,
-      speed: 1000,
-      autoplay: {
-        delay: 4000,
-        disableOnInteraction: false,
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      breakpoints: {
-        640: { slidesPerView: 1 },
-        768: { slidesPerView: 2 },
-        1024: { slidesPerView: 3 },
-      },
-    });
+  
   // Set current year in footer
   document.getElementById('currentYear').textContent = new Date().getFullYear();
   </script>
