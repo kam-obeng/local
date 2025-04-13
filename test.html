@@ -674,28 +674,17 @@
     // Mobile Navigation Toggle
     const navToggle = document.getElementById('navToggle');
     const mobileNav = document.getElementById('mobileNav');
-    navToggle.addEventListener('click', function () {
-      const icon = this.querySelector('i');
+    navToggle.addEventListener('click', () => {
       if (mobileNav.classList.contains('max-h-0')) {
         mobileNav.classList.remove('max-h-0');
-        mobileNav.classList.add('max-h-[80vh]');
-        icon.classList.remove('fa-bars');
-        icon.classList.add('fa-times');
+        mobileNav.classList.add('max-h-[500px]');
       } else {
-        mobileNav.classList.remove('max-h-[80vh]');
+        mobileNav.classList.remove('max-h-[500px]');
         mobileNav.classList.add('max-h-0');
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
       }
     });
-    
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', function(event) {
-      const isClickInside = mobileNav.contains(event.target) || navToggle.contains(event.target);
-      if (!isClickInside && !mobileNav.classList.contains('max-h-0')) {
-        navToggle.click();
-      }
-    });
+
+    // Back to Top Button
     const backToTop = document.getElementById('backToTop');
     window.addEventListener('scroll', () => {
       if (window.pageYOffset > 300) {
