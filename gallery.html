@@ -227,7 +227,7 @@
     <!-- Gallery Filter -->
     <div class="container mx-auto px-4 mb-8">
       <div class="flex flex-wrap justify-center gap-4">
-        <button class="filter-btn active px-6 py-2 rounded-full bg-primary text-white hover:bg-secondary transition-colors" data-filter="all">All</button>
+        <button class="filter-btn active px-6 py-2 rounded-full bg-primary text-white hover:bg-secondary transition-colors" data-filter="recent">Recent</button>
         <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 hover:bg-primary hover:text-white transition-colors" data-filter="worship">Worship</button>
         <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 hover:bg-primary hover:text-white transition-colors" data-filter="events">Events</button>
         <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 hover:bg-primary hover:text-white transition-colors" data-filter="community">Community</button>
@@ -540,34 +540,55 @@
     (function() {
       const filterBtns = document.querySelectorAll('.filter-btn');
       const galleryItems = document.querySelectorAll('.gallery-item');
+      const RECENT_ITEMS_COUNT = 8; // Show last 8 items for recent filter
 
-      filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          // Remove active class from all buttons
-          filterBtns.forEach(b => b.classList.remove('active', 'bg-primary', 'text-white'));
-          filterBtns.forEach(b => b.classList.add('bg-gray-200'));
-          
-          // Add active class to clicked button
-          btn.classList.add('active', 'bg-primary', 'text-white');
-          btn.classList.remove('bg-gray-200');
-          
-          const filter = btn.dataset.filter;
-          
+      // Track filtered items for modal navigation
+      let filteredGalleryItems = [];
+
+      // Function to handle filter click
+      function handleFilterClick(btn) {
+        filterBtns.forEach(b => b.classList.remove('active', 'bg-primary', 'text-white'));
+        filterBtns.forEach(b => b.classList.add('bg-gray-200'));
+        
+        btn.classList.add('active', 'bg-primary', 'text-white');
+        btn.classList.remove('bg-gray-200');
+        
+        const filter = btn.dataset.filter;
+        filteredGalleryItems = [];
+
+        if (filter === 'recent') {
+          galleryItems.forEach((item, index) => {
+            const isRecent = index >= (galleryItems.length - RECENT_ITEMS_COUNT);
+            item.style.display = isRecent ? 'block' : 'none';
+            if (isRecent) filteredGalleryItems.push(item);
+          });
+        } else {
           galleryItems.forEach(item => {
-            // Special handling for albums
             if (item.dataset.category === 'albums') {
-              item.style.display = (filter === 'albums') ? 'block' : 'none';
+              const show = (filter === 'albums');
+              item.style.display = show ? 'block' : 'none';
+              if (show) filteredGalleryItems.push(item);
             } else {
-              // For non-album items
-              if (filter === 'all' || item.dataset.category === filter) {
-                item.style.display = 'block';
-              } else {
-                item.style.display = 'none';
-              }
+              const show = (item.dataset.category === filter);
+              item.style.display = show ? 'block' : 'none';
+              if (show) filteredGalleryItems.push(item);
             }
           });
-        });
+        }
+      }
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => handleFilterClick(btn));
       });
+
+      // Trigger 'Recent' filter when page loads
+      const recentFilterBtn = document.querySelector('.filter-btn[data-filter="recent"]');
+      if (recentFilterBtn) {
+        handleFilterClick(recentFilterBtn);
+      }
+
+      // Expose filteredGalleryItems for modal script
+      window.getFilteredGalleryItems = () => filteredGalleryItems;
     })();
 
     (function() {
@@ -580,18 +601,24 @@
       const closeBtn = document.getElementById('closeModal');
       const modalBackground = document.getElementById('modalBackground');
       modalImg.addEventListener('click', () => { nextBtn.click(); });
-      
+
       let currentIndex = 0;
-      const galleryItemContainers = Array.from(document.querySelectorAll('.gallery-item'));
-      
+      // Use filtered items for modal navigation
+      function getCurrentGalleryItems() {
+        return (window.getFilteredGalleryItems && window.getFilteredGalleryItems().length)
+          ? window.getFilteredGalleryItems()
+          : Array.from(document.querySelectorAll('.gallery-item')).filter(item => item.style.display !== 'none');
+      }
+
       function showImage(index) {
-        const container = galleryItemContainers[index];
+        const containers = getCurrentGalleryItems();
+        const container = containers[index];
         const img = container.querySelector('img');
         modalImg.src = img.src;
         modalDesc.textContent = img.alt;
         currentIndex = index;
       }
-      
+
       function handleKeyboard(e) {
         if (!modal.classList.contains('hidden')) {
           if (e.key === 'ArrowLeft') prevBtn.click();
@@ -599,45 +626,68 @@
           if (e.key === 'Escape') closeBtn.click();
         }
       }
-      
-      galleryItemContainers.forEach((container, index) => {
-        container.addEventListener('click', () => {
-          modal.classList.remove('hidden');
-          document.body.style.overflow = 'hidden';
-          showImage(index);
+
+      // Attach click handlers only to visible items
+      function attachGalleryItemHandlers() {
+        const containers = Array.from(document.querySelectorAll('.gallery-item'));
+        containers.forEach((container, index) => {
+          container.onclick = null; // Remove previous handler
+          // Only add click handler if not an album (no .album-photos)
+          if (container.style.display !== 'none' && !container.querySelector('.album-photos')) {
+            container.addEventListener('click', function handler() {
+              document.getElementById('albumNav').classList.add('hidden');
+              modal.classList.remove('hidden');
+              document.body.style.overflow = 'hidden';
+              // Find index among filtered items
+              const filtered = getCurrentGalleryItems();
+              const filteredIndex = filtered.indexOf(container);
+              showImage(filteredIndex);
+            }, { once: true });
+          }
         });
+      }
+
+      // Initial attach
+      attachGalleryItemHandlers();
+
+      // Re-attach on filter change
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => setTimeout(attachGalleryItemHandlers, 10));
       });
-      
+
       prevBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + galleryItemContainers.length) % galleryItemContainers.length;
+        const containers = getCurrentGalleryItems();
+        currentIndex = (currentIndex - 1 + containers.length) % containers.length;
         showImage(currentIndex);
       });
-      
+
       nextBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % galleryItemContainers.length;
+        const containers = getCurrentGalleryItems();
+        currentIndex = (currentIndex + 1) % containers.length;
         showImage(currentIndex);
       });
-      
+
       closeBtn.addEventListener('click', () => {
         modal.classList.add('hidden');
         document.body.style.overflow = '';
       });
-      
+
       document.addEventListener('keydown', handleKeyboard);
-      
+
       // Touch swipe support
       let touchStartX = 0;
       let touchEndX = 0;
-      
+
       modal.addEventListener('touchstart', e => {
         touchStartX = e.changedTouches[0].screenX;
       }, false);
-      
+
       modal.addEventListener('touchend', e => {
         touchEndX = e.changedTouches[0].screenX;
         handleSwipe();
       }, false);
-      
+
       function handleSwipe() {
         const swipeDistance = touchStartX - touchEndX;
         if (Math.abs(swipeDistance) > 50) {
@@ -660,28 +710,90 @@
       function openAlbum(albumId) {
         const album = document.getElementById(albumId);
         if (!album) return;
-        
-        const images = album.getElementsByTagName('img');
+
+        const images = Array.from(album.getElementsByTagName('img'));
         const thumbnailContainer = document.getElementById('albumThumbnails');
         thumbnailContainer.innerHTML = '';
-        
+
         // Show album navigation
         document.getElementById('albumNav').classList.remove('hidden');
-        
+
+        // Store album images for navigation
+        let albumImages = images.map(img => ({
+          src: img.src,
+          alt: img.alt
+        }));
+        let albumCurrentIndex = 0;
+
         // Create thumbnails
-        Array.from(images).forEach((img, index) => {
+        albumImages.forEach((img, index) => {
           const thumb = document.createElement('div');
           thumb.className = 'cursor-pointer hover:opacity-75 transition-opacity';
           thumb.innerHTML = `<img src="${img.src}" class="w-full h-20 object-cover" alt="${img.alt}">`;
-          thumb.onclick = () => showImage(index);
+          thumb.onclick = () => {
+            showAlbumImage(index);
+          };
           thumbnailContainer.appendChild(thumb);
         });
-        
+
+        function showAlbumImage(index) {
+          modalImg.src = albumImages[index].src;
+          modalDesc.textContent = albumImages[index].alt;
+          albumCurrentIndex = index;
+        }
+
+        // Override modal navigation for album
+        prevBtn.onclick = function() {
+          albumCurrentIndex = (albumCurrentIndex - 1 + albumImages.length) % albumImages.length;
+          showAlbumImage(albumCurrentIndex);
+        };
+        nextBtn.onclick = function() {
+          albumCurrentIndex = (albumCurrentIndex + 1) % albumImages.length;
+          showAlbumImage(albumCurrentIndex);
+        };
+
         // Show first image
-        showImage(0);
+        showAlbumImage(0);
         modal.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
+
+        // Keyboard navigation for album
+        document.onkeydown = function(e) {
+          if (!modal.classList.contains('hidden')) {
+            if (e.key === 'ArrowLeft') prevBtn.click();
+            if (e.key === 'ArrowRight') nextBtn.click();
+            if (e.key === 'Escape') closeBtn.click();
+          }
+        };
+
+        // Restore navigation when modal closes
+        closeBtn.onclick = function() {
+          modal.classList.add('hidden');
+          document.body.style.overflow = '';
+          // Restore default navigation
+          prevBtn.onclick = defaultPrev;
+          nextBtn.onclick = defaultNext;
+          document.onkeydown = defaultKeydown;
+        };
+        // Prevent modal background click from closing album navigation
+        modalBackground.onclick = function(e) {
+          if (e.target === modalBackground) {
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+            prevBtn.onclick = defaultPrev;
+            nextBtn.onclick = defaultNext;
+            document.onkeydown = defaultKeydown;
+          }
+        };
       }
+
+      // Save default navigation handlers to restore after album closes
+      const defaultPrev = prevBtn.onclick;
+      const defaultNext = nextBtn.onclick;
+      const defaultKeydown = document.onkeydown;
+
+      // Expose openAlbum globally for button onclick
+      window.openAlbum = openAlbum;
 
       // Update existing gallery click handlers to hide album navigation for regular photos
       galleryItemContainers.forEach((container, index) => {
