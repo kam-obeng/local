@@ -199,9 +199,7 @@
 
 
 <body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col pt-20">
-   
-
-   <!-- Header -->
+  <!-- Header -->
   <header class="fixed w-full top-0 z-50" id="mainHeader">
     <nav class="bg-primary px-6 py-4">
       <div class="container mx-auto flex justify-between items-center">
@@ -302,88 +300,209 @@
     </nav>
   </header>
 
-  
+  <!-- Hero Section -->
+  <section class="relative h-[60vh] bg-gradient-to-r from-primary to-secondary overflow-hidden">
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="relative container mx-auto h-full flex items-center justify-center px-6">
+      <div class="text-center" data-aos="fade-up">
+        <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">Our Ministries</h1>
+        <p class="text-xl text-white/90 max-w-2xl mx-auto">
+          Discover the various ways you can serve and grow in your faith journey with us
+        </p>
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 w-full">
+      <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#f9fafb" d="M0,96L48,85.3C96,75,192,53,288,53.3C384,53,480,75,576,80C672,85,768,75,864,69.3C960,64,1056,64,1152,69.3C1248,75,1344,85,1392,90.7L1440,96L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z"></path>
+      </svg>
+    </div>
+  </section>
 
-<!-- Ministries Section -->
-<section id="ministries" class="container mx-auto my-10 p-6 bg-gray-200 rounded shadow">
-  <h2 class="text-3xl font-bold text-primary text-center mb-8">Our Ministries & Teams </h2>
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-    <!-- Bible Study -->
-    <a href="generic.html" class="block bg-white p-6 rounded-2xl shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:bg-gray-100 cursor-pointer" data-aos="fade-up">
-      <img src="https://placehold.co/300x200" alt="Bible Study" class="rounded-lg mb-4 w-full object-cover" />
-      <h3 class="text-xl font-semibold mb-2">Bible Study</h3>
-      <p class="text-gray-700">
-        Deepening our understanding of Scripture through group study and discussion.
-      </p>
-    </a>
-    <!-- Media -->
-    <a href="generic.html" class="block bg-white p-6 rounded-2xl shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:bg-gray-100 cursor-pointer" data-aos="fade-up" data-aos-delay="100">
-      <img src="https://placehold.co/300x200" alt="Media" class="rounded-lg mb-4 w-full object-cover" />
-      <h3 class="text-xl font-semibold mb-2">Media</h3>
-      <p class="text-gray-700">
-        Capturing and broadcasting church services, testimonies, and digital outreach.
-      </p>
-    </a>
-    <!-- Music -->
-    <a href="generic.html" class="block bg-white p-6 rounded-2xl shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:bg-gray-100 cursor-pointer" data-aos="fade-up" data-aos-delay="200">
-      <img src="pics/Sermon.jpeg" alt="Music" class="rounded-lg mb-4 w-full object-cover" />
-      <h3 class="text-xl font-semibold mb-2">Music</h3>
-      <p class="text-gray-700">
-        Our Music Ministry uplifts worship with powerful songs of praise and worship.
-      </p>
-    </a>
-    <!-- PEMEM -->
-    <a href="generic.html" class="block bg-white p-6 rounded-2xl shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:bg-gray-100 cursor-pointer" data-aos="fade-up" data-aos-delay="300">
-      <img src="min pics/mens.jpeg" alt="PEMEM" class="rounded-lg mb-4 w-full object-cover" />
-      <h3 class="text-xl font-semibold mb-2">PEMEM</h3>
-      <p class="text-gray-700">
-        Prayer, Evangelism, and Missionary work to spread the Gospel.
-      </p>
-    </a>
-    <!-- Sunday School -->
-    <a href="generic.html" class="block bg-white p-6 rounded-2xl shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:bg-gray-100 cursor-pointer" data-aos="fade-up" data-aos-delay="400">
-      <img src="min pics/sunday school.JPG" alt="Sunday School" class="rounded-lg mb-4 w-full object-cover" />
-      <h3 class="text-xl font-semibold mb-2">Sunday School</h3>
-      <p class="text-gray-700">
-        Teaching children Biblical values and fostering their spiritual growth.
-      </p>
-    </a>
-    <!-- Tech -->
-    <a href="generic.html" class="block bg-white p-6 rounded-2xl shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:bg-gray-100 cursor-pointer" data-aos="fade-up" data-aos-delay="500">
-      <img src="min pics/tech.jpeg" alt="Tech" class="rounded-lg mb-4 w-full object-cover" />
-      <h3 class="text-xl font-semibold mb-2">Tech</h3>
-      <p class="text-gray-700">
-        Managing church technology, lights, audio-visuals, and digital infrastructure.
-      </p>
-    </a>
-    <!-- Welcoming -->
-    <a href="generic.html" class="block bg-white p-6 rounded-2xl shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:bg-gray-100 cursor-pointer" data-aos="fade-up" data-aos-delay="600">
-      <img src="https://placehold.co/300x200" alt="welcoming" class="rounded-lg mb-4 w-full object-cover" />
-      <h3 class="text-xl font-semibold mb-2">Welcoming</h3>
-      <p class="text-gray-700">
-        Creating a welcoming atmosphere and ensuring smooth church services.
-      </p>
-    </a>
-    <!-- Women's Ministry -->
-    <a href="generic.html" class="block bg-white p-6 rounded-2xl shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:bg-gray-100 cursor-pointer" data-aos="fade-up" data-aos-delay="700">
-      <img src="min pics/womans.jpeg" alt="Women's Ministry" class="rounded-lg mb-4 w-full object-cover" />
-      <h3 class="text-xl font-semibold mb-2">Women's Ministry</h3>
-      <p class="text-gray-700">
-        Empowering women in faith, fellowship, and community service.
-      </p>
-    </a>
-    <!-- Youth Ministry -->
-    <a href="generic.html" class="block bg-white p-6 rounded-2xl shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:bg-gray-100 cursor-pointer" data-aos="fade-up" data-aos-delay="800">
-      <img src="min pics/youth.jpeg" alt="Youth Ministry" class="rounded-lg mb-4 w-full object-cover" />
-      <h3 class="text-xl font-semibold mb-2">Youth Ministry</h3>
-      <p class="text-gray-700">
-        Deepening our understanding of Scripture through group study and discussion.
-      </p>
-    </a>
-  </div>
-</section>
+  <!-- Ministries Grid -->
+  <section class="py-20 px-6 bg-gray-50">
+    <div class="container mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Bible Study -->
+        <div class="group relative" data-aos="fade-up">
+          <div class="relative overflow-hidden rounded-3xl">
+            <img src="https://placehold.co/300x200" alt="Bible Study" 
+                 class="w-full h-[300px] object-cover transform group-hover:scale-110 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-6 group-hover:translate-y-0 transition-transform duration-300">
+              <h3 class="text-2xl font-bold text-white mb-2">Bible Study</h3>
+              <p class="text-white/90 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Deepening our understanding of Scripture through group study and discussion.
+              </p>
+              <a href="generic.html" class="inline-flex items-center text-white">
+                Learn More <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
 
-</section>
+        <!-- Media -->
+        <div class="group relative" data-aos="fade-up" data-aos-delay="100">
+          <div class="relative overflow-hidden rounded-3xl">
+            <img src="https://placehold.co/300x200" alt="Media" 
+                 class="w-full h-[300px] object-cover transform group-hover:scale-110 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-6 group-hover:translate-y-0 transition-transform duration-300">
+              <h3 class="text-2xl font-bold text-white mb-2">Media</h3>
+              <p class="text-white/90 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Capturing and broadcasting church services, testimonies, and digital outreach.
+              </p>
+              <a href="generic.html" class="inline-flex items-center text-white">
+                Learn More <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Music -->
+        <div class="group relative" data-aos="fade-up" data-aos-delay="200">
+          <div class="relative overflow-hidden rounded-3xl">
+            <img src="pics/Sermon.jpeg" alt="Music" 
+                 class="w-full h-[300px] object-cover transform group-hover:scale-110 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-6 group-hover:translate-y-0 transition-transform duration-300">
+              <h3 class="text-2xl font-bold text-white mb-2">Music</h3>
+              <p class="text-white/90 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Our Music Ministry uplifts worship with powerful songs of praise and worship.
+              </p>
+              <a href="generic.html" class="inline-flex items-center text-white">
+                Learn More <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- PEMEM -->
+        <div class="group relative" data-aos="fade-up" data-aos-delay="300">
+          <div class="relative overflow-hidden rounded-3xl">
+            <img src="min pics/mens.jpeg" alt="PEMEM" 
+                 class="w-full h-[300px] object-cover transform group-hover:scale-110 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-6 group-hover:translate-y-0 transition-transform duration-300">
+              <h3 class="text-2xl font-bold text-white mb-2">PEMEM</h3>
+              <p class="text-white/90 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Prayer, Evangelism, and Missionary work to spread the Gospel.
+              </p>
+              <a href="generic.html" class="inline-flex items-center text-white">
+                Learn More <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sunday School -->
+        <div class="group relative" data-aos="fade-up" data-aos-delay="400">
+          <div class="relative overflow-hidden rounded-3xl">
+            <img src="min pics/sunday school.JPG" alt="Sunday School" 
+                 class="w-full h-[300px] object-cover transform group-hover:scale-110 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-6 group-hover:translate-y-0 transition-transform duration-300">
+              <h3 class="text-2xl font-bold text-white mb-2">Sunday School</h3>
+              <p class="text-white/90 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Teaching children Biblical values and fostering their spiritual growth.
+              </p>
+              <a href="generic.html" class="inline-flex items-center text-white">
+                Learn More <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tech -->
+        <div class="group relative" data-aos="fade-up" data-aos-delay="500">
+          <div class="relative overflow-hidden rounded-3xl">
+            <img src="min pics/tech.jpeg" alt="Tech" 
+                 class="w-full h-[300px] object-cover transform group-hover:scale-110 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-6 group-hover:translate-y-0 transition-transform duration-300">
+              <h3 class="text-2xl font-bold text-white mb-2">Tech</h3>
+              <p class="text-white/90 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Managing church technology, lights, audio-visuals, and digital infrastructure.
+              </p>
+              <a href="generic.html" class="inline-flex items-center text-white">
+                Learn More <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Welcoming -->
+        <div class="group relative" data-aos="fade-up" data-aos-delay="600">
+          <div class="relative overflow-hidden rounded-3xl">
+            <img src="https://placehold.co/300x200" alt="welcoming" 
+                 class="w-full h-[300px] object-cover transform group-hover:scale-110 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-6 group-hover:translate-y-0 transition-transform duration-300">
+              <h3 class="text-2xl font-bold text-white mb-2">Welcoming</h3>
+              <p class="text-white/90 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Creating a welcoming atmosphere and ensuring smooth church services.
+              </p>
+              <a href="generic.html" class="inline-flex items-center text-white">
+                Learn More <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Women's Ministry -->
+        <div class="group relative" data-aos="fade-up" data-aos-delay="700">
+          <div class="relative overflow-hidden rounded-3xl">
+            <img src="min pics/womans.jpeg" alt="Women's Ministry" 
+                 class="w-full h-[300px] object-cover transform group-hover:scale-110 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-6 group-hover:translate-y-0 transition-transform duration-300">
+              <h3 class="text-2xl font-bold text-white mb-2">Women's Ministry</h3>
+              <p class="text-white/90 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Empowering women in faith, fellowship, and community service.
+              </p>
+              <a href="generic.html" class="inline-flex items-center text-white">
+                Learn More <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Youth Ministry -->
+        <div class="group relative" data-aos="fade-up" data-aos-delay="800">
+          <div class="relative overflow-hidden rounded-3xl">
+            <img src="min pics/youth.jpeg" alt="Youth Ministry" 
+                 class="w-full h-[300px] object-cover transform group-hover:scale-110 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-6 group-hover:translate-y-0 transition-transform duration-300">
+              <h3 class="text-2xl font-bold text-white mb-2">Youth Ministry</h3>
+              <p class="text-white/90 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Deepening our understanding of Scripture through group study and discussion.
+              </p>
+              <a href="generic.html" class="inline-flex items-center text-white">
+                Learn More <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-20 bg-primary">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6" data-aos="fade-up">
+          Ready to Join a Ministry?
+        </h2>
+        <p class="text-white/90 mb-8" data-aos="fade-up" data-aos-delay="100">
+          Find your place in our church community and make a difference.
+        </p>
+        <a href="join.html" class="inline-block bg-white text-primary px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-colors transform hover:scale-105" data-aos="fade-up" data-aos-delay="200">
+          Get Involved Today
+        </a>
+      </div>
+    </div>
+  </section>
 
   <!-- Contact Section -->
   <section id="contact" class="container mx-auto my-10 p-6 bg-white rounded shadow text-center">
@@ -394,68 +513,68 @@
     <p class="mt-2">Address: Unit H5 Kingsfield Way, Kings Heath Industrial Estate, Northampton NN5 7QS</p>
   </section>
 
-<!-- Footer -->
-<footer class="bg-gray-900 text-white py-8">
-  <div class="container mx-auto px-4">
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 text-center sm:text-left">
-      <div class="w-full">
-        <h3 class="text-lg md:text-xl font-bold mb-4">About Us</h3>
-        <p class="text-gray-400 text-sm">
-          Northampton PIWC is a vibrant community of believers dedicated to spreading God's love.
-        </p>
-      </div>
-      <div class="w-full">
-        <h3 class="text-lg md:text-xl font-bold mb-4">Quick Links</h3>
-        <ul class="space-y-2 text-gray-400 text-sm">
-          <li><a href="Ministries.html" class="hover:text-white transition-colors">Ministries</a></li>
-          <li><a href="test.html" class="hover:text-white transition-colors">Events</a></li>
-          <li><a href="test.html" class="hover:text-white transition-colors">Sermons</a></li>
-        </ul>
-      </div>
-      <div class="w-full">
-        <h3 class="text-lg md:text-xl font-bold mb-4">Connect</h3>
-        <div class="flex space-x-6 justify-center sm:justify-start">
-          <a href="https://www.tiktok.com/@northampton_piwc" class="text-gray-400 hover:text-white transition-colors">
-            <i class="fab fa-tiktok text-xl"></i>
-          </a>
-          <a href="https://www.instagram.com/northampton.piwc/" class="text-gray-400 hover:text-white transition-colors">
-            <i class="fab fa-instagram text-xl"></i>
-          </a>
-          <a href="https://www.youtube.com/@NorthamptonPIWC" class="text-gray-400 hover:text-white transition-colors">
-            <i class="fab fa-youtube text-xl"></i>
-          </a>
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-8">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 text-center sm:text-left">
+        <div class="w-full">
+          <h3 class="text-lg md:text-xl font-bold mb-4">About Us</h3>
+          <p class="text-gray-400 text-sm">
+            Northampton PIWC is a vibrant community of believers dedicated to spreading God's love.
+          </p>
+        </div>
+        <div class="w-full">
+          <h3 class="text-lg md:text-xl font-bold mb-4">Quick Links</h3>
+          <ul class="space-y-2 text-gray-400 text-sm">
+            <li><a href="Ministries.html" class="hover:text-white transition-colors">Ministries</a></li>
+            <li><a href="test.html" class="hover:text-white transition-colors">Events</a></li>
+            <li><a href="test.html" class="hover:text-white transition-colors">Sermons</a></li>
+          </ul>
+        </div>
+        <div class="w-full">
+          <h3 class="text-lg md:text-xl font-bold mb-4">Connect</h3>
+          <div class="flex space-x-6 justify-center sm:justify-start">
+            <a href="https://www.tiktok.com/@northampton_piwc" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fab fa-tiktok text-xl"></i>
+            </a>
+            <a href="https://www.instagram.com/northampton.piwc/" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fab fa-instagram text-xl"></i>
+            </a>
+            <a href="https://www.youtube.com/@NorthamptonPIWC" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fab fa-youtube text-xl"></i>
+            </a>
+          </div>
+        </div>
+        <div class="w-full">
+          <h3 class="text-lg md:text-xl font-bold mb-4">Access & Legal</h3>
+          <ul class="space-y-2 text-gray-400 text-sm">
+            <li><a href="admin.html" class="hover:text-white transition-colors flex items-center justify-center sm:justify-start gap-2 group">
+              <i class="fas fa-lock text-sm group-hover:text-accent"></i> Admin Portal
+            </a></li>
+            <li><a href="Terms-&-Conditions.html" class="hover:text-white transition-colors flex items-center justify-center sm:justify-start gap-2 group">
+              <i class="fas fa-file-contract text-sm group-hover:text-accent"></i> Terms & Conditions
+            </a></li>
+          </ul>
+        </div>
+        <div class="w-full">
+          <h3 class="text-lg md:text-xl font-bold mb-4">Newsletter</h3>
+          <form class="space-y-3 mx-auto max-w-xs" onsubmit="event.preventDefault(); 
+            const email = document.getElementById('user-email').value; 
+            window.location.href = 'mailto:Kobeng909@gmail.com?subject=Subscribe&body=' + encodeURIComponent('Email: ' + email);">
+            <input id="user-email" type="email" placeholder="Your email" required 
+              class="w-full px-3 py-2 rounded-full bg-gray-800 text-white border-none focus:ring-2 focus:ring-primary text-center text-sm">
+            <button type="submit" 
+              class="w-full bg-primary text-white px-4 py-2 rounded-full hover:bg-secondary transition-colors text-sm">
+              Subscribe
+            </button>
+          </form>
         </div>
       </div>
-      <div class="w-full">
-        <h3 class="text-lg md:text-xl font-bold mb-4">Access & Legal</h3>
-        <ul class="space-y-2 text-gray-400 text-sm">
-          <li><a href="admin.html" class="hover:text-white transition-colors flex items-center justify-center sm:justify-start gap-2 group">
-            <i class="fas fa-lock text-sm group-hover:text-accent"></i> Admin Portal
-          </a></li>
-          <li><a href="Terms-&-Conditions.html" class="hover:text-white transition-colors flex items-center justify-center sm:justify-start gap-2 group">
-            <i class="fas fa-file-contract text-sm group-hover:text-accent"></i> Terms & Conditions
-          </a></li>
-        </ul>
-      </div>
-      <div class="w-full">
-        <h3 class="text-lg md:text-xl font-bold mb-4">Newsletter</h3>
-        <form class="space-y-3 mx-auto max-w-xs" onsubmit="event.preventDefault(); 
-          const email = document.getElementById('user-email').value; 
-          window.location.href = 'mailto:Kobeng909@gmail.com?subject=Subscribe&body=' + encodeURIComponent('Email: ' + email);">
-          <input id="user-email" type="email" placeholder="Your email" required 
-            class="w-full px-3 py-2 rounded-full bg-gray-800 text-white border-none focus:ring-2 focus:ring-primary text-center text-sm">
-          <button type="submit" 
-            class="w-full bg-primary text-white px-4 py-2 rounded-full hover:bg-secondary transition-colors text-sm">
-            Subscribe
-          </button>
-        </form>
+      <div class="border-t border-gray-800 mt-8 pt-6 text-center text-gray-400 text-sm">
+        <p>&copy; <span id="currentYear"></span> Northampton PIWC. All Rights Reserved.</p>
       </div>
     </div>
-    <div class="border-t border-gray-800 mt-8 pt-6 text-center text-gray-400 text-sm">
-      <p>&copy; <span id="currentYear"></span> Northampton PIWC. All Rights Reserved.</p>
-    </div>
-  </div>
-</footer>
+  </footer>
 
   <!-- Back to Top Button -->
   <button id="backToTop" class="fixed bottom-8 right-8 bg-primary text-white p-4 rounded-full shadow-lg hover:bg-secondary transition-colors hidden transform hover:scale-110" aria-label="Back to Top">

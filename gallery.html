@@ -238,31 +238,41 @@
 
     <!-- Gallery Filter -->
     <div class="container mx-auto px-4 mb-8">
-      <div class="flex flex-wrap justify-center gap-4">
-        <button class="filter-btn active px-6 py-2 rounded-full bg-primary text-white hover:bg-secondary transition-colors" data-filter="recent">Recent</button>
-        <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 hover:bg-primary hover:text-white transition-colors" data-filter="worship">Worship</button>
-        <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 hover:bg-primary hover:text-white transition-colors" data-filter="events">Events</button>
-        <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 hover:bg-primary hover:text-white transition-colors" data-filter="community">Community</button>
-        <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 hover:bg-primary hover:text-white transition-colors" data-filter="albums">Albums</button>
-        
-        <!-- New View All Photos button -->
-        <button onclick="openAllPhotos()" class="px-8 py-3 rounded-full bg-secondary text-white hover:bg-primary transition-colors shadow-lg transform hover:scale-105 flex items-center gap-2">
-          <i class="fas fa-images"></i>
-           Photos archive
+      <div class="flex flex-wrap justify-center gap-4 p-4 bg-white rounded-2xl shadow-lg">
+        <button class="filter-btn active px-8 py-3 rounded-full bg-gradient-to-r from-primary to-secondary text-white hover:shadow-xl transform hover:-translate-y-0.5 transition-all" data-filter="recent">
+          <i class="fas fa-clock mr-2"></i>Recent
+        </button>
+        <button class="filter-btn px-8 py-3 rounded-full bg-gray-100 hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:text-white transition-all duration-300" data-filter="worship">
+          <i class="fas fa-music mr-2"></i>Worship
+        </button>
+        <button class="filter-btn px-8 py-3 rounded-full bg-gray-100 hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:text-white transition-all duration-300" data-filter="events">
+          <i class="fas fa-calendar mr-2"></i>Events
+        </button>
+        <button class="filter-btn px-8 py-3 rounded-full bg-gray-100 hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:text-white transition-all duration-300" data-filter="community">
+          <i class="fas fa-users mr-2"></i>Community
+        </button>
+        <button class="filter-btn px-8 py-3 rounded-full bg-gray-100 hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:text-white transition-all duration-300" data-filter="albums">
+          <i class="fas fa-images mr-2"></i>Albums
+        </button>
+        <button onclick="openAllPhotos()" class="px-8 py-3 rounded-full bg-gradient-to-r from-secondary to-accent text-white hover:shadow-xl transform hover:-translate-y-0.5 transition-all flex items-center gap-2">
+          <i class="fas fa-th-large"></i>
+          View All
         </button>
       </div>
     </div>
 
     <!-- Gallery Grid -->
     <div class="container mx-auto px-4 mb-16">
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2" data-aos="fade-up" id="galleryGrid">
+      <div class="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4" data-aos="fade-up" id="galleryGrid">
         <!-- Album Container -->
-        <div class="gallery-item relative aspect-square group overflow-hidden bg-gradient-to-t from-black/70 to-transparent" data-category="albums">
-          <img src="Gallery/album/sing 2 .jpeg" alt="prefoming prayer on stage during church event" class="w-full h-full object-cover">
-          <div class="absolute inset-0 flex flex-col items-center justify-center p-4 text-center">
-            <h3 class="text-white text-lg font-bold mb-2 album-title">The Call</h3>
-            <p class="text-white text-sm mb-4 album-text">4 photos</p>
-            <button class="px-4 py-2 bg-white text-primary rounded-full text-sm hover:bg-primary hover:text-white transition-colors shadow-lg transform hover:scale-105 album-text" onclick="openAlbum('The call')">View Album</button>
+        <div class="gallery-item break-inside-avoid mb-4 relative group overflow-hidden rounded-2xl shadow-lg" data-category="albums">
+          <img src="Gallery/album/sing 2 .jpeg" alt="prefoming prayer on stage during church event" class="w-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/90 transition-all duration-300">
+            <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-2 group-hover:translate-y-0 transition-transform">
+              <h3 class="text-white text-xl font-bold mb-2 album-title">The Call</h3>
+              <p class="text-gray-200 mb-4 album-text opacity-0 group-hover:opacity-100 transition-opacity duration-300">4 photos</p>
+              <button class="px-6 py-2 bg-white/90 text-primary rounded-full text-sm hover:bg-primary hover:text-white transition-colors shadow-lg transform hover:scale-105 album-text backdrop-blur-sm" onclick="openAlbum('The call')">View Album</button>
+            </div>
           </div>
           <div class="hidden album-photos" id="The call">
             <img src="Gallery/album/sing1.jpeg" alt="Solo singer with microphone at church event">
@@ -272,44 +282,43 @@
           </div>
         </div>
 
-        <div class="gallery-item relative aspect-square group overflow-hidden" data-category="worship">
-          <img src="Gallery/drum.jpeg" alt="Our dedicated drum set that helps lead worship with powerful rhythms" class="w-full h-full object-cover cursor-pointer">
-          <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-          </div>
+        <div class="gallery-item break-inside-avoid mb-4 relative group overflow-hidden rounded-2xl shadow-lg" data-category="worship">
+          <img src="Gallery/drum.jpeg" alt="Our dedicated drum set that helps lead worship with powerful rhythms" class="w-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/90 transition-all duration-300"></div>
         </div>
-        <div class="gallery-item relative aspect-square group overflow-hidden" data-category="worship">
-          <img src="Gallery/drums2.JPG" alt="Close-up of worship drums" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        </div>
-
-        <div class="gallery-item relative aspect-square group overflow-hidden" data-category="community">
-          <img src="Gallery/people.JPG" alt="Congregation during worship" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="gallery-item break-inside-avoid mb-4 relative group overflow-hidden rounded-2xl shadow-lg" data-category="worship">
+          <img src="Gallery/drums2.JPG" alt="Close-up of worship drums" class="w-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/90 transition-all duration-300"></div>
         </div>
 
-        <div class="gallery-item relative aspect-square group overflow-hidden" data-category="events">
-          <img src="Gallery/album/sing 2 .jpeg" alt=" prefoming prayer on stage during church event" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        </div>
-        
-        <div class="gallery-item relative aspect-square group overflow-hidden" data-category="events">
-          <img src="Gallery/album/sing1.jpeg" alt="Solo singer with microphone at church event" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        </div>
-        
-        <div class="gallery-item relative aspect-square group overflow-hidden" data-category="events">
-          <img src="Gallery/album/Worship man.jpeg" alt="Man leading worship with microphone in church" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        </div>
-        
-        <div class="gallery-item relative aspect-square group overflow-hidden" data-category="events">
-          <img src="Gallery/album/worship Woman.jpeg" alt="Woman singing in worship during church event" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="gallery-item break-inside-avoid mb-4 relative group overflow-hidden rounded-2xl shadow-lg" data-category="community">
+          <img src="Gallery/people.JPG" alt="Congregation during worship" class="w-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/90 transition-all duration-300"></div>
         </div>
 
-        <div class="gallery-item relative aspect-square group overflow-hidden" data-category="worship">
-          <img src="Gallery/piano.JPG" alt="Keyboard used in music ministry" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="gallery-item break-inside-avoid mb-4 relative group overflow-hidden rounded-2xl shadow-lg" data-category="events">
+          <img src="Gallery/album/sing 2 .jpeg" alt=" prefoming prayer on stage during church event" class="w-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/90 transition-all duration-300"></div>
+        </div>
+        
+        <div class="gallery-item break-inside-avoid mb-4 relative group overflow-hidden rounded-2xl shadow-lg" data-category="events">
+          <img src="Gallery/album/sing1.jpeg" alt="Solo singer with microphone at church event" class="w-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/90 transition-all duration-300"></div>
+        </div>
+        
+        <div class="gallery-item break-inside-avoid mb-4 relative group overflow-hidden rounded-2xl shadow-lg" data-category="events">
+          <img src="Gallery/album/Worship man.jpeg" alt="Man leading worship with microphone in church" class="w-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/90 transition-all duration-300"></div>
+        </div>
+        
+        <div class="gallery-item break-inside-avoid mb-4 relative group overflow-hidden rounded-2xl shadow-lg" data-category="events">
+          <img src="Gallery/album/worship Woman.jpeg" alt="Woman singing in worship during church event" class="w-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/90 transition-all duration-300"></div>
+        </div>
+
+        <div class="gallery-item break-inside-avoid mb-4 relative group overflow-hidden rounded-2xl shadow-lg" data-category="worship">
+          <img src="Gallery/piano.JPG" alt="Keyboard used in music ministry" class="w-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/90 transition-all duration-300"></div>
         </div>
 
        
@@ -317,55 +326,46 @@
       </div>
     </div>
 
-    <!-- Updated Responsive Image Modal -->
-    <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-95 z-50 hidden">
-      <div id="modalBackground" class="absolute inset-0 flex items-center justify-center p-2 sm:p-4 md:p-8">
-        <button id="closeModal" class="absolute top-2 right-2 sm:top-4 sm:right-4 text-white text-2xl sm:text-3xl hover:text-gray-300 z-20">
+    <!-- Modernized Image Modal -->
+    <div id="imageModal" class="fixed inset-0 bg-black/95 backdrop-blur-lg z-50 hidden">
+      <div id="modalBackground" class="absolute inset-0 flex items-center justify-center p-4">
+        <button id="closeModal" class="absolute top-4 right-4 text-white text-3xl hover:text-gray-300 z-20 w-12 h-12 flex items-center justify-center rounded-full bg-black/30 backdrop-blur-sm hover:bg-black/50 transition-all">
           <i class="fas fa-times"></i>
         </button>
         
-        <div class="w-full max-w-6xl bg-white rounded-lg overflow-hidden flex flex-col md:flex-row max-h-[95vh] md:max-h-[85vh]">
+        <div class="w-full max-w-7xl bg-white/5 backdrop-blur-xl rounded-3xl overflow-hidden flex flex-col md:flex-row">
           <!-- Image Section -->
-          <div class="w-full md:w-2/3 bg-white relative flex-shrink-0">
-            <button id="prevImage" class="absolute left-1 sm:left-2 top-1/2 -translate-y-1/2 text-black text-2xl sm:text-4xl hover:text-gray-600 z-20 bg-white bg-opacity-75 rounded-full p-1 sm:p-2 shadow-lg">
+          <div class="w-full md:w-3/4 relative flex-shrink-0 bg-black/30">
+            <button id="prevImage" class="absolute left-4 top-1/2 -translate-y-1/2 text-white text-3xl z-20 w-12 h-12 flex items-center justify-center rounded-full bg-black/30 backdrop-blur-sm hover:bg-black/50 transition-all">
               <i class="fas fa-chevron-left"></i>
             </button>
             
-            <button id="nextImage" class="absolute right-1 sm:right-2 top-1/2 -translate-y-1/2 text-black text-2xl sm:text-4xl hover:text-gray-600 z-20 bg-white bg-opacity-75 rounded-full p-1 sm:p-2 shadow-lg">
+            <button id="nextImage" class="absolute right-4 top-1/2 -translate-y-1/2 text-white text-3xl z-20 w-12 h-12 flex items-center justify-center rounded-full bg-black/30 backdrop-blur-sm hover:bg-black/50 transition-all">
               <i class="fas fa-chevron-right"></i>
             </button>
 
-            <img id="modalImage" src="" alt="" class="w-full h-[40vh] md:h-[85vh] object-contain">
+            <img id="modalImage" src="" alt="" class="w-full h-[40vh] md:h-[85vh] object-contain transform transition-transform duration-300">
           </div>
 
           <!-- Details Section -->
-          <div class="w-full md:w-1/3 bg-white p-4 sm:p-6 flex flex-col max-h-[55vh] md:h-[85vh] overflow-y-auto">
-            <!-- Header -->
-            <div class="flex items-center space-x-4 pb-3 sm:pb-4 border-b">
-              <img src="pics/logo.JPG" alt="Church Logo" class="h-8 w-8 sm:h-10 sm:w-10 rounded-full">
+          <div class="w-full md:w-1/4 p-6 flex flex-col max-h-[55vh] md:h-[85vh] overflow-y-auto backdrop-blur-md bg-white/5">
+            <div class="flex items-center space-x-4 pb-4 border-b border-white/10">
+              <img src="pics/logo.JPG" alt="Church Logo" class="h-12 w-12 rounded-full ring-2 ring-white/20">
               <div>
-                <h3 class="font-semibold text-gray-900 text-sm sm:text-base">Northampton PIWC</h3>
-                <p class="text-xs sm:text-sm text-gray-500">Gallery</p>
+                <h3 class="font-semibold text-white text-lg">Northampton PIWC</h3>
+                <p class="text-gray-400">Gallery</p>
               </div>
             </div>
 
-            <!-- Caption -->
-            <div class="py-3 sm:py-4 flex-grow">
-              <p id="modalDescription" class="text-gray-900 text-sm sm:text-lg"></p>
+            <div class="py-6 flex-grow">
+              <p id="modalDescription" class="text-white text-lg leading-relaxed"></p>
             </div>
 
-            <!-- Album Navigation (shows only for albums) -->
-            <div id="albumNav" class="hidden mt-4 border-t pt-4">
-              <h4 class="font-semibold mb-2">Album Photos</h4>
-              <div class="grid grid-cols-3 gap-2" id="albumThumbnails">
+            <!-- Album Navigation -->
+            <div id="albumNav" class="hidden mt-4 border-t border-white/10 pt-4">
+              <h4 class="font-semibold text-white mb-4">Album Photos</h4>
+              <div class="grid grid-cols-3 gap-3" id="albumThumbnails">
                 <!-- Thumbnails will be inserted here -->
-              </div>
-            </div>
-
-            <!-- Footer -->
-            <div class="pt-3 sm:pt-4 border-t">
-              <div class="text-gray-500 text-xs sm:text-sm">
-                Northampton PIWC Gallery
               </div>
             </div>
           </div>

@@ -179,6 +179,63 @@
     details summary::-webkit-details-marker {
       display: none;
     }
+
+    /* Modern Card Styles */
+    .modern-card {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .modern-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(57, 88, 134, 0.15);
+    }
+
+    .icon-box {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #395886, #72b5c1);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      color: white;
+      transform: rotate(-10deg);
+      transition: transform 0.3s ease;
+    }
+
+    .modern-card:hover .icon-box {
+      transform: rotate(0deg);
+    }
+
+    .gradient-border {
+      position: relative;
+      background: linear-gradient(white, white) padding-box,
+                  linear-gradient(135deg, #395886, #72b5c1) border-box;
+      border: 2px solid transparent;
+      transition: transform 0.3s ease;
+    }
+
+    .list-item {
+      position: relative;
+      padding-left: 1.5em;
+      margin-bottom: 0.75em;
+      transition: transform 0.2s ease;
+    }
+
+    .list-item:hover {
+      transform: translateX(5px);
+    }
+
+    .list-item::before {
+      content: '⬧';
+      position: absolute;
+      left: 0;
+      color: #395886;
+    }
   </style>
 </head>
 
@@ -307,69 +364,100 @@
     });
   </script>
 
-  <!-- Sections in Grid Layout -->
-  <div class="container mx-auto px-4 py-8 mt-20"> <!-- added mt-20 to push content below the fixed nav -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- About Us Card -->
-      <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow">
-        <h2 class="text-3xl font-bold text-primary text-center">About Us</h2>
-        <p class="mt-4 text-gray-700 text-center">
-          We are a community of believers dedicated to worship, service and spiritual growth. Join us as we make a difference in our community and beyond.
-        </p>
+<!-- Replace the grid section -->
+<div class="container mx-auto px-4 py-12 mt-24">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <!-- About Us Card -->
+    <div class="modern-card rounded-2xl p-8" data-aos="fade-up">
+      <div class="icon-box">
+        <i class="fas fa-users text-2xl"></i>
       </div>
+      <h2 class="text-3xl font-bold text-primary text-center mb-4">About Us</h2>
+      <p class="mt-4 text-gray-700 text-center leading-relaxed">
+        We are a community of believers dedicated to worship, service and spiritual growth. Join us as we make a difference in our community and beyond.
+      </p>
+    </div>
 
-      <!-- Mission Card -->
-      <div class="bg-gray-200 rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow">
-        <h2 class="text-3xl font-bold text-primary">Our Mission</h2>
-        <p class="mt-2 text-gray-700">At Northampton PIWC, our mission is to:</p>
-        <ul class="mt-4 text-gray-700 list-disc list-inside">
-          <li>Preach the Word of God and bring people to Christ.</li>
-          <li>Create an atmosphere for passionate worship and prayer.</li>
-          <li>Equip believers with biblical teachings.</li>
-          <li>Foster a strong community and support system.</li>
-          <li>Engage in evangelism and outreach programmes.</li>
-        </ul>
+    <!-- Mission Card -->
+    <div class="modern-card gradient-border rounded-2xl p-8" data-aos="fade-up" data-aos-delay="100">
+      <div class="icon-box">
+        <i class="fas fa-bullseye text-2xl"></i>
       </div>
+      <h2 class="text-3xl font-bold text-primary mb-4">Our Mission</h2>
+      <ul class="mt-6 space-y-3">
+        <li class="list-item">Preach the Word of God and bring people to Christ.</li>
+        <li class="list-item">Create an atmosphere for passionate worship and prayer.</li>
+        <li class="list-item">Equip believers with biblical teachings.</li>
+        <li class="list-item">Foster a strong community and support system.</li>
+        <li class="list-item">Engage in evangelism and outreach programmes.</li>
+      </ul>
+    </div>
 
-      <!-- Vision Card -->
-      <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow">
-        <h2 class="text-3xl font-bold text-primary">Our Vision</h2>
-        <p class="mt-2 text-gray-700">We envision a church where people grow in faith, impact society, and live Christ-centred lives.</p>
+    <!-- Vision Card -->
+    <div class="modern-card rounded-2xl p-8" data-aos="fade-up" data-aos-delay="200">
+      <div class="icon-box">
+        <i class="fas fa-eye text-2xl"></i>
       </div>
+      <h2 class="text-3xl font-bold text-primary text-center mb-4">Our Vision</h2>
+      <p class="mt-4 text-gray-700 text-center leading-relaxed">
+        We envision a church where people grow in faith, impact society, and live Christ-centred lives.
+      </p>
+    </div>
 
-      <!-- Beliefs Card -->
-      <div class="bg-gray-200 rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow">
-        <h2 class="text-3xl font-bold text-primary">What We Believe</h2>
-        <ul class="mt-4 text-gray-700 list-disc list-inside">
-          <li>The Bible is the inspired Word of God.</li>
-          <li>Jesus Christ is the foundation of salvation.</li>
-          <li>The baptism of the Holy Spirit and the gifts of the Spirit empower us.</li>
-          <li>Holiness, righteousness, and love are central Christian virtues.</li>
-          <li>We believe in the second coming of Christ and eternal life for believers.</li>
-        </ul>
+    <!-- Beliefs Card -->
+    <div class="modern-card gradient-border rounded-2xl p-8" data-aos="fade-up" data-aos-delay="300">
+      <div class="icon-box">
+        <i class="fas fa-book text-2xl"></i>
       </div>
+      <h2 class="text-3xl font-bold text-primary mb-4">What We Believe</h2>
+      <ul class="mt-6 space-y-3">
+        <li class="list-item">The Bible is the inspired Word of God.</li>
+        <li class="list-item">Jesus Christ is the foundation of salvation.</li>
+        <li class="list-item">The baptism of the Holy Spirit and the gifts of the Spirit empower us.</li>
+        <li class="list-item">Holiness, righteousness, and love are central Christian virtues.</li>
+        <li class="list-item">We believe in the second coming of Christ and eternal life for believers.</li>
+      </ul>
+    </div>
 
-      <!-- Worship Services Card -->
-      <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow md:col-span-2 lg:col-span-2">
-        <h2 class="text-3xl font-bold text-primary">Our Worship Services</h2>
-        <ul class="mt-4 text-gray-700 list-disc list-inside">
-          <li><strong>Sunday Celebration Service:</strong> Uplifting worship, teaching, and fellowship.</li>
-          <li><strong>Midweek Bible Studies &amp; Prayer:</strong> In-depth study and spiritual empowerment.</li>
-          <li><strong>Youth &amp; Young Adults Ministry:</strong> Faith, mentorship, and personal development.</li>
-          <li><strong>Morning Devotion:</strong> reading a short passage from the Bible, praying for guidance and strength for the day, and reflecting on God's presence and blessings.</li>
-        </ul>
+    <!-- Worship Services Card -->
+    <div class="modern-card rounded-2xl p-8 md:col-span-2 lg:col-span-2" data-aos="fade-up" data-aos-delay="400">
+      <div class="icon-box">
+        <i class="fas fa-church text-2xl"></i>
       </div>
+      <h2 class="text-3xl font-bold text-primary text-center mb-4">Our Worship Services</h2>
+      <ul class="mt-6 space-y-3">
+        <li class="list-item"><strong>Sunday Celebration Service:</strong> Uplifting worship, teaching, and fellowship.</li>
+        <li class="list-item"><strong>Midweek Bible Studies &amp; Prayer:</strong> In-depth study and spiritual empowerment.</li>
+        <li class="list-item"><strong>Youth &amp; Young Adults Ministry:</strong> Faith, mentorship, and personal development.</li>
+        <li class="list-item"><strong>Morning Devotion:</strong> reading a short passage from the Bible, praying for guidance and strength for the day, and reflecting on God's presence and blessings.</li>
+      </ul>
+    </div>
 
-      <!-- Contact Section -->
-      <div class="bg-gray-200 rounded-xl shadow-lg p-8 text-center md:col-span-3 lg:col-span-3">
-        <h2 class="text-2xl font-bold text-primary">Contact Us</h2>
-        <p>Email: <a href="mailto:info@northamptonpiwc.com" class="text-primary font-semibold hover:underline">info@northamptonpiwc.com</a></p>
-        <p>Address: Unit H5 Kingsfield Way, Kings Heath Industrial Estate, Northampton NN5 7QS</p>
+    <!-- Contact Section -->
+    <div class="modern-card rounded-2xl p-8 text-center md:col-span-3 lg:col-span-3" data-aos="fade-up" data-aos-delay="500">
+      <div class="icon-box">
+        <i class="fas fa-envelope text-2xl"></i>
       </div>
+      <h2 class="text-3xl font-bold text-primary text-center mb-4">Contact Us</h2>
+      <p class="mt-4 text-gray-700 text-center leading-relaxed">
+        Email: <a href="mailto:info@northamptonpiwc.com" class="text-primary font-semibold hover:underline">info@northamptonpiwc.com</a>
+      </p>
+      <p class="mt-4 text-gray-700 text-center leading-relaxed">
+        Address: Unit H5 Kingsfield Way, Kings Heath Industrial Estate, Northampton NN5 7QS
+      </p>
     </div>
   </div>
+</div>
 
-  
+<script>
+  // Initialize AOS
+  AOS.init({
+    duration: 800,
+    once: true,
+    offset: 100
+  });
+</script>
+
   
 
 <script>

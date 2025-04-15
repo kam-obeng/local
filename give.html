@@ -309,44 +309,122 @@
     </nav>
   </header>
   
-  <!-- Hero Section with Background Carousel -->
-  
-  
-  <!-- About Section -->
-  <section class="container mx-auto my-4 p-6 bg-white rounded shadow" data-aos="fade-up">
-    <h2 class="text-2xl font-bold text-primary text-center">About Us</h2>
-    <p class="mt-4 text-gray-700 text-center">
-      We are a community of believers dedicated to worship, service, and spiritual growth. Join us as we make a difference.
-    </p>
-  </section>
-  
-  <!-- Donation Section -->
-  <section class="container mx-auto my-4 p-6 bg-gray-200 rounded shadow text-center" data-aos="fade-up">
-    <h2 class="text-2xl font-bold text-primary">Make a Donation</h2>
-    <p class="mt-4 text-gray-700">
-      Your contributions help us support those in need, run our church activities, and bring hope to our community.
-    </p>
-    <h3 class="mt-4 font-semibold">Ways to Give:</h3>
-    <ul class="mt-2 text-gray-700 list-disc list-inside">
-      <li>Online Banking – Secure donations or Bank Transfer</li>
-      <li>In Person – Give by cash at our church</li>
-      <li>Direct Link – Use the link below to give now</li>
-    </ul>
-    <a href="https://revolut.me/kamron8i3u" target="_blank" rel="noopener noreferrer" class="mt-6 inline-block bg-primary text-white px-6 py-2 rounded shadow hover:bg-accent transition-colors">
-      Donate Now
+  <!-- Hero Section -->
+<section class="relative min-h-[60vh] flex items-center justify-center bg-gradient-to-r from-primary/90 to-secondary/90 overflow-hidden">
+  <div class="absolute inset-0 z-0">
+    <div class="absolute inset-0 bg-black/50"></div>
+    <img src="pics/giving-bg.jpg" alt="Giving Background" class="w-full h-full object-cover animate-zoom-in">
+  </div>
+  <div class="container mx-auto px-6 relative z-10 text-center">
+    <h1 class="text-4xl md:text-6xl font-bold text-white mb-6" data-aos="fade-down">Transform Lives Through Giving</h1>
+    <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto" data-aos="fade-up">Your generosity powers our mission to spread hope, love, and faith throughout our community.</p>
+    <a href="#giving-options" class="inline-flex items-center gap-2 bg-white text-primary px-8 py-4 rounded-full font-semibold hover:bg-accent hover:text-white transition-all transform hover:scale-105">
+      Give Now <i class="fas fa-heart"></i>
     </a>
-  </section>
-  
-  <!-- Contact Section -->
-  <section class="container mx-auto my-4 p-6 bg-white rounded shadow text-center" data-aos="fade-up">
-    <h2 class="text-xl font-bold text-primary">Contact Us</h2>
-    <p>
-      Email: <a href="mailto:info@northamptonpiwc.com" class="text-primary font-semibold hover:underline">info@northamptonpiwc.com</a>
-    </p>
-    <p>
-      Address: Unit H5 Kingsfield Way, Kings Heath Industrial Estate, Northampton NN5 7QS
-    </p>
-  </section>
+  </div>
+</section>
+
+<!-- Giving Options Grid -->
+<section id="giving-options" class="py-16 bg-gray-50">
+  <div class="container mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Online Giving -->
+      <div class="bg-white rounded-2xl shadow-lg p-8 transform hover:-translate-y-2 transition-all" data-aos="fade-up" data-aos-delay="100">
+        <div class="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+          <i class="fas fa-globe text-2xl text-primary"></i>
+        </div>
+        <h3 class="text-xl font-bold text-gray-800 mb-4">Online Giving</h3>
+        <p class="text-gray-600 mb-6">Make a secure donation through our trusted online platform.</p>
+        <a href="https://revolut.me/kamron8i3u" target="_blank" class="inline-flex items-center text-primary hover:text-secondary">
+          Give Online <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+      </div>
+
+      <!-- Bank Transfer -->
+      <div class="bg-white rounded-2xl shadow-lg p-8 transform hover:-translate-y-2 transition-all" data-aos="fade-up" data-aos-delay="200">
+        <div class="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+          <i class="fas fa-university text-2xl text-primary"></i>
+        </div>
+        <h3 class="text-xl font-bold text-gray-800 mb-4">Bank Transfer</h3>
+        <p class="text-gray-600 mb-6">Transfer directly to our church account for regular giving.</p>
+        <button onclick="showBankDetails()" class="text-primary hover:text-secondary inline-flex items-center">
+          View Details <i class="fas fa-arrow-right ml-2"></i>
+        </button>
+      </div>
+
+      <!-- In-Person -->
+      <div class="bg-white rounded-2xl shadow-lg p-8 transform hover:-translate-y-2 transition-all" data-aos="fade-up" data-aos-delay="300">
+        <div class="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+          <i class="fas fa-hand-holding-heart text-2xl text-primary"></i>
+        </div>
+        <h3 class="text-xl font-bold text-gray-800 mb-4">In-Person Giving</h3>
+        <p class="text-gray-600 mb-6">Give during our services using cash or check.</p>
+        <a href="contact.html" class="inline-flex items-center text-primary hover:text-secondary">
+          Church Location <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Impact Section -->
+<section class="py-16 bg-white">
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center mb-16 text-gray-800" data-aos="fade-up">Your Giving Makes a Difference</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+      <div data-aos="fade-up" data-aos-delay="100">
+        <div class="text-4xl font-bold text-primary mb-2">100+</div>
+        <div class="text-gray-600">Families Supported</div>
+      </div>
+      <div data-aos="fade-up" data-aos-delay="200">
+        <div class="text-4xl font-bold text-primary mb-2">12</div>
+        <div class="text-gray-600">Community Programs</div>
+      </div>
+      <div data-aos="fade-up" data-aos-delay="300">
+        <div class="text-4xl font-bold text-primary mb-2">1000+</div>
+        <div class="text-gray-600">Lives Touched</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="py-16 bg-gray-50">
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center mb-12 text-gray-800" data-aos="fade-up">Frequently Asked Questions</h2>
+    <div class="max-w-3xl mx-auto space-y-6">
+      <div class="bg-white rounded-lg shadow-md p-6" data-aos="fade-up">
+        <details class="group">
+          <summary class="flex justify-between items-center cursor-pointer">
+            <span class="font-medium text-gray-800">How is my donation used?</span>
+            <span class="transition group-open:rotate-180">
+              <i class="fas fa-chevron-down"></i>
+            </span>
+          </summary>
+          <p class="mt-4 text-gray-600">Your donations support our church operations, community outreach programs, and various ministries that help spread God's word and serve those in need.</p>
+        </details>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-6" data-aos="fade-up">
+        <details class="group">
+          <summary class="flex justify-between items-center cursor-pointer">
+            <span class="font-medium text-gray-800">Is my donation tax-deductible?</span>
+            <span class="transition group-open:rotate-180">
+              <i class="fas fa-chevron-down"></i>
+            </span>
+          </summary>
+          <p class="mt-4 text-gray-600">Yes, all donations are tax-deductible. You will receive a receipt for your records at the end of the fiscal year.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Bank Details Modal Script -->
+<script>
+  function showBankDetails() {
+    alert('Bank Details:\nBank: [Bank Name]\nAccount: [Account Number]\nSort Code: [Sort Code]\nReference: [Your Name + Giving]');
+  }
+</script>
   
   <!-- Footer -->
   <footer class="bg-gray-900 text-white py-8">

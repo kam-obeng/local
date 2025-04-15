@@ -295,52 +295,91 @@
     </nav>
   </header>
   
+  <!-- Hero Section -->
+  <section class="relative min-h-[40vh] bg-gradient-to-br from-primary to-secondary flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQ0MCIgaGVpZ2h0PSI3NDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48Y2lyY2xlIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLW9wYWNpdHk9Ii4yIiBjeD0iNzIwIiBjeT0iMzg4IiByPSI1NTkuNSIvPjxjaXJjbGUgc3Ryb2tlPSIjZmZmIiBzdHJva2Utb3BhY2l0eT0iLjIiIGN4PSI3MjAiIGN5PSIzODgiIHI9IjM4Mi41Ii8+PGNpcmNsZSBzdHJva2U9IiNmZmYiIHN0cm9rZS1vcGFjaXR5PSIuMiIgY3g9IjcyMCIgY3k9IjM4OCIgcj0iMjgzLjUiLz48L2c+PC9zdmc+')] opacity-10"></div>
+    <div class="relative z-10 text-center text-white px-4">
+      <h1 class="text-4xl md:text-6xl font-bold mb-4" data-aos="fade-down">Meet Our Team</h1>
+      <p class="text-xl md:text-2xl opacity-90 max-w-2xl mx-auto" data-aos="fade-up">The dedicated individuals who make our community thrive</p>
+    </div>
+  </section>
+
   <!-- Team Section -->
-  <section id="team" class="container mx-auto px-4 py-12 mt-20">
-    <h2 class="text-3xl font-bold text-primary text-center mb-8">Our Team</h2>
-    
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <!-- Team Member 1 -->
-      <div class="bg-white rounded-xl shadow-lg p-6 transform hover:-translate-y-2 transition-all">
-        <img src="team/Pastor.jpeg" alt="Pastor John Smith" class="rounded-full mx-auto w-32 h-32 object-cover mb-4">
-        <h3 class="text-xl font-semibold text-center">Pastor Abraham Sarfo</h3>  
-        <p class="text-center text-primary">Senior Pastor</p>
-        <p class="text-gray-700 mt-2 text-center">With over 20 years of ministry experience, Pastor John leads our congregation with wisdom and compassion.</p>
+  <section class="py-20 px-4 bg-gray-50">
+    <div class="container mx-auto">
+      <!-- Leadership Section -->
+      <div class="mb-20">
+        <h2 class="text-2xl font-bold text-primary text-center mb-12 relative after:content-[''] after:absolute after:w-20 after:h-1 after:bg-accent after:left-1/2 after:-translate-x-1/2 after:-bottom-4">Leadership</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <!-- Pastor -->
+          <div class="group" data-aos="fade-right">
+            <div class="relative overflow-hidden rounded-2xl bg-white shadow-xl p-8 transition-all duration-300 hover:-translate-y-2">
+              <div class="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-bl-full -z-0"></div>
+              <div class="relative z-10">
+                <div class="w-48 h-48 mx-auto mb-6 overflow-hidden rounded-full">
+                  <img src="team/Pastor.jpeg" alt="Pastor Abraham Sarfo" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110">
+                </div>
+                <h3 class="text-2xl font-bold text-primary text-center">Pastor Abraham Sarfo</h3>
+                <p class="text-accent font-medium text-center mb-4">Senior Pastor</p>
+                <p class="text-gray-600 text-center">Leading our congregation with wisdom and compassion for over 20 years.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Pastor's Wife -->
+          <div class="group" data-aos="fade-left">
+            <div class="relative overflow-hidden rounded-2xl bg-white shadow-xl p-8 transition-all duration-300 hover:-translate-y-2">
+              <div class="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-bl-full -z-0"></div>
+              <div class="relative z-10">
+                <div class="w-48 h-48 mx-auto mb-6 overflow-hidden rounded-full">
+                  <img src="team/pastor wife.jpeg" alt="Mrs Delphina Afrakomah Boachie" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110">
+                </div>
+                <h3 class="text-2xl font-bold text-primary text-center">Mrs Delphina Afrakomah Boachie</h3>
+                <p class="text-accent font-medium text-center mb-4">Pastor's Wife</p>
+                <p class="text-gray-600 text-center">Inspiring our community through leadership and guidance.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <!-- Team Member 2 -->
-      <div class="bg-white rounded-xl shadow-lg p-6 transform hover:-translate-y-2 transition-all">
-        <img src="team/pastor wife.jpeg" alt="Delphina Afrakomah" class="rounded-full mx-auto w-32 h-32 object-cover mb-4">
-        <h3 class="text-xl font-semibold text-center">Mrs Delphina Afrakomah Boachie</h3>
-        <p class="text-center text-primary">Pastor's wife</p>
-        <p class="text-gray-700 mt-2 text-center">Mary inspires our community through her heartfelt music and creative leadership in worship.</p>
-      </div>
-      <!-- Team Member 3 -->
-      <div class="bg-white rounded-xl shadow-lg p-6 transform hover:-translate-y-2 transition-all">
-        <img src="https://placehold.co/300x300" alt="Alex Brown" class="rounded-full mx-auto w-32 h-32 object-cover mb-4">
-        <h3 class="text-xl font-semibold text-center">Alex Brown</h3>
-        <p class="text-center text-primary">Youth Coordinator</p>
-        <p class="text-gray-700 mt-2 text-center">Alex engages our young people with innovative programmes that nurture both faith and friendship.</p>
-      </div>
-      <!-- Team Member 4 -->
-      <div class="bg-white rounded-xl shadow-lg p-6 transform hover:-translate-y-2 transition-all">
-        <img src="https://placehold.co/300x300" alt="Emily Davis" class="rounded-full mx-auto w-32 h-32 object-cover mb-4">
-        <h3 class="text-xl font-semibold text-center">Emily Davis</h3>
-        <p class="text-center text-primary">Children’s Ministry Leader</p>
-        <p class="text-gray-700 mt-2 text-center">Emily fosters a loving and supportive environment for our youngest members to grow in faith.</p>
-      </div>
-      <!-- Team Member 5 -->
-      <div class="bg-white rounded-xl shadow-lg p-6 transform hover:-translate-y-2 transition-all">
-        <img src="https://placehold.co/300x300" alt="David Wilson" class="rounded-full mx-auto w-32 h-32 object-cover mb-4">
-        <h3 class="text-xl font-semibold text-center">David Wilson</h3>
-        <p class="text-center text-primary">Music Director</p>
-        <p class="text-gray-700 mt-2 text-center">David leads our musical ensembles, ensuring every service is filled with uplifting and soul-stirring music.</p>
-      </div>
-      <!-- Team Member 6 -->
-      <div class="bg-white rounded-xl shadow-lg p-6 transform hover:-translate-y-2 transition-all">
-        <img src="https://placehold.co/300x300" alt="Sarah Thompson" class="rounded-full mx-auto w-32 h-32 object-cover mb-4">
-        <h3 class="text-xl font-semibold text-center">Sarah Thompson</h3>
-        <p class="text-center text-primary">Outreach Coordinator</p>
-        <p class="text-gray-700 mt-2 text-center">Sarah coordinates community outreach efforts, connecting our church with local initiatives and projects.</p>
+
+      <!-- Ministry Leaders Section -->
+      <div>
+        <h2 class="text-2xl font-bold text-primary text-center mb-12 relative after:content-[''] after:absolute after:w-20 after:h-1 after:bg-accent after:left-1/2 after:-translate-x-1/2 after:-bottom-4">Ministry Leaders</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Ministry Leaders Cards with Hover Effects -->
+          <div class="group bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+            <div class="aspect-w-4 aspect-h-3 bg-gray-200">
+              <img src="https://placehold.co/300x300" alt="Youth Leader" class="object-cover transform transition-transform duration-500 group-hover:scale-110">
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-primary group-hover:text-accent transition-colors">Alex Brown</h3>
+              <p class="text-accent mb-2">Youth Coordinator</p>
+              <p class="text-gray-600 text-sm">Engaging our young people with innovative programmes.</p>
+            </div>
+          </div>
+
+          <div class="group bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+            <div class="aspect-w-4 aspect-h-3 bg-gray-200">
+              <img src="https://placehold.co/300x300" alt="Children's Ministry" class="object-cover transform transition-transform duration-500 group-hover:scale-110">
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-primary group-hover:text-accent transition-colors">Emily Davis</h3>
+              <p class="text-accent mb-2">Children's Ministry Leader</p>
+              <p class="text-gray-600 text-sm">Nurturing our youngest members in faith and fun.</p>
+            </div>
+          </div>
+
+          <div class="group bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+            <div class="aspect-w-4 aspect-h-3 bg-gray-200">
+              <img src="https://placehold.co/300x300" alt="Music Director" class="object-cover transform transition-transform duration-500 group-hover:scale-110">
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-primary group-hover:text-accent transition-colors">David Wilson</h3>
+              <p class="text-accent mb-2">Music Director</p>
+              <p class="text-gray-600 text-sm">Leading our worship through inspiring music.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
