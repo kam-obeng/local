@@ -67,19 +67,6 @@
       }
     }
 
-    .gallery-img {
-      width: 100%;
-      height: 18rem;
-      object-fit: cover;
-      cursor: pointer;
-      transition: transform 0.3s ease-in-out;
-    }
-    .gallery-img:hover {
-      transform: scale(1.05);
-    }
-    .gallery-item > div {
-      pointer-events: none;
-    }
 
     /* Add new mobile navigation styles */
     #mainHeader {
@@ -244,17 +231,38 @@
         <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 hover:bg-primary hover:text-white transition-colors" data-filter="worship">Worship</button>
         <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 hover:bg-primary hover:text-white transition-colors" data-filter="events">Events</button>
         <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 hover:bg-primary hover:text-white transition-colors" data-filter="community">Community</button>
-        <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 hover:bg-primary hover:text-white transition-colors" data-filter="Event Albums ">Event Albums</button>
+        <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 hover:bg-primary hover:text-white transition-colors" data-filter="albums">Albums</button>
+        
+        <!-- New View All Photos button -->
+        <button onclick="openAllPhotos()" class="px-8 py-3 rounded-full bg-secondary text-white hover:bg-primary transition-colors shadow-lg transform hover:scale-105 flex items-center gap-2">
+          <i class="fas fa-images"></i>
+           Photos archive
+        </button>
       </div>
     </div>
 
     <!-- Gallery Grid -->
     <div class="container mx-auto px-4 mb-16">
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2" data-aos="fade-up" id="galleryGrid">
+        <!-- Album Container -->
+        <div class="gallery-item relative aspect-square group overflow-hidden bg-gradient-to-t from-black/70 to-transparent" data-category="albums">
+          <img src="Gallery/album/sing 2 .jpeg" alt="prefoming prayer on stage during church event" class="w-full h-full object-cover">
+          <div class="absolute inset-0 flex flex-col items-center justify-center p-4 text-center">
+            <h3 class="text-white text-lg font-bold mb-2">The Call</h3>
+            <p class="text-white text-sm mb-4">4 photos</p>
+            <button class="px-4 py-2 bg-white text-primary rounded-full text-sm hover:bg-primary hover:text-white transition-colors shadow-lg transform hover:scale-105" onclick="openAlbum('The call')">View Album</button>
+          </div>
+          <div class="hidden album-photos" id="The call">
+            <img src="Gallery/album/sing1.jpeg" alt="Solo singer with microphone at church event">
+            <img src="Gallery/album/sing 2 .jpeg" alt="prefoming prayer on stage during church event">
+            <img src="Gallery/album/Worship man.jpeg" alt="Man leading worship with microphone in church">
+            <img src="Gallery/album/worship Woman.jpeg" alt="Woman singing in worship during church event">
+          </div>
+        </div>
+
         <div class="gallery-item relative aspect-square group overflow-hidden" data-category="worship">
           <img src="Gallery/drum.jpeg" alt="Our dedicated drum set that helps lead worship with powerful rhythms" class="w-full h-full object-cover cursor-pointer">
           <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-            <i class="fas fa-expand text-white text-2xl"></i>
           </div>
         </div>
         <div class="gallery-item relative aspect-square group overflow-hidden" data-category="worship">
@@ -267,32 +275,87 @@
           <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </div>
 
+        <div class="gallery-item relative aspect-square group overflow-hidden" data-category="events">
+          <img src="Gallery/album/sing 2 .jpeg" alt=" prefoming prayer on stage during church event" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </div>
+        
+        <div class="gallery-item relative aspect-square group overflow-hidden" data-category="events">
+          <img src="Gallery/album/sing1.jpeg" alt="Solo singer with microphone at church event" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </div>
+        
+        <div class="gallery-item relative aspect-square group overflow-hidden" data-category="events">
+          <img src="Gallery/album/Worship man.jpeg" alt="Man leading worship with microphone in church" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </div>
+        
+        <div class="gallery-item relative aspect-square group overflow-hidden" data-category="events">
+          <img src="Gallery/album/worship Woman.jpeg" alt="Woman singing in worship during church event" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </div>
+
         <div class="gallery-item relative aspect-square group overflow-hidden" data-category="worship">
           <img src="Gallery/piano.JPG" alt="Keyboard used in music ministry" class="w-full h-full object-cover">
           <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </div>
+
+       
+
       </div>
     </div>
 
-    <!-- Updated Image Modal -->
+    <!-- Updated Responsive Image Modal -->
     <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-95 z-50 hidden">
-      <div class="absolute inset-0 flex items-center justify-center">
-        <button id="closeModal" class="absolute top-4 right-4 text-white text-3xl hover:text-gray-300 z-20">
+      <div id="modalBackground" class="absolute inset-0 flex items-center justify-center p-2 sm:p-4 md:p-8">
+        <button id="closeModal" class="absolute top-2 right-2 sm:top-4 sm:right-4 text-white text-2xl sm:text-3xl hover:text-gray-300 z-20">
           <i class="fas fa-times"></i>
         </button>
         
-        <button id="prevImage" class="absolute left-4 top-1/2 -translate-y-1/2 text-white text-4xl hover:text-gray-300 z-20">
-          <i class="fas fa-chevron-left"></i>
-        </button>
-        
-        <button id="nextImage" class="absolute right-4 top-1/2 -translate-y-1/2 text-white text-4xl hover:text-gray-300 z-20">
-          <i class="fas fa-chevron-right"></i>
-        </button>
+        <div class="w-full max-w-6xl bg-white rounded-lg overflow-hidden flex flex-col md:flex-row max-h-[95vh] md:max-h-[85vh]">
+          <!-- Image Section -->
+          <div class="w-full md:w-2/3 bg-white relative flex-shrink-0">
+            <button id="prevImage" class="absolute left-1 sm:left-2 top-1/2 -translate-y-1/2 text-black text-2xl sm:text-4xl hover:text-gray-600 z-20 bg-white bg-opacity-75 rounded-full p-1 sm:p-2 shadow-lg">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <button id="nextImage" class="absolute right-1 sm:right-2 top-1/2 -translate-y-1/2 text-black text-2xl sm:text-4xl hover:text-gray-600 z-20 bg-white bg-opacity-75 rounded-full p-1 sm:p-2 shadow-lg">
+              <i class="fas fa-chevron-right"></i>
+            </button>
 
-        <div class="w-full max-w-5xl mx-auto px-4 flex flex-col items-center">
-          <img id="modalImage" src="" alt="" class="max-h-[80vh] w-auto object-contain">
-          <div class="mt-4 text-white text-center w-full max-w-2xl">
-            <p id="modalDescription" class="text-lg"></p>
+            <img id="modalImage" src="" alt="" class="w-full h-[40vh] md:h-[85vh] object-contain">
+          </div>
+
+          <!-- Details Section -->
+          <div class="w-full md:w-1/3 bg-white p-4 sm:p-6 flex flex-col max-h-[55vh] md:h-[85vh] overflow-y-auto">
+            <!-- Header -->
+            <div class="flex items-center space-x-4 pb-3 sm:pb-4 border-b">
+              <img src="pics/logo.JPG" alt="Church Logo" class="h-8 w-8 sm:h-10 sm:w-10 rounded-full">
+              <div>
+                <h3 class="font-semibold text-gray-900 text-sm sm:text-base">Northampton PIWC</h3>
+                <p class="text-xs sm:text-sm text-gray-500">Gallery</p>
+              </div>
+            </div>
+
+            <!-- Caption -->
+            <div class="py-3 sm:py-4 flex-grow">
+              <p id="modalDescription" class="text-gray-900 text-sm sm:text-lg"></p>
+            </div>
+
+            <!-- Album Navigation (shows only for albums) -->
+            <div id="albumNav" class="hidden mt-4 border-t pt-4">
+              <h4 class="font-semibold mb-2">Album Photos</h4>
+              <div class="grid grid-cols-3 gap-2" id="albumThumbnails">
+                <!-- Thumbnails will be inserted here -->
+              </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="pt-3 sm:pt-4 border-t">
+              <div class="text-gray-500 text-xs sm:text-sm">
+                Northampton PIWC Gallery
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -471,12 +534,6 @@
       once: true
     });
     
-    // Form Submission Handler
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      document.getElementById('confirmation-message').classList.remove('hidden');
-      e.target.reset();
-    });
 
 
     // Gallery filtering
@@ -497,10 +554,16 @@
           const filter = btn.dataset.filter;
           
           galleryItems.forEach(item => {
-            if (filter === 'all' || item.dataset.category === filter) {
-              item.style.display = 'block';
+            // Special handling for albums
+            if (item.dataset.category === 'albums') {
+              item.style.display = (filter === 'albums') ? 'block' : 'none';
             } else {
-              item.style.display = 'none';
+              // For non-album items
+              if (filter === 'all' || item.dataset.category === filter) {
+                item.style.display = 'block';
+              } else {
+                item.style.display = 'none';
+              }
             }
           });
         });
@@ -515,6 +578,7 @@
       const prevBtn = document.getElementById('prevImage');
       const nextBtn = document.getElementById('nextImage');
       const closeBtn = document.getElementById('closeModal');
+      const modalBackground = document.getElementById('modalBackground');
       modalImg.addEventListener('click', () => { nextBtn.click(); });
       
       let currentIndex = 0;
@@ -584,7 +648,63 @@
           }
         }
       }
+
+      modalBackground.addEventListener('click', (e) => {
+        if (e.target === modalBackground) {
+          modal.classList.add('hidden');
+          document.body.style.overflow = '';
+        }
+      });
+
+      // Album functionality
+      function openAlbum(albumId) {
+        const album = document.getElementById(albumId);
+        if (!album) return;
+        
+        const images = album.getElementsByTagName('img');
+        const thumbnailContainer = document.getElementById('albumThumbnails');
+        thumbnailContainer.innerHTML = '';
+        
+        // Show album navigation
+        document.getElementById('albumNav').classList.remove('hidden');
+        
+        // Create thumbnails
+        Array.from(images).forEach((img, index) => {
+          const thumb = document.createElement('div');
+          thumb.className = 'cursor-pointer hover:opacity-75 transition-opacity';
+          thumb.innerHTML = `<img src="${img.src}" class="w-full h-20 object-cover" alt="${img.alt}">`;
+          thumb.onclick = () => showImage(index);
+          thumbnailContainer.appendChild(thumb);
+        });
+        
+        // Show first image
+        showImage(0);
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+
+      // Update existing gallery click handlers to hide album navigation for regular photos
+      galleryItemContainers.forEach((container, index) => {
+        container.addEventListener('click', () => {
+          if (!container.querySelector('.album-photos')) {
+            document.getElementById('albumNav').classList.add('hidden');
+          }
+          modal.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+          showImage(index);
+        });
+      });
     })();
+
+    // Add this new function for viewing all photos
+    function openAllPhotos() {
+      const firstGalleryItem = document.querySelector('.gallery-item');
+      if (firstGalleryItem) {
+        firstGalleryItem.click();
+      }
+      // Hide album navigation when viewing all photos
+      document.getElementById('albumNav').classList.add('hidden');
+    }
   </script>
   
   
