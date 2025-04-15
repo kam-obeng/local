@@ -44,6 +44,7 @@
   
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap');
     
     body {
       font-family: 'Montserrat', sans-serif;
@@ -117,6 +118,17 @@
 
     details summary::-webkit-details-marker {
       display: none;
+    }
+
+    .album-title {
+      font-family: 'Cinzel', serif;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .album-text {
+      font-family: 'Cinzel', serif;
+      font-weight: 400;
     }
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -248,9 +260,9 @@
         <div class="gallery-item relative aspect-square group overflow-hidden bg-gradient-to-t from-black/70 to-transparent" data-category="albums">
           <img src="Gallery/album/sing 2 .jpeg" alt="prefoming prayer on stage during church event" class="w-full h-full object-cover">
           <div class="absolute inset-0 flex flex-col items-center justify-center p-4 text-center">
-            <h3 class="text-white text-lg font-bold mb-2">The Call</h3>
-            <p class="text-white text-sm mb-4">4 photos</p>
-            <button class="px-4 py-2 bg-white text-primary rounded-full text-sm hover:bg-primary hover:text-white transition-colors shadow-lg transform hover:scale-105" onclick="openAlbum('The call')">View Album</button>
+            <h3 class="text-white text-lg font-bold mb-2 album-title">The Call</h3>
+            <p class="text-white text-sm mb-4 album-text">4 photos</p>
+            <button class="px-4 py-2 bg-white text-primary rounded-full text-sm hover:bg-primary hover:text-white transition-colors shadow-lg transform hover:scale-105 album-text" onclick="openAlbum('The call')">View Album</button>
           </div>
           <div class="hidden album-photos" id="The call">
             <img src="Gallery/album/sing1.jpeg" alt="Solo singer with microphone at church event">
