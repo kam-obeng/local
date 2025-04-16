@@ -130,6 +130,39 @@
       font-family: 'Cinzel', serif;
       font-weight: 400;
     }
+    
+    /* Add gallery layout styles */
+    .gallery-mobile-scroll {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    
+    .gallery-mobile-scroll::-webkit-scrollbar {
+      display: none;
+    }
+    
+    .gallery-mobile-item {
+      flex: 0 0 85%;
+      scroll-snap-align: start;
+    }
+    
+    @media (min-width: 768px) {
+      .gallery-mobile-scroll {
+        display: none;
+      }
+      .gallery-desktop-grid {
+        display: block;
+      }
+    }
+    
+    @media (max-width: 767px) {
+      .gallery-mobile-scroll {
+        display: flex;
+      }
+      .gallery-desktop-grid {
+        display: none;
+      }
+    }
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
@@ -263,7 +296,70 @@
 
     <!-- Gallery Grid -->
     <div class="container mx-auto px-4 mb-16">
-      <div class="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4" data-aos="fade-up" id="galleryGrid">
+      <!-- Mobile Horizontal Scroll Gallery -->
+      <div class="gallery-mobile-scroll flex overflow-x-auto space-x-4 snap-x snap-mandatory py-4">
+        <!-- Album Container -->
+        <div class="gallery-mobile-item gallery-item relative group overflow-hidden rounded-2xl shadow-lg" data-category="albums">
+          <img src="Gallery/album/sing 2 .jpeg" alt="prefoming prayer on stage during church event" class="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/90 transition-all duration-300">
+            <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-2 group-hover:translate-y-0 transition-transform">
+              <h3 class="text-white text-xl font-bold mb-2 album-title">The Call</h3>
+              <p class="text-gray-200 mb-4 album-text opacity-0 group-hover:opacity-100 transition-opacity duration-300">4 photos</p>
+              <button class="px-6 py-2 bg-white/90 text-primary rounded-full text-sm hover:bg-primary hover:text-white transition-colors shadow-lg transform hover:scale-105 album-text backdrop-blur-sm" onclick="openAlbum('The call')">View Album</button>
+            </div>
+          </div>
+          <div class="hidden album-photos" id="The call">
+            <img src="Gallery/album/sing1.jpeg" alt="Solo singer with microphone at church event">
+            <img src="Gallery/album/sing 2 .jpeg" alt="prefoming prayer on stage during church event">
+            <img src="Gallery/album/Worship man.jpeg" alt="Man leading worship with microphone in church">
+            <img src="Gallery/album/worship Woman.jpeg" alt="Woman singing in worship during church event">
+          </div>
+        </div>
+
+        <!-- Convert other gallery items to horizontal scroll -->
+        <div class="gallery-mobile-item gallery-item relative group overflow-hidden rounded-2xl shadow-lg" data-category="worship">
+          <img src="Gallery/drum.jpeg" alt="Our dedicated drum set that helps lead worship with powerful rhythms" class="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/90 transition-all duration-300"></div>
+        </div>
+
+        <div class="gallery-mobile-item gallery-item relative group overflow-hidden rounded-2xl shadow-lg" data-category="worship">
+          <img src="Gallery/drums2.JPG" alt="Close-up of worship drums" class="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/90 transition-all duration-300"></div>
+        </div>
+
+        <div class="gallery-mobile-item gallery-item relative group overflow-hidden rounded-2xl shadow-lg" data-category="community">
+          <img src="Gallery/people.JPG" alt="Congregation during worship" class="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/90 transition-all duration-300"></div>
+        </div>
+
+        <div class="gallery-mobile-item gallery-item relative group overflow-hidden rounded-2xl shadow-lg" data-category="events">
+          <img src="Gallery/album/sing 2 .jpeg" alt=" prefoming prayer on stage during church event" class="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/90 transition-all duration-300"></div>
+        </div>
+        
+        <div class="gallery-mobile-item gallery-item relative group overflow-hidden rounded-2xl shadow-lg" data-category="events">
+          <img src="Gallery/album/sing1.jpeg" alt="Solo singer with microphone at church event" class="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/90 transition-all duration-300"></div>
+        </div>
+        
+        <div class="gallery-mobile-item gallery-item relative group overflow-hidden rounded-2xl shadow-lg" data-category="events">
+          <img src="Gallery/album/Worship man.jpeg" alt="Man leading worship with microphone in church" class="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/90 transition-all duration-300"></div>
+        </div>
+        
+        <div class="gallery-mobile-item gallery-item relative group overflow-hidden rounded-2xl shadow-lg" data-category="events">
+          <img src="Gallery/album/worship Woman.jpeg" alt="Woman singing in worship during church event" class="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/90 transition-all duration-300"></div>
+        </div>
+
+        <div class="gallery-mobile-item gallery-item relative group overflow-hidden rounded-2xl shadow-lg" data-category="worship">
+          <img src="Gallery/piano.JPG" alt="Keyboard used in music ministry" class="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/90 transition-all duration-300"></div>
+        </div>
+      </div>
+
+      <!-- Desktop Grid Gallery -->
+      <div class="gallery-desktop-grid columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4" data-aos="fade-up" id="galleryGrid">
         <!-- Album Container -->
         <div class="gallery-item break-inside-avoid mb-4 relative group overflow-hidden rounded-2xl shadow-lg" data-category="albums">
           <img src="Gallery/album/sing 2 .jpeg" alt="prefoming prayer on stage during church event" class="w-full object-cover transform group-hover:scale-105 transition-transform duration-500">
@@ -552,10 +648,17 @@
     (function() {
       const filterBtns = document.querySelectorAll('.filter-btn');
       const galleryItems = document.querySelectorAll('.gallery-item');
+      const mobileItems = document.querySelectorAll('.gallery-mobile-item');
+      const desktopItems = document.querySelectorAll('.gallery-desktop-grid .gallery-item');
       const RECENT_ITEMS_COUNT = 8; // Show last 8 items for recent filter
 
       // Track filtered items for modal navigation
       let filteredGalleryItems = [];
+
+      // Helper to check if mobile layout is active
+      function isMobile() {
+        return window.innerWidth < 768;
+      }
 
       // Function to handle filter click
       function handleFilterClick(btn) {
@@ -568,24 +671,54 @@
         const filter = btn.dataset.filter;
         filteredGalleryItems = [];
 
+        // Hide all items first
+        mobileItems.forEach(item => item.classList.add('hidden'));
+        desktopItems.forEach(item => item.classList.add('hidden'));
+
         if (filter === 'recent') {
-          galleryItems.forEach((item, index) => {
-            const isRecent = index >= (galleryItems.length - RECENT_ITEMS_COUNT);
-            item.style.display = isRecent ? 'block' : 'none';
-            if (isRecent) filteredGalleryItems.push(item);
-          });
+          if (isMobile()) {
+            // Show last 8 mobile items
+            const recent = Array.from(mobileItems).slice(-RECENT_ITEMS_COUNT);
+            recent.forEach(item => {
+              item.classList.remove('hidden');
+              filteredGalleryItems.push(item);
+            });
+          } else {
+            // Show last 8 desktop items
+            const recent = Array.from(desktopItems).slice(-RECENT_ITEMS_COUNT);
+            recent.forEach(item => {
+              item.classList.remove('hidden');
+              filteredGalleryItems.push(item);
+            });
+          }
         } else {
-          galleryItems.forEach(item => {
-            if (item.dataset.category === 'albums') {
-              const show = (filter === 'albums');
-              item.style.display = show ? 'block' : 'none';
-              if (show) filteredGalleryItems.push(item);
-            } else {
-              const show = (item.dataset.category === filter);
-              item.style.display = show ? 'block' : 'none';
-              if (show) filteredGalleryItems.push(item);
-            }
-          });
+          if (isMobile()) {
+            mobileItems.forEach(item => {
+              let show = false;
+              if (item.dataset.category === 'albums') {
+                show = (filter === 'albums');
+              } else {
+                show = (item.dataset.category === filter);
+              }
+              if (show) {
+                item.classList.remove('hidden');
+                filteredGalleryItems.push(item);
+              }
+            });
+          } else {
+            desktopItems.forEach(item => {
+              let show = false;
+              if (item.dataset.category === 'albums') {
+                show = (filter === 'albums');
+              } else {
+                show = (item.dataset.category === filter);
+              }
+              if (show) {
+                item.classList.remove('hidden');
+                filteredGalleryItems.push(item);
+              }
+            });
+          }
         }
       }
 
@@ -598,6 +731,12 @@
       if (recentFilterBtn) {
         handleFilterClick(recentFilterBtn);
       }
+
+      // Re-apply filter on resize (to handle switching between mobile/desktop)
+      window.addEventListener('resize', () => {
+        const activeBtn = document.querySelector('.filter-btn.active');
+        if (activeBtn) handleFilterClick(activeBtn);
+      });
 
       // Expose filteredGalleryItems for modal script
       window.getFilteredGalleryItems = () => filteredGalleryItems;
