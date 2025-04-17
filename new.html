@@ -230,17 +230,33 @@
 
     /* Modern card design */
     .modern-card {
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 1rem;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      overflow: hidden;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.3s ease;
     }
 
     .modern-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 20px 40px rgba(57, 88, 134, 0.15);
+    }
+
+    .icon-box {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #395886, #72b5c1);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      color: white;
+      transform: rotate(-10deg);
+      transition: transform 0.3s ease;
+    }
+
+    .modern-card:hover .icon-box {
+      transform: rotate(0deg);
     }
 
     /* Button animations */
@@ -290,7 +306,7 @@
 </head>
 
 
-<body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col pt-20">
+ <body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col pt-16">
   
   <!-- Header -->
   <header class="fixed w-full top-0 z-50" id="mainHeader">
@@ -310,7 +326,7 @@
               <button @click="open = !open" @click.away="open = false" class="nav-text nav-spacing hover:text-accent transition-colors py-2 flex items-center">
                 About us
                 <svg class="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a 1 1 0 010-1.414z" clip-rule="evenodd" />
                 </svg>
               </button>
               <div x-show="open" x-transition class="absolute bg-white text-primary mt-2 rounded-lg shadow-lg min-w-[200px] z-50 py-2">
@@ -324,7 +340,7 @@
               <button @click="open = !open" @click.away="open = false" class="nav-text nav-spacing hover:text-accent transition-colors py-2 flex items-center">
                 Ministries
                 <svg class="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a 1 1 0 010-1.414z" clip-rule="evenodd" />
                 </svg>
               </button>
               <div x-show="open" x-transition class="absolute bg-white text-primary mt-2 rounded-lg shadow-lg min-w-[200px] z-50 py-2">
@@ -396,14 +412,14 @@
   
 
   <!-- Main Content Grid -->
-  <div class="container mx-auto px-4 py-8">
-    <div class="grid md:grid-cols-2 gap-6">
-      <!-- Join Us Form Section -->
-      <section id="join-us" class="modern-card p-8">
-        <h2 class="text-3xl font-bold text-primary mb-6 relative">
-          Join Our Church
-          <span class="block h-1 w-20 bg-accent mt-2"></span>
-        </h2>
+  <div class="container mx-auto px-4 py-12 mt-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Join Us Form Card -->
+      <div class="modern-card rounded-2xl p-8" data-aos="fade-up">
+        <div class="icon-box">
+          <i class="fas fa-user-plus text-2xl"></i>
+        </div>
+        <h2 class="text-3xl font-bold text-primary text-center mb-6">Join Our Church</h2>
         <form id="joinForm" class="space-y-6">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="form-group">
@@ -471,12 +487,15 @@
             Submit
           </button>
         </form>
-      </section>
+      </div>
 
       <!-- Right Column -->
       <div class="space-y-6">
-        <!-- Parking Registration Section -->
-        <section id="parking" class="bg-white rounded-xl shadow-lg p-8">
+        <!-- Parking Registration Card -->
+        <div class="modern-card rounded-2xl p-8" data-aos="fade-up" data-aos-delay="100">
+          <div class="icon-box">
+            <i class="fas fa-parking text-2xl"></i>
+          </div>
           <h2 class="text-3xl font-bold text-primary mb-4">Register for Parking</h2>
           <p class="mt-4 text-center text-gray-700">To secure your parking, please register with us. After you sign up, you will be automatically redirected to the parking search page with your selected details.</p>
           <div class="mt-6 text-center">
@@ -485,10 +504,13 @@
                 Register for Parking
             </a>
           </div>
-        </section>
+        </div>
 
-        <!-- Visit / Map Section -->
-        <section id="visit" class="bg-gray-200 rounded-xl shadow-lg p-8">
+        <!-- Visit Card -->
+        <div class="modern-card rounded-2xl p-8" data-aos="fade-up" data-aos-delay="200">
+          <div class="icon-box">
+            <i class="fas fa-map-marker-alt text-2xl"></i>
+          </div>
           <h2 class="text-3xl font-bold text-primary mb-4">Visit Us</h2>
           <p class="mt-2 text-center text-gray-700">Find us at Unit H5 Kingsfield Way, Kings Heath Industrial Estate, Northampton NN5 7QS</p>
           <iframe 
@@ -500,21 +522,24 @@
             loading="lazy" 
             referrerpolicy="no-referrer-when-downgrade">
           </iframe>
-        </section>
+        </div>
       </div>
-    </div>
 
-    <!-- Contact Section - Full Width -->
-    <section id="contact" class="bg-gray-200 rounded-xl shadow-lg p-8 mt-6">
-      <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-3xl font-bold text-primary mb-4 text-center">Contact Us</h2>
-        <div class="grid md:grid-cols-2 gap-8">
-          <div class="md:col-span-2">
-            <p class="mb-2 text-center">Email: <a href="mailto:info@northamptonpiwc.com" class="text-primary font-semibold hover:underline">info@northamptonpiwc.com</a></p>
+      <!-- Contact Card - Full Width -->
+      <div class="modern-card rounded-2xl p-8 md:col-span-2" data-aos="fade-up" data-aos-delay="300">
+        <div class="icon-box">
+          <i class="fas fa-envelope text-2xl"></i>
+        </div>
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="text-3xl font-bold text-primary mb-4 text-center">Contact Us</h2>
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="md:col-span-2">
+              <p class="mb-2 text-center">Email: <a href="mailto:info@northamptonpiwc.com" class="text-primary font-semibold hover:underline">info@northamptonpiwc.com</a></p>
+            </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   </div>
 
   <!-- Footer -->
@@ -689,6 +714,14 @@
   <script>
     // Set current date for dateJoined field
     document.getElementById('dateJoined').valueAsDate = new Date();
+  </script>
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100
+    });
   </script>
 </body>
 </html>
