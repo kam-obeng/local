@@ -246,12 +246,7 @@
 
  
       
-      <!-- Bible Verse Card -->
-<section >
- 
-      <p id="bibleVersePreview" p>
-    
-  </section>
+     
 
   <!-- About Section: Bible Verse of the Day -->
   <section id="about" class="py-20 container mx-auto px-4" data-aos="fade-up">
@@ -741,10 +736,7 @@
         document.getElementById('bibleReference').innerText = reference;
         document.getElementById('bibleVersePreview').innerText = verse.substring(0, 60) + '...';
       } catch (error) {
-        console.error("Error fetching Bible verse:", error);
-        document.getElementById('bibleVerse').innerText = "Unable to fetch verse.";
-        document.getElementById('bibleReference').innerText = "";
-        document.getElementById('bibleVersePreview').innerText = "Unable to fetch verse.";
+        
       }
     }
     fetchBibleVerse();
