@@ -64,7 +64,7 @@
     }
 
     .hero-gradient {
-      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
+      background: linear-gradient(rgba(0, 0, 0, 6), rgba(0, 0, 0, 0.3));
     }
 
     .service-time-badge {
@@ -234,32 +234,31 @@
   </nav>
 </header>
 
- 
+ <!--- Hero Section -->
 
-    <!-- Two background divs for carousel -->
-   
-    
-   
-    <div class="relative z-20 text-center text-white px-4" data-aos="fade-up">
-      
-  </section>
+<section class="relative h-[60vh] bg-gradient-to-r from-primary to-secondary overflow-hidden">
+  <div class="absolute inset-0 bg-black/50"></div>
+  <div class="relative container mx-auto h-full flex items-center justify-center px-6">
+    <div class="text-center" data-aos="fade-up">
+      <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">Bible Verse of the Day</h1>
+      <p id="bibleVerse" class="text-2xl text-white leading-relaxed mb-4 italic"></p>
+      <p id="bibleReference" class="text-lg text-white font-medium"></p>
+    </div>
+  </div>
+  <div class="absolute bottom-0 left-0 w-full">
+    <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#f9fafb" d="M0,96L48,85.3C96,75,192,53,288,53.3C384,53,480,75,576,80C672,85,768,75,864,69.3C960,64,1056,64,1152,69.3C1248,75,1344,85,1392,90.7L1440,96L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z"></path>
+    </svg>
+  </div>
+</section>
 
  
       
      
 
-  <!-- About Section: Bible Verse of the Day -->
-  <section id="about" class="py-20 container mx-auto px-4" data-aos="fade-up">
-    <div class="max-w-4xl mx-auto text-center space-y-4">
-      <span class="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium">Daily Inspiration</span>
-      <h2 class="text-4xl font-bold text-gray-900 mb-6">Bible Verse of the Day</h2>
-      <p id="bibleVerse" class="text-2xl text-gray-700 leading-relaxed mb-4 italic"></p>
-      <p id="bibleReference" class="text-lg text-primary font-medium"></p>
-    </div>
-  </section>
 
   <!-- Ministries Section -->
-  <section id="ministries" class="py-20 bg-gray-50" data-aos="fade-up">
+  <section id="ministries" class="py-12 bg-gray-50" data-aos="fade-up">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto text-center mb-16">
         <span class="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">Live Content</span>
@@ -317,14 +316,14 @@
   </section>
 
 <!-- Upcoming Events Section -->
-<section id="events" class="py-20 container mx-auto px-4" data-aos="fade-up">
-  <div class="text-center mb-16">
+<section id="events" class="py-12 container mx-auto px-4" data-aos="fade-up">
+  <div class="text-center mb-8">
     <span class="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">What's Happening</span>
     <h2 class="text-4xl font-bold text-gray-900 mb-4">Upcoming Events</h2>
     <p class="text-gray-600 max-w-2xl mx-auto">Join us for these special gatherings and grow in faith and fellowship.</p>
   </div>
   
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
     <!-- Event 1 -->
     <div class="bg-white rounded-lg shadow-md overflow-hidden flex hover:shadow-lg transition-shadow">
       <div class="bg-primary text-white p-4 flex flex-col items-center justify-center min-w-[80px]">
@@ -392,7 +391,7 @@
 </section>
 
 <!-- Community Testimonies & Announcements Section -->
-<section id="testimonies" class="py-12 bg-gradient-to-br from-gray-50 to-gray-100" data-aos="fade-up">
+<section id="testimonies" class="py-8 bg-gradient-to-br from-gray-50 to-gray-100" data-aos="fade-up">
   <div class="container mx-auto px-4">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       <!-- Community Testimonies Column -->
@@ -512,7 +511,7 @@
 
 <!-- Forms Section - Two Columns -->
 <section id="connect" class="py-8 container mx-auto px-4" data-aos="fade-up">
-  <div class="text-center mb-12">
+  <div class="text-center mb-8">
     <h2 class="text-3xl font-bold text-gray-900 mb-4">Connect With Us</h2>
     <p class="text-gray-600 max-w-2xl mx-auto">Whether you need prayer or want to join an event, we're here for you.</p>
   </div>
@@ -585,35 +584,95 @@
   </div>
 </section>
 
-  <!-- FAQ Section -->
-  <section id="faq" class="mt-12 container mx-auto px-4" data-aos="fade-up">
-    <h2 class="text-3xl font-bold text-gray-900 text-center mb-6">Frequently Asked Questions</h2>
-    <div class="space-y-4">
-      <div class="border-b pb-2">
-        <button class="w-full text-left font-bold text-gray-900 focus:outline-none flex justify-between items-center" onclick="toggleFAQ('faq1')">
-          <span>What time are the services?</span>
-          <i class="fas fa-chevron-down transition-transform"></i>
-        </button>
-        <div id="faq1" class="mt-2 text-gray-700 faq-answer hidden transition-all duration-300 ease-in-out pl-0">
-          <p class="text-left">Our services are held at 10 am on Sundays.</p>
+  <!-- Enhanced FAQ Section -->
+  <section id="faq" class="py-8 container mx-auto px-4" data-aos="fade-up">
+    <div class="text-center mb-8">
+      <span class="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-3">Got Questions?</span>
+      <h2 class="text-4xl font-bold text-gray-900 mb-3">Frequently Asked Questions</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">Find answers to common questions about our church community and services</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+      <!-- Service Information -->
+      <div class="space-y-4">
+      
+        <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+          <button class="w-full text-left p-4 font-medium text-gray-900 focus:outline-none flex justify-between items-center" onclick="toggleFAQ('faq1')">
+            <span class="flex items-center"><i class="far fa-clock text-primary mr-3"></i>What time are the services?</span>
+            <i class="fas fa-chevron-down faq-chevron transition-transform duration-300"></i>
+          </button>
+          <div id="faq1" class="hidden px-4 pb-4 text-gray-600">
+            <div class="border-t pt-2">
+              <p>Our main service starts at 10:00 AM every Sunday.</p>
+              <ul class="mt-2 space-y-1 list-disc list-inside text-sm">
+                <li>Sunday School: 9:00 AM</li>
+                <li>Main Service: 10:00 AM - 12:00 PM</li>
+                <li>Youth Service: 2:00 PM (Last Sunday)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+          <button class="w-full text-left p-4 font-medium text-gray-900 focus:outline-none flex justify-between items-center" onclick="toggleFAQ('faq4')">
+            <span class="flex items-center"><i class="far fa-calendar-alt text-primary mr-3"></i>Do you have midweek services?</span>
+            <i class="fas fa-chevron-down faq-chevron transition-transform duration-300"></i>
+          </button>
+          <div id="faq4" class="hidden px-4 pb-4 text-gray-600">
+            <div class="border-t pt-2">
+              <p>Yes, we have regular midweek activities:</p>
+              <ul class="mt-2 space-y-1 list-disc list-inside text-sm">
+                <li>Wednesday Bible Study: 7:00 PM</li>
+                <li>Friday Prayer Meeting: 6:30 PM</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="border-b pb-2">
-        <button class="w-full text-left font-bold text-gray-900 focus:outline-none flex justify-between items-center" onclick="toggleFAQ('faq2')">
-          <span>How can I join a ministry?</span>
-          <i class="fas fa-chevron-down transition-transform"></i>
-        </button>
-        <div id="faq2" class="mt-2 text-gray-700 faq-answer hidden transition-all duration-300 ease-in-out pl-0">
-          <p class="text-left">You can join a ministry by filling out our ministry sign-up form on the 'Ministries' page.</p>
+
+     
+      <div class="space-y-4">
+        
+        <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+          <button class="w-full text-left p-4 font-medium text-gray-900 focus:outline-none flex justify-between items-center" onclick="toggleFAQ('faq2')">
+            <span class="flex items-center"><i class="fas fa-users text-primary mr-3"></i>How can I join a ministry?</span>
+            <i class="fas fa-chevron-down faq-chevron transition-transform duration-300"></i>
+          </button>
+          <div id="faq2" class="hidden px-4 pb-4 text-gray-600">
+            <div class="border-t pt-2">
+              <p>Getting involved in ministry is easy! You can:</p>
+              <ul class="mt-2 space-y-1 list-disc list-inside text-sm">
+                <li>Fill out our ministry sign-up form online</li>
+                <li>Speak to a ministry leader after service</li>
+                <li>Attend our monthly ministry orientation</li>
+              </ul>
+              <a href="Ministries.html" class="inline-flex items-center text-primary hover:text-secondary mt-2">
+                <span>View all ministries</span>
+                <i class="fas fa-arrow-right ml-2 text-sm"></i>
+              </a>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="border-b pb-2">
-        <button class="w-full text-left font-bold text-gray-900 focus:outline-none flex justify-between items-center" onclick="toggleFAQ('faq3')">
-          <span>Where is the church located?</span>
-          <i class="fas fa-chevron-down transition-transform"></i>
-        </button>
-        <div id="faq3" class="mt-2 text-gray-700 faq-answer hidden transition-all duration-300 ease-in-out pl-0">
-          <p class="text-left">Our church is located in the heart of Northampton, near the city centre.</p>
+
+        <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+          <button class="w-full text-left p-4 font-medium text-gray-900 focus:outline-none flex justify-between items-center" onclick="toggleFAQ('faq3')">
+            <span class="flex items-center"><i class="fas fa-map-marker-alt text-primary mr-3"></i>Where is the church located?</span>
+            <i class="fas fa-chevron-down faq-chevron transition-transform duration-300"></i>
+          </button>
+          <div id="faq3" class="hidden px-4 pb-4 text-gray-600">
+            <div class="border-t pt-2">
+              <p>We are conveniently located in central Northampton:</p>
+              <div class="mt-2 p-3 bg-gray-50 rounded-lg text-sm">
+                <p class="font-medium">Northampton PIWC</p>
+                <p>123 Main Street</p>
+                <p>Northampton, NN1 1AA</p>
+                <a href="https://maps.google.com" target="_blank" class="inline-flex items-center text-primary hover:text-secondary mt-2">
+                  <span>Get directions</span>
+                  <i class="fas fa-external-link-alt ml-2 text-xs"></i>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -815,22 +874,22 @@
     window.toggleFAQ = function(id) {
       const answer = document.getElementById(id);
       const button = answer.previousElementSibling;
-      const icon = button.querySelector('i');
+      const chevron = button.querySelector('.faq-chevron');
       
       // Close all other FAQs
       document.querySelectorAll('.faq-answer').forEach(el => {
         if (el.id !== id && !el.classList.contains('hidden')) {
           el.classList.add('hidden');
-          el.previousElementSibling.querySelector('i').style.transform = 'rotate(0deg)';
+          el.previousElementSibling.querySelector('.faq-chevron').style.transform = 'rotate(0deg)';
         }
       });
 
       // Toggle current FAQ
       answer.classList.toggle('hidden');
       if (!answer.classList.contains('hidden')) {
-        icon.style.transform = 'rotate(180deg)';
+        chevron.style.transform = 'rotate(180deg)';
       } else {
-        icon.style.transform = 'rotate(0deg)';
+        chevron.style.transform = 'rotate(0deg)';
       }
     };
 

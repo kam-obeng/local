@@ -163,10 +163,22 @@
         display: none;
       }
     }
+
+    /* Skeleton loader styles */
+    .skeleton {
+      background: linear-gradient(90deg, #e5e7eb 25%, #f3f4f6 50%, #e5e7eb 75%);
+      background-size: 200% 100%;
+      animation: skeleton-loading 1.2s infinite linear;
+      color: transparent !important;
+    }
+    @keyframes skeleton-loading {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
-<body class="flex flex-col min-h-screen bg-gray-50 text-gray-900 pt-24">
+<body class="flex flex-col min-h-screen bg-gray-50 text-gray-900">
   <!-- Header with updated colours -->
   <header class="fixed w-full top-0 z-50" id="mainHeader">
     <nav class="bg-primary px-6 py-4">
@@ -262,13 +274,24 @@
 
   <main class="flex-grow">
     <!-- Hero Section -->
-    <section class="bg-secondary text-white py-16 mb-12">
-      <div class="container mx-auto px-4 text-center">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4  ">Our Gallery</h1>
-        <p class="text-lg text-gray-200 max-w-2xl mx-auto">Capturing moments of worship, fellowship, and community at Northampton PIWC</p>
+    
+    <section class="relative h-[60vh] bg-gradient-to-r from-primary to-secondary overflow-hidden">
+      <div class="absolute inset-0 bg-black/50"></div>
+      <div class="relative container mx-auto h-full flex items-center justify-center px-6">
+        <div class="text-center" data-aos="fade-up">
+          <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">Our Gallery</h1>
+          <p class="text-xl text-white/90 max-w-2xl mx-auto">
+            Capturing moments of worship, fellowship, and community at Northampton PIWC.
+          </p>
+        </div>
+      </div>
+      <div class="absolute bottom-0 left-0 w-full">
+        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#f9fafb" d="M0,96L48,85.3C96,75,192,53,288,53.3C384,53,480,75,576,80C672,85,768,75,864,69.3C960,64,1056,64,1152,69.3C1248,75,1344,85,1392,90.7L1440,96L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z"></path>
+        </svg>
       </div>
     </section>
-
+  
     <!-- Gallery Filter -->
     <div class="container mx-auto px-4 mb-8">
       <div class="flex flex-wrap justify-center gap-4 p-4 bg-white rounded-2xl shadow-lg">
@@ -300,7 +323,7 @@
       <div class="gallery-mobile-scroll flex overflow-x-auto space-x-4 snap-x snap-mandatory py-4">
         <!-- Album Container -->
         <div class="gallery-mobile-item gallery-item relative group overflow-hidden rounded-2xl shadow-lg" data-category="albums">
-          <img src="Gallery/album/sing 2 .jpeg" alt="prefoming prayer on stage during church event" class="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-500">
+          <img src="Gallery/album/sing 2 .jpeg" alt="prefoming prayer on stage during church event" class="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-500 skeleton">
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/90 transition-all duration-300">
             <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-2 group-hover:translate-y-0 transition-transform">
               <h3 class="text-white text-xl font-bold mb-2 album-title">The Call</h3>
@@ -309,51 +332,51 @@
             </div>
           </div>
           <div class="hidden album-photos" id="The call">
-            <img src="Gallery/album/sing1.jpeg" alt="Solo singer with microphone at church event">
-            <img src="Gallery/album/sing 2 .jpeg" alt="prefoming prayer on stage during church event">
-            <img src="Gallery/album/Worship man.jpeg" alt="Man leading worship with microphone in church">
-            <img src="Gallery/album/worship Woman.jpeg" alt="Woman singing in worship during church event">
+            <img src="Gallery/album/sing1.jpeg" alt="Solo singer with microphone at church event" class="skeleton">
+            <img src="Gallery/album/sing 2 .jpeg" alt="prefoming prayer on stage during church event" class="skeleton">
+            <img src="Gallery/album/Worship man.jpeg" alt="Man leading worship with microphone in church" class="skeleton">
+            <img src="Gallery/album/worship Woman.jpeg" alt="Woman singing in worship during church event" class="skeleton">
           </div>
         </div>
 
         <!-- Convert other gallery items to horizontal scroll -->
         <div class="gallery-mobile-item gallery-item relative group overflow-hidden rounded-2xl shadow-lg" data-category="worship">
-          <img src="Gallery/drum.jpeg" alt="Our dedicated drum set that helps lead worship with powerful rhythms" class="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-500">
+          <img src="Gallery/drum.jpeg" alt="Our dedicated drum set that helps lead worship with powerful rhythms" class="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-500 skeleton">
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/90 transition-all duration-300"></div>
         </div>
 
         <div class="gallery-mobile-item gallery-item relative group overflow-hidden rounded-2xl shadow-lg" data-category="worship">
-          <img src="Gallery/drums2.JPG" alt="Close-up of worship drums" class="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-500">
+          <img src="Gallery/drums2.JPG" alt="Close-up of worship drums" class="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-500 skeleton">
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/90 transition-all duration-300"></div>
         </div>
 
         <div class="gallery-mobile-item gallery-item relative group overflow-hidden rounded-2xl shadow-lg" data-category="community">
-          <img src="Gallery/people.JPG" alt="Congregation during worship" class="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-500">
+          <img src="Gallery/people.JPG" alt="Congregation during worship" class="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-500 skeleton">
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/90 transition-all duration-300"></div>
         </div>
 
         <div class="gallery-mobile-item gallery-item relative group overflow-hidden rounded-2xl shadow-lg" data-category="events">
-          <img src="Gallery/album/sing 2 .jpeg" alt=" prefoming prayer on stage during church event" class="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-500">
+          <img src="Gallery/album/sing 2 .jpeg" alt=" prefoming prayer on stage during church event" class="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-500 skeleton">
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/90 transition-all duration-300"></div>
         </div>
         
         <div class="gallery-mobile-item gallery-item relative group overflow-hidden rounded-2xl shadow-lg" data-category="events">
-          <img src="Gallery/album/sing1.jpeg" alt="Solo singer with microphone at church event" class="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-500">
+          <img src="Gallery/album/sing1.jpeg" alt="Solo singer with microphone at church event" class="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-500 skeleton">
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/90 transition-all duration-300"></div>
         </div>
         
         <div class="gallery-mobile-item gallery-item relative group overflow-hidden rounded-2xl shadow-lg" data-category="events">
-          <img src="Gallery/album/Worship man.jpeg" alt="Man leading worship with microphone in church" class="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-500">
+          <img src="Gallery/album/Worship man.jpeg" alt="Man leading worship with microphone in church" class="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-500 skeleton">
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/90 transition-all duration-300"></div>
         </div>
         
         <div class="gallery-mobile-item gallery-item relative group overflow-hidden rounded-2xl shadow-lg" data-category="events">
-          <img src="Gallery/album/worship Woman.jpeg" alt="Woman singing in worship during church event" class="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-500">
+          <img src="Gallery/album/worship Woman.jpeg" alt="Woman singing in worship during church event" class="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-500 skeleton">
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/90 transition-all duration-300"></div>
         </div>
 
         <div class="gallery-mobile-item gallery-item relative group overflow-hidden rounded-2xl shadow-lg" data-category="worship">
-          <img src="Gallery/piano.JPG" alt="Keyboard used in music ministry" class="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-500">
+          <img src="Gallery/piano.JPG" alt="Keyboard used in music ministry" class="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-500 skeleton">
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/90 transition-all duration-300"></div>
         </div>
       </div>
@@ -362,7 +385,7 @@
       <div class="gallery-desktop-grid columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4" data-aos="fade-up" id="galleryGrid">
         <!-- Album Container -->
         <div class="gallery-item break-inside-avoid mb-4 relative group overflow-hidden rounded-2xl shadow-lg" data-category="albums">
-          <img src="Gallery/album/sing 2 .jpeg" alt="prefoming prayer on stage during church event" class="w-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+          <img src="Gallery/album/sing 2 .jpeg" alt="prefoming prayer on stage during church event" class="w-full object-cover transform group-hover:scale-105 transition-transform duration-500 skeleton">
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/90 transition-all duration-300">
             <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-2 group-hover:translate-y-0 transition-transform">
               <h3 class="text-white text-xl font-bold mb-2 album-title">The Call</h3>
@@ -371,49 +394,49 @@
             </div>
           </div>
           <div class="hidden album-photos" id="The call">
-            <img src="Gallery/album/sing1.jpeg" alt="Solo singer with microphone at church event">
-            <img src="Gallery/album/sing 2 .jpeg" alt="prefoming prayer on stage during church event">
-            <img src="Gallery/album/Worship man.jpeg" alt="Man leading worship with microphone in church">
-            <img src="Gallery/album/worship Woman.jpeg" alt="Woman singing in worship during church event">
+            <img src="Gallery/album/sing1.jpeg" alt="Solo singer with microphone at church event" class="skeleton">
+            <img src="Gallery/album/sing 2 .jpeg" alt="prefoming prayer on stage during church event" class="skeleton">
+            <img src="Gallery/album/Worship man.jpeg" alt="Man leading worship with microphone in church" class="skeleton">
+            <img src="Gallery/album/worship Woman.jpeg" alt="Woman singing in worship during church event" class="skeleton">
           </div>
         </div>
 
         <div class="gallery-item break-inside-avoid mb-4 relative group overflow-hidden rounded-2xl shadow-lg" data-category="worship">
-          <img src="Gallery/drum.jpeg" alt="Our dedicated drum set that helps lead worship with powerful rhythms" class="w-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+          <img src="Gallery/drum.jpeg" alt="Our dedicated drum set that helps lead worship with powerful rhythms" class="w-full object-cover transform group-hover:scale-105 transition-transform duration-500 skeleton">
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/90 transition-all duration-300"></div>
         </div>
         <div class="gallery-item break-inside-avoid mb-4 relative group overflow-hidden rounded-2xl shadow-lg" data-category="worship">
-          <img src="Gallery/drums2.JPG" alt="Close-up of worship drums" class="w-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+          <img src="Gallery/drums2.JPG" alt="Close-up of worship drums" class="w-full object-cover transform group-hover:scale-105 transition-transform duration-500 skeleton">
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/90 transition-all duration-300"></div>
         </div>
 
         <div class="gallery-item break-inside-avoid mb-4 relative group overflow-hidden rounded-2xl shadow-lg" data-category="community">
-          <img src="Gallery/people.JPG" alt="Congregation during worship" class="w-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+          <img src="Gallery/people.JPG" alt="Congregation during worship" class="w-full object-cover transform group-hover:scale-105 transition-transform duration-500 skeleton">
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/90 transition-all duration-300"></div>
         </div>
 
         <div class="gallery-item break-inside-avoid mb-4 relative group overflow-hidden rounded-2xl shadow-lg" data-category="events">
-          <img src="Gallery/album/sing 2 .jpeg" alt=" prefoming prayer on stage during church event" class="w-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+          <img src="Gallery/album/sing 2 .jpeg" alt=" prefoming prayer on stage during church event" class="w-full object-cover transform group-hover:scale-105 transition-transform duration-500 skeleton">
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/90 transition-all duration-300"></div>
         </div>
         
         <div class="gallery-item break-inside-avoid mb-4 relative group overflow-hidden rounded-2xl shadow-lg" data-category="events">
-          <img src="Gallery/album/sing1.jpeg" alt="Solo singer with microphone at church event" class="w-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+          <img src="Gallery/album/sing1.jpeg" alt="Solo singer with microphone at church event" class="w-full object-cover transform group-hover:scale-105 transition-transform duration-500 skeleton">
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/90 transition-all duration-300"></div>
         </div>
         
         <div class="gallery-item break-inside-avoid mb-4 relative group overflow-hidden rounded-2xl shadow-lg" data-category="events">
-          <img src="Gallery/album/Worship man.jpeg" alt="Man leading worship with microphone in church" class="w-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+          <img src="Gallery/album/Worship man.jpeg" alt="Man leading worship with microphone in church" class="w-full object-cover transform group-hover:scale-105 transition-transform duration-500 skeleton">
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/90 transition-all duration-300"></div>
         </div>
         
         <div class="gallery-item break-inside-avoid mb-4 relative group overflow-hidden rounded-2xl shadow-lg" data-category="events">
-          <img src="Gallery/album/worship Woman.jpeg" alt="Woman singing in worship during church event" class="w-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+          <img src="Gallery/album/worship Woman.jpeg" alt="Woman singing in worship during church event" class="w-full object-cover transform group-hover:scale-105 transition-transform duration-500 skeleton">
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/90 transition-all duration-300"></div>
         </div>
 
         <div class="gallery-item break-inside-avoid mb-4 relative group overflow-hidden rounded-2xl shadow-lg" data-category="worship">
-          <img src="Gallery/piano.JPG" alt="Keyboard used in music ministry" class="w-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+          <img src="Gallery/piano.JPG" alt="Keyboard used in music ministry" class="w-full object-cover transform group-hover:scale-105 transition-transform duration-500 skeleton">
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/90 transition-all duration-300"></div>
         </div>
 
@@ -968,6 +991,17 @@
       // Hide album navigation when viewing all photos
       document.getElementById('albumNav').classList.add('hidden');
     }
+
+    // Skeleton loader removal for images
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('img.skeleton').forEach(function(img) {
+        function removeSkeleton() { img.classList.remove('skeleton'); }
+        img.addEventListener('load', removeSkeleton);
+        img.addEventListener('error', removeSkeleton);
+        // If already loaded (cache), remove skeleton immediately
+        if (img.complete) removeSkeleton();
+      });
+    });
   </script>
   
   

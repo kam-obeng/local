@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-GB">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,8 +13,8 @@
   <!-- AOS Animation -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-  
-  
+
+
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -47,10 +48,10 @@
       }
     };
   </script>
-  
+
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
-    
+
     body {
       font-family: 'Montserrat', sans-serif;
       scroll-behaviour: smooth;
@@ -71,10 +72,13 @@
     }
 
     @keyframes pulse-glow {
-      0%, 100% { 
+
+      0%,
+      100% {
         box-shadow: 0 0 5px rgba(75, 147, 162, 0.5);
       }
-      50% { 
+
+      50% {
         box-shadow: 0 0 20px rgba(75, 147, 162, 0.8);
       }
     }
@@ -89,7 +93,8 @@
     }
 
     /* Hero background zoom effect */
-    #hero-bg-current, #hero-bg-next {
+    #hero-bg-current,
+    #hero-bg-next {
       animation: zoom-in;
       background-size: cover;
       background-position: center;
@@ -99,6 +104,7 @@
     .card {
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+
     .card:hover {
       transform: translateY(-5px) scale(1.02);
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
@@ -108,6 +114,7 @@
     .footer-social a {
       transition: transform 0.3s ease;
     }
+
     .footer-social a:hover {
       transform: scale(1.1);
     }
@@ -122,7 +129,7 @@
     .nav-link {
       position: relative;
     }
-    
+
     .nav-link::after {
       content: '';
       position: absolute;
@@ -134,11 +141,11 @@
       transition: all 0.3s ease;
       transform: translateX(-50%);
     }
-    
+
     .nav-link:hover::after {
       width: 100%;
     }
-    
+
     .dropdown-menu {
       display: none;
       position: absolute;
@@ -152,19 +159,19 @@
       padding: 0.5rem;
       z-index: 50;
     }
- 
+
     .group:hover .dropdown-menu,
     .group:focus-within .dropdown-menu {
       display: block;
     }
- 
+
     .dropdown-menu a {
       display: block;
       padding: 0.5rem 1rem;
       border-radius: 0.375rem;
       transition: background-color 0.2s, color 0.2s;
     }
- 
+
     .dropdown-menu a:hover {
       background-color: #395886;
       color: white;
@@ -199,7 +206,7 @@
     }
 
     /* Mobile dropdown animations */
-    details[open] summary ~ * {
+    details[open] summary~* {
       animation: slide-in 0.3s ease-in-out;
     }
 
@@ -208,6 +215,7 @@
         opacity: 0;
         transform: translateY(-10px);
       }
+
       100% {
         opacity: 1;
         transform: translateY(0);
@@ -222,7 +230,7 @@
 
 
 <body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
-  
+
   <!-- Header with updated colours -->
   <header class="fixed w-full top-0 z-50" id="mainHeader">
     <nav class="bg-primary px-6 py-4">
@@ -235,45 +243,59 @@
         </a>
         <div class="flex items-center space-x-6">
           <nav class="hidden lg:flex space-x-6 text-white items-center">
-           
+
             <div class="relative group">
-              <button aria-expanded="false" aria-haspopup="true" class="hover:text-accent transition-colors py-2 flex items-center gap-1">
+              <button aria-expanded="false" aria-haspopup="true"
+                class="hover:text-accent transition-colors py-2 flex items-center gap-1">
                 About us <i class="fas fa-chevron-down text-xs ml-1"></i>
               </button>
-              <div class="absolute invisible opacity-0 group-hover:visible group-hover:opacity-100 bg-white text-primary mt-0 rounded-lg shadow-lg min-w-[200px] z-50 transition-all duration-200 transform origin-top scale-95 group-hover:scale-100">
+              <div
+                class="absolute invisible opacity-0 group-hover:visible group-hover:opacity-100 bg-white text-primary mt-0 rounded-lg shadow-lg min-w-[200px] z-50 transition-all duration-200 transform origin-top scale-95 group-hover:scale-100">
                 <div class="py-2" role="menu">
-                  <a href="test.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition" role="menuitem">Events</a>
+                  <a href="test.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition"
+                    role="menuitem">Events</a>
 
-                  <a href="new.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition" role="menuitem">New here</a>
-                  <a href="heart.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition" role="menuitem">Our Heart &amp; Purpose</a>
-                  <a href="team.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition" role="menuitem">Meet the Team</a>
+                  <a href="new.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition"
+                    role="menuitem">New here</a>
+                  <a href="heart.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition"
+                    role="menuitem">Our Heart &amp; Purpose</a>
+                  <a href="team.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition"
+                    role="menuitem">Meet the Team</a>
                 </div>
               </div>
             </div>
             <div class="relative group">
-              <button aria-expanded="false" aria-haspopup="true" class="hover:text-accent transition-colors py-2 flex items-center gap-1">
+              <button aria-expanded="false" aria-haspopup="true"
+                class="hover:text-accent transition-colors py-2 flex items-center gap-1">
                 Ministries <i class="fas fa-chevron-down text-xs ml-1"></i>
               </button>
-              <div class="absolute invisible opacity-0 group-hover:visible group-hover:opacity-100 bg-white text-primary mt-0 rounded-lg shadow-lg min-w-[200px] z-50 transition-all duration-200 transform origin-top scale-95 group-hover:scale-100">
+              <div
+                class="absolute invisible opacity-0 group-hover:visible group-hover:opacity-100 bg-white text-primary mt-0 rounded-lg shadow-lg min-w-[200px] z-50 transition-all duration-200 transform origin-top scale-95 group-hover:scale-100">
                 <div class="py-2" role="menu">
-                  <a href="Ministries.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition" role="menuitem">Our Ministries & Teams</a>
-                  <a href="join.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition" role="menuitem">Join a Ministry</a>
+                  <a href="Ministries.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition"
+                    role="menuitem">Our Ministries & Teams</a>
+                  <a href="join.html" class="block px-4 py-2 hover:bg-primary hover:text-white transition"
+                    role="menuitem">Join a Ministry</a>
                 </div>
               </div>
             </div>
             <a href="contact.html" class="hover:text-accent transition-colors py-2">Contact</a>
             <a href="gallery.html" class="hover:text-accent transition-colors py-2">Gallery</a>
-            <a href="give.html" class="bg-white text-primary px-6 py-2 rounded-full font-medium hover:bg-gray-100 transition-all transform hover:scale-105">Give</a>
+            <a href="give.html"
+              class="bg-white text-primary px-6 py-2 rounded-full font-medium hover:bg-gray-100 transition-all transform hover:scale-105">Give</a>
           </nav>
-          <button id="navToggle" class="lg:hidden text-white focus:outline-none focus:ring-2 focus:ring-accent rounded-lg p-2" aria-label="Toggle navigation" aria-expanded="false">
+          <button id="navToggle"
+            class="lg:hidden text-white focus:outline-none focus:ring-2 focus:ring-accent rounded-lg p-2"
+            aria-label="Toggle navigation" aria-expanded="false">
             <i class="fas fa-bars text-2xl"></i>
           </button>
         </div>
       </div>
-      <div id="mobileNav" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out lg:hidden mt-4 rounded-lg backdrop-blur-md">
+      <div id="mobileNav"
+        class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out lg:hidden mt-4 rounded-lg backdrop-blur-md">
         <div class="p-6 space-y-6 text-white">
-          
-          
+
+
           <details class="group">
             <summary class="cursor-pointer hover:text-accent py-3 transition-all flex justify-between items-center">
               <span class="flex items-center">
@@ -283,10 +305,14 @@
               <i class="fas fa-chevron-down group-open:rotate-180 transition-transform duration-300"></i>
             </summary>
             <div class="pl-8 mt-3 space-y-3 border-l-2 border-accent/30">
-              <a href="test.html" class="block hover:text-accent transition-all transform hover:translate-x-2">Events</a>
-              <a href="new.html" class="block hover:text-accent transition-all transform hover:translate-x-2">New here</a>
-              <a href="heart.html" class="block hover:text-accent transition-all transform hover:translate-x-2">Our Heart & Purpose</a>
-              <a href="team.html" class="block hover:text-accent transition-all transform hover:translate-x-2">Meet the Team</a>
+              <a href="test.html"
+                class="block hover:text-accent transition-all transform hover:translate-x-2">Events</a>
+              <a href="new.html" class="block hover:text-accent transition-all transform hover:translate-x-2">New
+                here</a>
+              <a href="heart.html" class="block hover:text-accent transition-all transform hover:translate-x-2">Our
+                Heart & Purpose</a>
+              <a href="team.html" class="block hover:text-accent transition-all transform hover:translate-x-2">Meet the
+                Team</a>
             </div>
           </details>
           <details class="group">
@@ -298,8 +324,10 @@
               <i class="fas fa-chevron-down group-open:rotate-180 transition-transform duration-300"></i>
             </summary>
             <div class="pl-8 mt-3 space-y-3 border-l-2 border-accent/30">
-              <a href="Ministries.html" class="block hover:text-accent transition-all transform hover:translate-x-2">Our Ministries & Teams</a>
-              <a href="join.html" class="block hover:text-accent transition-all transform hover:translate-x-2">Join a Ministry</a>
+              <a href="Ministries.html" class="block hover:text-accent transition-all transform hover:translate-x-2">Our
+                Ministries & Teams</a>
+              <a href="join.html" class="block hover:text-accent transition-all transform hover:translate-x-2">Join a
+                Ministry</a>
             </div>
           </details>
           <a href="contact.html" class="block hover:text-accent py-3 transition-all transform hover:translate-x-2">
@@ -308,7 +336,8 @@
           <a href="gallery.html" class="block hover:text-accent py-3 transition-all transform hover:translate-x-2">
             <i class="fas fa-images mr-3"></i>Gallery
           </a>
-          <a href="give.html" class="block bg-white text-primary px-6 py-2 rounded-full text-center font-medium hover:bg-gray-100 transition-all">
+          <a href="give.html"
+            class="block bg-white text-primary px-6 py-2 rounded-full text-center font-medium hover:bg-gray-100 transition-all">
             <i class="fas fa-donate mr-3"></i>Give
           </a>
         </div>
@@ -317,7 +346,7 @@
   </header>
   <!-- Added spacer for fixed nav offset -->
   <div class="h-20"></div>
-  
+
   <!-- Main Content Section -->
   <main class="min-h-screen bg-gradient-to-br from-primary/5 via-white to-secondary/5">
     <!-- Hero Section -->
@@ -339,25 +368,30 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           <!-- Ministry Categories -->
           <div class="ministry-card group" data-aos="fade-up" data-aos-delay="100">
-            <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 h-full">
+            <div
+              class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 h-full">
               <div class="text-primary mb-4"><i class="fas fa-music text-3xl"></i></div>
               <h3 class="text-xl font-semibold mb-3">Worship Ministry</h3>
-              <p class="text-gray-600 mb-4">Join our music team and help lead the congregation in worship through music and song.</p>
+              <p class="text-gray-600 mb-4">Join our music team and help lead the congregation in worship through music
+                and song.</p>
               <span class="text-primary/80 text-sm">Available Positions: Music, Choir, Tech</span>
             </div>
           </div>
 
           <div class="ministry-card group" data-aos="fade-up" data-aos-delay="200">
-            <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 h-full">
+            <div
+              class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 h-full">
               <div class="text-primary mb-4"><i class="fas fa-hands-helping text-3xl"></i></div>
               <h3 class="text-xl font-semibold mb-3">Community Service</h3>
-              <p class="text-gray-600 mb-4">Make a difference in our community through outreach programs and support services.</p>
+              <p class="text-gray-600 mb-4">Make a difference in our community through outreach programs and support
+                services.</p>
               <span class="text-primary/80 text-sm">Available Positions: PEMEM, Welcoming</span>
             </div>
           </div>
 
           <div class="ministry-card group" data-aos="fade-up" data-aos-delay="300">
-            <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 h-full">
+            <div
+              class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 h-full">
               <div class="text-primary mb-4"><i class="fas fa-chalkboard-teacher text-3xl"></i></div>
               <h3 class="text-xl font-semibold mb-3">Education Ministry</h3>
               <p class="text-gray-600 mb-4">Share your knowledge and help others grow in their faith journey.</p>
@@ -377,7 +411,7 @@
                   <input type="text" id="firstName" name="firstName" required
                     class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
                 </div>
-                
+
                 <div class="form-group">
                   <label class="block text-sm font-medium text-gray-700 mb-2" for="surname">Surname</label>
                   <input type="text" id="surname" name="surname" required
@@ -408,6 +442,17 @@
                 </div>
               </div>
 
+              <!-- Terms and Conditions Checkbox -->
+              <div class="flex items-center space-x-3">
+                <input type="checkbox" id="terms" name="terms" required
+                  class="h-5 w-5 text-primary border-gray-300 rounded focus:ring-primary">
+                <label for="terms" class="text-sm text-gray-700">
+                  By register your interest, you agree to the 
+                  <a href="Terms-&-Conditions.html" target="_blank" class="text-primary underline hover:text-secondary">Terms and Conditions</a>. 
+                  This includes giving the church permission to use your contact details for ministry purposes and allowing you to be added to a WhatsApp group chat for updates and communication.
+                </label>
+              </div>
+
               <div class="text-center">
                 <button type="submit"
                   class="inline-flex items-center px-8 py-3 rounded-lg bg-primary text-white font-semibold hover:bg-secondary transform hover:scale-105 transition-all duration-300 shadow-lg">
@@ -422,74 +467,80 @@
     </section>
   </main>
 
- <!-- Footer -->
- <footer class="bg-gray-900 text-white py-8">
-  <div class="container mx-auto px-4">
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 text-center sm:text-left">
-      <div class="w-full">
-        <h3 class="text-lg md:text-xl font-bold mb-4">About Us</h3>
-        <p class="text-gray-400 text-sm">
-          Northampton PIWC is a vibrant community of believers dedicated to spreading God's love.
-        </p>
-      </div>
-      <div class="w-full">
-        <h3 class="text-lg md:text-xl font-bold mb-4">Quick Links</h3>
-        <ul class="space-y-2 text-gray-400 text-sm">
-          <li><a href="Ministries.html" class="hover:text-white transition-colors">Ministries</a></li>
-          <li><a href="test.html" class="hover:text-white transition-colors">Events</a></li>
-          <li><a href="test.html" class="hover:text-white transition-colors">Sermons</a></li>
-        </ul>
-      </div>
-      <div class="w-full">
-        <h3 class="text-lg md:text-xl font-bold mb-4">Connect</h3>
-        <div class="flex space-x-6 justify-center sm:justify-start">
-          <a href="https://www.tiktok.com/@northampton_piwc" class="text-gray-400 hover:text-white transition-colors">
-            <i class="fab fa-tiktok text-xl"></i>
-          </a>
-          <a href="https://www.instagram.com/northampton.piwc/" class="text-gray-400 hover:text-white transition-colors">
-            <i class="fab fa-instagram text-xl"></i>
-          </a>
-          <a href="https://www.youtube.com/@NorthamptonPIWC" class="text-gray-400 hover:text-white transition-colors">
-            <i class="fab fa-youtube text-xl"></i>
-          </a>
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-8">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 text-center sm:text-left">
+        <div class="w-full">
+          <h3 class="text-lg md:text-xl font-bold mb-4">About Us</h3>
+          <p class="text-gray-400 text-sm">
+            Northampton PIWC is a vibrant community of believers dedicated to spreading God's love.
+          </p>
         </div>
-      </div>
-      <div class="w-full">
-        <h3 class="text-lg md:text-xl font-bold mb-4">Access & Legal</h3>
-        <ul class="space-y-2 text-gray-400 text-sm">
-          <li><a href="admin.html" class="hover:text-white transition-colors flex items-center justify-center sm:justify-start gap-2 group">
-            <i class="fas fa-lock text-sm group-hover:text-accent"></i> Admin Portal
-          </a></li>
-          <li><a href="Terms-&-Conditions.html" class="hover:text-white transition-colors flex items-center justify-center sm:justify-start gap-2 group">
-            <i class="fas fa-file-contract text-sm group-hover:text-accent"></i> Terms & Conditions
-          </a></li>
-        </ul>
-      </div>
-      <div class="w-full">
-        <h3 class="text-lg md:text-xl font-bold mb-4">Newsletter</h3>
-        <form class="space-y-3 mx-auto max-w-xs" onsubmit="event.preventDefault(); 
+        <div class="w-full">
+          <h3 class="text-lg md:text-xl font-bold mb-4">Quick Links</h3>
+          <ul class="space-y-2 text-gray-400 text-sm">
+            <li><a href="Ministries.html" class="hover:text-white transition-colors">Ministries</a></li>
+            <li><a href="test.html" class="hover:text-white transition-colors">Events</a></li>
+            <li><a href="test.html" class="hover:text-white transition-colors">Sermons</a></li>
+          </ul>
+        </div>
+        <div class="w-full">
+          <h3 class="text-lg md:text-xl font-bold mb-4">Connect</h3>
+          <div class="flex space-x-6 justify-center sm:justify-start">
+            <a href="https://www.tiktok.com/@northampton_piwc" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fab fa-tiktok text-xl"></i>
+            </a>
+            <a href="https://www.instagram.com/northampton.piwc/"
+              class="text-gray-400 hover:text-white transition-colors">
+              <i class="fab fa-instagram text-xl"></i>
+            </a>
+            <a href="https://www.youtube.com/@NorthamptonPIWC" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fab fa-youtube text-xl"></i>
+            </a>
+          </div>
+        </div>
+        <div class="w-full">
+          <h3 class="text-lg md:text-xl font-bold mb-4">Access & Legal</h3>
+          <ul class="space-y-2 text-gray-400 text-sm">
+            <li><a href="admin.html"
+                class="hover:text-white transition-colors flex items-center justify-center sm:justify-start gap-2 group">
+                <i class="fas fa-lock text-sm group-hover:text-accent"></i> Admin Portal
+              </a></li>
+            <li><a href="Terms-&-Conditions.html"
+                class="hover:text-white transition-colors flex items-center justify-center sm:justify-start gap-2 group">
+                <i class="fas fa-file-contract text-sm group-hover:text-accent"></i> Terms & Conditions
+              </a></li>
+          </ul>
+        </div>
+        <div class="w-full">
+          <h3 class="text-lg md:text-xl font-bold mb-4">Newsletter</h3>
+          <form class="space-y-3 mx-auto max-w-xs"
+            onsubmit="event.preventDefault(); 
           const email = document.getElementById('user-email').value; 
           window.location.href = 'mailto:Kobeng909@gmail.com?subject=Subscribe&body=' + encodeURIComponent('Email: ' + email);">
-          <input id="user-email" type="email" placeholder="Your email" required 
-            class="w-full px-3 py-2 rounded-full bg-gray-800 text-white border-none focus:ring-2 focus:ring-primary text-center text-sm">
-          <button type="submit" 
-            class="w-full bg-primary text-white px-4 py-2 rounded-full hover:bg-secondary transition-colors text-sm">
-            Subscribe
-          </button>
-        </form>
+            <input id="user-email" type="email" placeholder="Your email" required
+              class="w-full px-3 py-2 rounded-full bg-gray-800 text-white border-none focus:ring-2 focus:ring-primary text-center text-sm">
+            <button type="submit"
+              class="w-full bg-primary text-white px-4 py-2 rounded-full hover:bg-secondary transition-colors text-sm">
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-8 pt-6 text-center text-gray-400 text-sm">
+        <p>&copy; <span id="currentYear"></span> Northampton PIWC. All Rights Reserved.</p>
       </div>
     </div>
-    <div class="border-t border-gray-800 mt-8 pt-6 text-center text-gray-400 text-sm">
-      <p>&copy; <span id="currentYear"></span> Northampton PIWC. All Rights Reserved.</p>
-    </div>
-  </div>
-</footer>
-  
+  </footer>
+
   <!-- Back to Top Button -->
-  <button id="backToTop" class="fixed bottom-10 right-10 bg-primary text-white p-3 rounded-full shadow-lg hover:bg-secondary transition-colors hidden" aria-label="Back to Top">
+  <button id="backToTop"
+    class="fixed bottom-10 right-10 bg-primary text-white p-3 rounded-full shadow-lg hover:bg-secondary transition-colors hidden"
+    aria-label="Back to Top">
     <i class="fas fa-arrow-up"></i>
   </button>
-  
+
   <!-- Scripts -->
   <script>
     // Mobile Navigation Toggle
@@ -515,7 +566,7 @@
       });
 
       // Close mobile menu when clicking outside
-      document.addEventListener('click', function(event) {
+      document.addEventListener('click', function (event) {
         const isClickInside = mobileNav.contains(event.target) || navToggle.contains(event.target);
         if (!isClickInside && !mobileNav.classList.contains('max-h-0')) {
           navToggle.click();
@@ -544,7 +595,7 @@
     backToTopButton.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-    
+
     // Automatically set current year in footer
     document.getElementById('currentYear').textContent = new Date().getFullYear();
 
@@ -556,10 +607,10 @@
     });
 
     // Add active state to current page link
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       const currentPath = window.location.pathname;
       const navLinks = document.querySelectorAll('a');
-      
+
       navLinks.forEach(link => {
         if (link.getAttribute('href') === currentPath.split('/').pop()) {
           link.classList.add('text-accent');
@@ -568,4 +619,5 @@
     });
   </script>
 </body>
+
 </html>

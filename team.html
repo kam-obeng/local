@@ -204,7 +204,7 @@
   
    <!-- Header with updated colours -->
   <header class="fixed w-full top-0 z-50" id="mainHeader">
-    <nav class="bg-primary px-6 py-4">
+    <nav class="bg-primary px-4 py-2">
       <div class="container mx-auto flex justify-between items-center">
         <a href="index.html" class="flex items-center space-x-3">
           <img src="pics/logo.JPG" alt="Church Logo" class="h-12 w-12 rounded-full shadow-lg">
@@ -296,24 +296,34 @@
   </header>
   
   <!-- Hero Section -->
-  <section class="relative min-h-[50vh] pt-32 pb-20 bg-gradient-to-br from-primary to-secondary flex items-center justify-center overflow-hidden">
-    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQ0MCIgaGVpZ2h0PSI3NDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48Y2lyY2xlIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLW9wYWNpdHk9Ii4yIiBjeD0iNzIwIiBjeT0iMzg4IiByPSI1NTkuNSIvPjxjaXJjbGUgc3Ryb2tlPSIjZmZmIiBzdHJva2Utb3BhY2l0eT0iLjIiIGN4PSI3MjAiIGN5PSIzODgiIHI9IjM4Mi41Ii8+PGNpcmNsZSBzdHJva2U9IiNmZmYiIHN0cm9rZS1vcGFjaXR5PSIuMiIgY3g9IjcyMCIgY3k9IjM4OCIgcj0iMjgzLjUiLz48L2c+PC9zdmc+')] opacity-10"></div>
-    <div class="relative z-10 text-center text-white px-4">
-      <h1 class="text-4xl md:text-6xl font-bold mb-4" data-aos="fade-down">Meet Our Team</h1>
-      <p class="text-xl md:text-2xl opacity-90 max-w-2xl mx-auto" data-aos="fade-up">The dedicated individuals who make our community thrive</p>
+  
+  <section class="relative h-[50vh] bg-gradient-to-r from-primary to-secondary overflow-hidden">
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="relative container mx-auto h-full flex items-center justify-center px-6">
+      <div class="text-center" data-aos="fade-up">
+        <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">Meet Our Team</h1>
+        <p class="text-xl text-white/90 max-w-2xl mx-auto">
+          The dedicated individuals who make our community thrive
+        </p>
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 w-full">
+      <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#f9fafb" d="M0,96L48,85.3C96,75,192,53,288,53.3C384,53,480,75,576,80C672,85,768,75,864,69.3C960,64,1056,64,1152,69.3C1248,75,1344,85,1392,90.7L1440,96L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z"></path>
+      </svg>
     </div>
   </section>
 
   <!-- Team Section -->
-  <section class="py-20 px-4 bg-gray-50">
+  <section class="py-12 px-4 bg-gray-50">
     <div class="container mx-auto">
       <!-- Leadership Section -->
-      <div class="mb-20">
-        <h2 class="text-2xl font-bold text-primary text-center mb-12 relative after:content-[''] after:absolute after:w-20 after:h-1 after:bg-accent after:left-1/2 after:-translate-x-1/2 after:-bottom-4">Leadership</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-primary text-center mb-8 relative after:content-[''] after:absolute after:w-20 after:h-1 after:bg-accent after:left-1/2 after:-translate-x-1/2 after:-bottom-4">Leadership</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           <!-- Pastor -->
           <div class="group" data-aos="fade-right">
-            <div class="relative overflow-hidden rounded-2xl bg-white shadow-xl p-8 transition-all duration-300 hover:-translate-y-2">
+            <div class="relative overflow-hidden rounded-2xl bg-white shadow-xl p-6 transition-all duration-300 hover:-translate-y-2">
               <div class="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-bl-full -z-0"></div>
               <div class="relative z-10">
                 <div class="w-48 h-48 mx-auto mb-6 overflow-hidden rounded-full">
@@ -327,7 +337,7 @@
           </div>
           <!-- Pastor's Wife -->
           <div class="group" data-aos="fade-left">
-            <div class="relative overflow-hidden rounded-2xl bg-white shadow-xl p-8 transition-all duration-300 hover:-translate-y-2">
+            <div class="relative overflow-hidden rounded-2xl bg-white shadow-xl p-6 transition-all duration-300 hover:-translate-y-2">
               <div class="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-bl-full -z-0"></div>
               <div class="relative z-10">
                 <div class="w-48 h-48 mx-auto mb-6 overflow-hidden rounded-full">
@@ -344,14 +354,14 @@
 
       <!-- Ministry Leaders Section -->
       <div>
-        <h2 class="text-2xl font-bold text-primary text-center mb-12 relative after:content-[''] after:absolute after:w-20 after:h-1 after:bg-accent after:left-1/2 after:-translate-x-1/2 after:-bottom-4">Ministry Leaders</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <h2 class="text-2xl font-bold text-primary text-center mb-8 relative after:content-[''] after:absolute after:w-20 after:h-1 after:bg-accent after:left-1/2 after:-translate-x-1/2 after:-bottom-4">Ministry Leaders</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <!-- Ministry Leaders Cards with Hover Effects -->
           <div class="group bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="100">
             <div class="aspect-w-4 aspect-h-3 bg-gray-200">
               <img src="https://placehold.co/300x300" alt="Youth Leader" class="object-cover transform transition-transform duration-500 group-hover:scale-110">
             </div>
-            <div class="p-6">
+            <div class="p-4">
               <h3 class="text-xl font-semibold text-primary group-hover:text-accent transition-colors">Alex Brown</h3>
               <p class="text-accent mb-2">Youth Coordinator</p>
               <p class="text-gray-600 text-sm">Engaging our young people with innovative programmes.</p>
@@ -362,7 +372,7 @@
             <div class="aspect-w-4 aspect-h-3 bg-gray-200">
               <img src="https://placehold.co/300x300" alt="Children's Ministry" class="object-cover transform transition-transform duration-500 group-hover:scale-110">
             </div>
-            <div class="p-6">
+            <div class="p-4">
               <h3 class="text-xl font-semibold text-primary group-hover:text-accent transition-colors">Emily Davis</h3>
               <p class="text-accent mb-2">Children's Ministry Leader</p>
               <p class="text-gray-600 text-sm">Nurturing our youngest members in faith and fun.</p>
@@ -373,7 +383,7 @@
             <div class="aspect-w-4 aspect-h-3 bg-gray-200">
               <img src="https://placehold.co/300x300" alt="Music Director" class="object-cover transform transition-transform duration-500 group-hover:scale-110">
             </div>
-            <div class="p-6">
+            <div class="p-4">
               <h3 class="text-xl font-semibold text-primary group-hover:text-accent transition-colors">David Wilson</h3>
               <p class="text-accent mb-2">Music Director</p>
               <p class="text-gray-600 text-sm">Leading our worship through inspiring music.</p>
@@ -385,9 +395,9 @@
   </section>
   
   <!-- Footer -->
-  <footer class="bg-gray-900 text-white py-8">
+  <footer class="bg-gray-900 text-white py-6">
     <div class="container mx-auto px-4">
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 text-center sm:text-left">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 text-center sm:text-left">
         <div class="w-full">
           <h3 class="text-lg md:text-xl font-bold mb-4">About Us</h3>
           <p class="text-gray-400 text-sm">
@@ -441,7 +451,7 @@
           </form>
         </div>
       </div>
-      <div class="border-t border-gray-800 mt-8 pt-6 text-center text-gray-400 text-sm">
+      <div class="border-t border-gray-800 mt-6 pt-4 text-center text-gray-400 text-sm">
         <p>&copy; <span id="currentYear"></span> Northampton PIWC. All Rights Reserved.</p>
       </div>
     </div>
