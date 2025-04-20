@@ -290,61 +290,168 @@
   </header>
 
   <!-- Main Content -->
-  <div class="container mx-auto px-8 py-12 mt-24">
-    <h1 class="text-5xl font-extrabold text-center text-primary mb-10 tracking-wide">Terms and Conditions</h1>
-    
-    <div class="modern-card mx-auto max-w-4xl">
-      <section class="mb-8">
-        <h2 class="text-2xl font-bold text-primary mb-4">1. Acceptance of Terms</h2>
-        <p class="text-gray-700 mb-4">By accessing and using the Northampton PIWC website and services, you acknowledge and agree to these terms and conditions.</p>
-      </section>
+  <main class="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+    <!-- Hero Section -->
+    <div class="relative min-h-[40vh] flex items-center mt-16">
+      <!-- Geometric Background Pattern -->
+      <div class="absolute inset-0 bg-gradient-to-br from-primary to-secondary">
+        <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')"></div>
+      </div>
 
-      <section class="mb-8">
-        <h2 class="text-2xl font-bold text-primary mb-4">2. Privacy Policy</h2>
-        <p class="text-gray-700 mb-4">We respect your privacy and protect your personal information. Any information collected will be used in accordance with our privacy policy and GDPR regulations.</p>
-      </section>
+      <!-- Content Container -->
+      <div class="container mx-auto px-8 relative">
+        <div class="max-w-4xl mx-auto">
+          <!-- Decorative Elements -->
+          <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2"></div>
+          <div class="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full blur-2xl translate-y-1/2"></div>
 
-      <section class="mb-8">
-        <h2 class="text-2xl font-bold text-primary mb-4">3. Use of Content</h2>
-        <p class="text-gray-700 mb-4">All content on this website is the property of Northampton PIWC and is protected by copyright laws. You may not reproduce, distribute, or use our content without explicit permission.</p>
-      </section>
+          <!-- Main Content -->
+          <div class="relative space-y-6 text-center">
+            <!-- Title with Highlight Effect -->
+            <div class="inline-block relative">
+              <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-4 tracking-tight relative z-10">
+                Terms and Conditions
+                <div class="absolute -inset-1 bg-white/10 blur-lg rounded-lg -z-10"></div>
+              </h1>
+            </div>
 
-      <section class="mb-8">
-        <h2 class="text-2xl font-bold text-primary mb-4">4. Online Donations</h2>
-        <p class="text-gray-700 mb-4">All donations are final and non-refundable. We use secure payment processing systems, but we cannot guarantee absolute security of online transactions.</p>
-      </section>
+            <!-- Description with Glass Effect -->
+            <div class="glass-effect backdrop-blur-md bg-white/10 p-6 rounded-2xl inline-block">
+              <p class="text-xl text-white/90">Please read these terms carefully before using our services.</p>
+            </div>
 
-      <section class="mb-8">
-        <h2 class="text-2xl font-bold text-primary mb-4">5. Code of Conduct</h2>
-        <p class="text-gray-700 mb-4">When participating in church activities or using our online platforms, members and visitors must:</p>
-        <ul class="list-disc list-inside text-gray-700 ml-4">
-          <li>Treat others with respect and dignity</li>
-          <li>Refrain from harmful or discriminatory behavior</li>
-          <li>Follow church guidelines and protocols</li>
-          <li>Respect the privacy of other members</li>
-        </ul>
-      </section>
+            <!-- Visual Indicators -->
+            <div class="flex items-center justify-center gap-4 mt-8">
+              <div class="flex items-center space-x-2 text-white/80">
+                <i class="fas fa-clock"></i>
+                <span>Last updated: April 2025</span>
+              </div>
+              <div class="w-2 h-2 bg-white/30 rounded-full"></div>
+              <div class="flex items-center space-x-2 text-white/80">
+                <i class="fas fa-file-alt"></i>
+                <span>7 Sections</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <section class="mb-8">
-        <h2 class="text-2xl font-bold text-primary mb-4">6. Changes to Terms</h2>
-        <p class="text-gray-700 mb-4">Northampton PIWC reserves the right to modify these terms at any time. Changes will be effective immediately upon posting to the website.</p>
-      </section>
-
-      <section class="mb-8">
-        <h2 class="text-2xl font-bold text-primary mb-4">7. Contact Information</h2>
-        <p class="text-gray-700 mb-4">For questions about these terms, please contact us at:</p>
-        <p class="text-gray-700">Email: info@northamptonpiwc.com</p>
-        <p class="text-gray-700">Address: Unit H5 Kingsfield Way, Kings Heath Industrial Estate, Northampton NN5 7QS</p>
-      </section>
-
-      <div class="text-gray-600 text-sm mt-8">
-        <p>Last updated: <span id="lastUpdated"></span></p>
-        <script>
-          document.getElementById('lastUpdated').textContent = new Date().toLocaleDateString('en-GB');
-        </script>
+      <!-- Scroll Indicator -->
+      <div class="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/80 animate-bounce">
+        <i class="fas fa-chevron-down"></i>
       </div>
     </div>
-  </div>
+
+    <div class="container mx-auto px-8 py-12">
+      <!-- Table of Contents -->
+      <div class="lg:flex gap-8">
+        <nav class="lg:w-64 mb-8 lg:mb-0">
+          <div class="sticky top-24 bg-white rounded-xl shadow-lg p-6">
+            <h2 class="text-lg font-bold text-primary mb-4">Contents</h2>
+            <ul class="space-y-2">
+              <li><a href="#acceptance" class="text-gray-600 hover:text-primary transition-colors">1. Acceptance of Terms</a></li>
+              <li><a href="#privacy" class="text-gray-600 hover:text-primary transition-colors">2. Privacy Policy</a></li>
+              <li><a href="#content" class="text-gray-600 hover:text-primary transition-colors">3. Use of Content</a></li>
+              <li><a href="#donations" class="text-gray-600 hover:text-primary transition-colors">4. Online Donations</a></li>
+              <li><a href="#conduct" class="text-gray-600 hover:text-primary transition-colors">5. Code of Conduct</a></li>
+              <li><a href="#changes" class="text-gray-600 hover:text-primary transition-colors">6. Changes to Terms</a></li>
+              <li><a href="#contact" class="text-gray-600 hover:text-primary transition-colors">7. Contact Information</a></li>
+            </ul>
+          </div>
+        </nav>
+
+        <!-- Content Sections -->
+        <div class="lg:flex-1 space-y-6">
+          <section id="acceptance" class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                <i class="fas fa-check text-primary text-xl"></i>
+              </div>
+              <h2 class="text-2xl font-bold text-primary">1. Acceptance of Terms</h2>
+            </div>
+            <p class="text-gray-700">By accessing and using the Northampton PIWC website and services, you acknowledge and agree to these terms and conditions.</p>
+          </section>
+
+          <section id="privacy" class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                <i class="fas fa-shield-alt text-primary text-xl"></i>
+              </div>
+              <h2 class="text-2xl font-bold text-primary">2. Privacy Policy</h2>
+            </div>
+            <p class="text-gray-700">We respect your privacy and protect your personal information. Any information collected will be used in accordance with our privacy policy and GDPR regulations.</p>
+          </section>
+
+          <section id="content" class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                <i class="fas fa-file-alt text-primary text-xl"></i>
+              </div>
+              <h2 class="text-2xl font-bold text-primary">3. Use of Content</h2>
+            </div>
+            <p class="text-gray-700">All content on this website is the property of Northampton PIWC and is protected by copyright laws. You may not reproduce, distribute, or use our content without explicit permission.</p>
+          </section>
+
+          <section id="donations" class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                <i class="fas fa-donate text-primary text-xl"></i>
+              </div>
+              <h2 class="text-2xl font-bold text-primary">4. Online Donations</h2>
+            </div>
+            <p class="text-gray-700">All donations are final and non-refundable. We use secure payment processing systems, but we cannot guarantee absolute security of online transactions.</p>
+          </section>
+
+          <section id="conduct" class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                <i class="fas fa-users text-primary text-xl"></i>
+              </div>
+              <h2 class="text-2xl font-bold text-primary">5. Code of Conduct</h2>
+            </div>
+            <p class="text-gray-700">When participating in church activities or using our online platforms, members and visitors must:</p>
+            <ul class="list-disc list-inside text-gray-700 ml-4">
+              <li>Treat others with respect and dignity</li>
+              <li>Refrain from harmful or discriminatory behavior</li>
+              <li>Follow church guidelines and protocols</li>
+              <li>Respect the privacy of other members</li>
+            </ul>
+          </section>
+
+          <section id="changes" class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                <i class="fas fa-edit text-primary text-xl"></i>
+              </div>
+              <h2 class="text-2xl font-bold text-primary">6. Changes to Terms</h2>
+            </div>
+            <p class="text-gray-700">Northampton PIWC reserves the right to modify these terms at any time. Changes will be effective immediately upon posting to the website.</p>
+          </section>
+
+          <section id="contact" class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                <i class="fas fa-envelope text-primary text-xl"></i>
+              </div>
+              <h2 class="text-2xl font-bold text-primary">7. Contact Information</h2>
+            </div>
+            <p class="text-gray-700">For questions about these terms, please contact us at:</p>
+            <p class="text-gray-700">Email: info@northamptonpiwc.com</p>
+            <p class="text-gray-700">Address: Unit H5 Kingsfield Way, Kings Heath Industrial Estate, Northampton NN5 7QS</p>
+          </section>
+
+          <div class="bg-white rounded-xl p-8 shadow-lg mt-8">
+            <div class="flex items-center justify-between">
+              <p class="text-gray-600">Last updated: 20 April 2025 <span id="lastUpdated"></span></p>
+              <button id="backToTopBtn" class="text-primary hover:text-secondary transition-colors">
+                Back to top <i class="fas fa-arrow-up ml-2"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
 
   <!-- Footer -->
   <footer class="bg-gray-900 text-white py-8">
@@ -473,6 +580,22 @@
   <script>
     // Set current year in footer
     document.getElementById('currentYear').textContent = new Date().getFullYear();
+  </script>
+  <script>
+    // Smooth scroll for table of contents
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    // Back to top button functionality
+    document.getElementById('backToTopBtn').addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   </script>
 </body>
 </html>
