@@ -206,7 +206,7 @@
 
         <div class="flex items-center space-x-6">
           <nav class="hidden lg:flex space-x-6 text-white items-center">
-            <a href="index.html" class="nav-link hover:text-accent transition-colors py-2">Home</a>
+            <a href="index.html" class="nav-link hover:text-accent transition-colors py-2"></a>
             <div class="relative group">
               <button class="nav-link hover:text-accent transition-colors py-2 flex items-center" aria-expanded="false">
                 About us
@@ -342,7 +342,7 @@
     <div class="container mx-auto px-4 sm:px-8 py-8 sm:py-12">
       <!-- Table of Contents -->
       <div class="lg:flex gap-8">
-        <nav class="lg:w-64 mb-6 lg:mb-0">
+        <nav id="toc" class="lg:w-64 mb-6 lg:mb-0">
           <div class="sticky top-20 sm:top-24 bg-white rounded-xl shadow-lg p-4 sm:p-6">
             <h2 class="text-lg font-bold text-primary mb-4">Contents</h2>
             <ul class="space-y-2 text-sm sm:text-base">
@@ -580,7 +580,7 @@
   </script>
   <script>
     // Smooth scroll for table of contents
-    document.querySelectorAll('nav a').forEach(anchor => {
+    document.querySelectorAll('#toc a').forEach(anchor => { // updated selector
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
         const targetId = this.getAttribute('href');
