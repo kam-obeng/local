@@ -27,7 +27,7 @@
           animation: {
             'fade-in': 'fadeIn 0.5s ease-out',
             'slide-up': 'slideUp 0.5s ease-out',
-            'zoom-in': 'zoomIn 20s infinite alternate'
+            // Remove zoom-in animation
           },
           keyframes: {
             fadeIn: {
@@ -37,11 +37,8 @@
             slideUp: {
               '0%': { transform: 'translateY(20px)', opacity: '0' },
               '100%': { transform: 'translateY(0)', opacity: '1' }
-            },
-            zoomIn: {
-              '0%': { transform: 'scale(1)' },
-              '100%': { transform: 'scale(1.05)' }
             }
+            // Remove zoomIn keyframes
           }
         }
       }
@@ -66,19 +63,6 @@
       background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
     }
 
-    .service-time-badge {
-      animation: pulse-glow 2s infinite;
-    }
-
-    @keyframes pulse-glow {
-      0%, 100% { 
-        box-shadow: 0 0 5px rgba(75, 147, 162, 0.5);
-      }
-      50% { 
-        box-shadow: 0 0 20px rgba(75, 147, 162, 0.8);
-      }
-    }
-
     .scrollbar-hide::-webkit-scrollbar {
       display: none;
     }
@@ -88,11 +72,31 @@
       transition: background-color 0.3s ease, box-shadow 0.3s ease;
     }
 
-    /* Hero background zoom effect */
+    /* Hero background transition effect - replacing old transition styles */
     #hero-bg-current, #hero-bg-next {
-      animation: zoom-in;
       background-size: cover;
       background-position: center;
+      transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1), 
+                opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform, opacity;
+      backface-visibility: hidden;
+    }
+
+    .cross-fade {
+      opacity: 0;
+      transform: scale(1.08);
+      animation: enhancedFadeZoomIn 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    @keyframes enhancedFadeZoomIn {
+      0% {
+        opacity: 0;
+        transform: scale(1.08);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
 
     /* Quick Access Cards enhancement */
@@ -194,6 +198,31 @@
 
     details summary::-webkit-details-marker {
       display: none;
+    }
+
+    /* Enhanced background transition styles */
+    .bg-progress-container {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0.5rem;
+      z-index: 30;
+    }
+
+    .bg-progress-item {
+      width: 3rem;
+      height: 0.25rem;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .bg-progress-item.active {
+      background: white;
+      width: 4rem;
     }
 </style>
 </head>
@@ -297,89 +326,110 @@
   <!-- Main Content -->
   <main class="flex-grow pt-20">
     <!-- Hero Section -->
-    <section id="hero" class="relative h-screen flex items-center justify-center overflow-hidden z-10">
-      <!-- Background images -->
-      <div id="hero-bg-current" class="absolute inset-0 opacity-100 transition-opacity duration-1000"></div>
-      <div id="hero-bg-next" class="absolute inset-0 opacity-0 transition-opacity duration-1000"></div>
-      <!-- Overlay gradient -->
-      <div class="absolute inset-0 hero-gradient z-10"></div>
-      
-      <div class="relative z-20 text-center text-white px-4">
-        <h1 class="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">Welcome Home</h1>
-        <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto animate-slide-up">
-          Join us in worship every Sunday as we celebrate God's love and grace together.
-        </p>
-        <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
-          <a href="https://www.youtube.com/@NorthamptonPIWC/streams" class="bg-primary text-white px-8 py-3 rounded-full font-medium hover:bg-secondary transition-all transform hover:scale-105 flex items-center">
-            <i class="fas fa-play-circle mr-2"></i>
-            Watch Live
-          </a>
-         
+    <section id="hero" class="relative min-h-screen flex flex-col lg:flex-row overflow-hidden">
+      <!-- Left Content -->
+      <div class="relative z-20 flex-1 flex items-center justify-center lg:justify-end p-8 lg:pr-20 bg-transparent lg:bg-primary/95">
+        <div class="max-w-xl text-white relative z-10">
+          <h1 class="text-5xl lg:text-7xl font-bold mb-6 animate-fade-in leading-tight">
+            Experience<br>
+            <span class="text-accent">God's Love</span>
+          </h1>
+          <p class="text-xl lg:text-2xl mb-8 animate-slide-up font-light">
+            Join our vibrant community every Sunday as we celebrate faith, hope, and love together.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="https://www.youtube.com/@NorthamptonPIWC/streams" 
+               class="group bg-white text-primary px-8 py-4 rounded-full font-medium hover:bg-accent hover:text-white transition-all duration-300 flex items-center">
+              <i class="fas fa-play-circle mr-2"></i>
+              Watch Live
+            </a>
+            <a href="new.html" 
+               class="group bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-medium hover:bg-white hover:text-primary transition-all duration-300 flex items-center">
+              <i class="fas fa-church mr-2"></i>
+              Plan Your Visit
+            </a>
+          </div>
         </div>
       </div>
+      
+      <!-- Background (full width on mobile) -->
+      <div class="absolute inset-0 lg:relative lg:flex-1 overflow-hidden">
+        <div id="hero-bg-current" class="absolute inset-0"></div>
+        <div id="hero-bg-next" class="absolute inset-0"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/70 lg:from-primary/80 lg:to-transparent"></div>
+      </div>
     </section>
-    
-    
 
     <!-- Quick Access Cards -->
-    <section class="hidden lg:block relative -mt-32 z-50 container mx-auto px-4">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <a href="new.html" class="block">
-          <div class="card bg-white rounded-xl shadow-lg p-6">
-            <div class="flex items-center space-x-4">
-              <div class="bg-primary/10 p-3 rounded-full">
-                <i class="fas fa-church text-primary text-2xl"></i>
+    <section class="relative -mt-60 z-30 container mx-auto px-4 hidden lg:block">
+      <div class="grid grid-cols-4 gap-6 perspective-1000">
+        <a href="new.html" class="group transform transition-all duration-300 hover:-translate-y-2 hover:rotate-2">
+          <div class="card bg-white rounded-2xl shadow-xl p-8 transform transition-all duration-300 group-hover:shadow-2xl">
+            <div class="flex flex-col items-center text-center space-y-4">
+              <div class="bg-primary/10 p-4 rounded-full transform transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/20">
+                <i class="fas fa-church text-primary text-3xl group-hover:text-secondary"></i>
               </div>
               <div>
-                <h3 class="font-bold text-lg">New Here?</h3>
-                <p class="text-gray-600">Learn what to expect</p>
+                <h3 class="font-bold text-xl text-primary mb-2">New Here?</h3>
+                <p class="text-gray-600 text-sm">Start your journey with us</p>
               </div>
-            </div>
-          </div>
-        </a>
-    
-        <a href="Ministries.html" class="block">
-          <div class="card bg-white rounded-xl shadow-lg p-6">
-            <div class="flex items-center space-x-4">
-              <div class="bg-primary/10 p-3 rounded-full">
-                <i class="fas fa-hands-helping text-primary text-2xl"></i>
-              </div>
-              <div>
-                <h3 class="font-bold text-lg">Get Involved</h3>
-                <p class="text-gray-600">Join our ministries</p>
-              </div>
-            </div>
-          </div>
-        </a>
-    
-        <a href="test.html" class="block">
-          <div class="card bg-white rounded-xl shadow-lg p-6">
-            <div class="flex items-center space-x-4">
-              <div class="bg-primary/10 p-3 rounded-full">
-                <i class="fas fa-pray text-primary text-2xl"></i>
-              </div>
-              <div>
-                <h3 class="font-bold text-lg">Events</h3>
-                <p class="text-gray-600">see our events</p>
-              </div>
+              <span class="text-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Learn More →
+              </span>
             </div>
           </div>
         </a>
 
-        <a href="heart.html" class="block">
-          <div class="card bg-white rounded-xl shadow-lg p-6">
-            <div class="flex items-center space-x-4">
-              <div class="bg-primary/10 p-3 rounded-full">
-                <i class="fas fa-clock text-primary text-2xl"></i>
+        <a href="Ministries.html" class="group transform transition-all duration-300 hover:-translate-y-2 hover:-rotate-2">
+          <div class="card bg-white rounded-2xl shadow-xl p-8 transform transition-all duration-300 group-hover:shadow-2xl">
+            <div class="flex flex-col items-center text-center space-y-4">
+              <div class="bg-primary/10 p-4 rounded-full transform transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/20">
+                <i class="fas fa-hands-helping text-primary text-3xl group-hover:text-secondary"></i>
               </div>
               <div>
-                <h3 class="font-bold text-lg">Services</h3>
-                <p class="text-gray-600">Our Worship Services times</p>
+                <h3 class="font-bold text-xl text-primary mb-2">Get Involved</h3>
+                <p class="text-gray-600 text-sm">Be part of our community</p>
               </div>
+              <span class="text-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Join Us →
+              </span>
             </div>
           </div>
         </a>
-        
+
+        <a href="test.html" class="group transform transition-all duration-300 hover:-translate-y-2 hover:rotate-2">
+          <div class="card bg-white rounded-2xl shadow-xl p-8 transform transition-all duration-300 group-hover:shadow-2xl">
+            <div class="flex flex-col items-center text-center space-y-4">
+              <div class="bg-primary/10 p-4 rounded-full transform transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/20">
+                <i class="fas fa-calendar-alt text-primary text-3xl group-hover:text-secondary"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-xl text-primary mb-2">Events</h3>
+                <p class="text-gray-600 text-sm">Discover what's happening</p>
+              </div>
+              <span class="text-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                View All →
+              </span>
+            </div>
+          </div>
+        </a>
+
+        <a href="heart.html" class="group transform transition-all duration-300 hover:-translate-y-2 hover:-rotate-2">
+          <div class="card bg-white rounded-2xl shadow-xl p-8 transform transition-all duration-300 group-hover:shadow-2xl">
+            <div class="flex flex-col items-center text-center space-y-4">
+              <div class="bg-primary/10 p-4 rounded-full transform transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/20">
+                <i class="fas fa-clock text-primary text-3xl group-hover:text-secondary"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-xl text-primary mb-2">Services</h3>
+                <p class="text-gray-600 text-sm">Join us in worship</p>
+              </div>
+              <span class="text-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Schedule →
+              </span>
+            </div>
+          </div>
+        </a>
       </div>
     </section>
   </main>
@@ -471,35 +521,43 @@
           'pics/Stage.jpeg'
         ];
       }
-    let currentIndex = 0;
-    
-    // Preload images
-    bgImages.forEach(src => {
-      const img = new Image();
-      img.src = src;
-    });
-    
-    const currentBg = document.getElementById('hero-bg-current');
-    const nextBg = document.getElementById('hero-bg-next');
-    
-    // Set the initial background image
-    currentBg.style.backgroundImage = `url('${bgImages[currentIndex]}')`;
-    
-    function changeBackground() {
-      const nextIndex = (currentIndex + 1) % bgImages.length;
-      nextBg.style.backgroundImage = `url('${bgImages[nextIndex]}')`;
-      nextBg.classList.remove('opacity-0');
-      nextBg.classList.add('opacity-100');
+      let currentIndex = 0;
+      let isTransitioning = false;
       
-      setTimeout(() => {
-        currentBg.style.backgroundImage = `url('${bgImages[nextIndex]}')`;
-        nextBg.classList.remove('opacity-100');
-        nextBg.classList.add('opacity-0');
-        currentIndex = nextIndex;
-      }, 1000);
-    }
-    
-    setInterval(changeBackground, 5000);
+      const currentBg = document.getElementById('hero-bg-current');
+      const nextBg = document.getElementById('hero-bg-next');
+      
+      // Preload images
+      const preloadImages = () => {
+        bgImages.forEach(src => {
+          const img = new Image();
+          img.src = src;
+        });
+      };
+      
+      const changeBackground = () => {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        
+        const nextIndex = (currentIndex + 1) % bgImages.length;
+        nextBg.style.backgroundImage = `url('${bgImages[nextIndex]}')`;
+        
+        nextBg.classList.add('cross-fade');
+        currentBg.style.opacity = '0';
+        
+        setTimeout(() => {
+          currentBg.style.backgroundImage = nextBg.style.backgroundImage;
+          currentBg.style.opacity = '1';
+          nextBg.classList.remove('cross-fade');
+          currentIndex = nextIndex;
+          isTransitioning = false;
+        }, 1200);
+      };
+      
+      // Initialize
+      preloadImages();
+      currentBg.style.backgroundImage = `url('${bgImages[0]}')`;
+      setInterval(changeBackground, 5000);
   </script>
   
   <!-- Mobile Navigation Toggle, Back to Top, and Header Scroll Script -->
