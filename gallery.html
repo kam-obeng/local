@@ -441,6 +441,20 @@
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/90 transition-all duration-300"></div>
         </div>
 
+        <div class="gallery-mobile-item gallery-item relative group overflow-hidden rounded-2xl shadow-lg" data-category="community">
+          <div class="blur-load" style="background-image: url('Gallery/Group-easter-thumb.jpeg')">
+            <img 
+              src="Gallery/Group-easter .JPG" 
+              alt="Group photo from Easter celebration at Northampton PIWC" 
+              class="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+              decoding="async"
+              onload="this.parentElement.classList.add('loaded')"
+            >
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/90 transition-all duration-300"></div>
+        </div>
+
         <div class="gallery-mobile-item gallery-item relative group overflow-hidden rounded-2xl shadow-lg" data-category="events">
           <div class="blur-load" style="background-image: url('Gallery/album/sing2-thumb.jpeg')">
             <img 
@@ -541,6 +555,20 @@
           </div>
         </div>
 
+        <div class="gallery-item break-inside-avoid mb-4 relative group overflow-hidden rounded-2xl shadow-lg" data-category="community">
+          <div class="blur-load" style="background-image: url('Gallery/people-thumb.jpeg')">
+            <img 
+              src="Gallery/people.JPG" 
+              alt="Congregation during worship" 
+              class="w-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+              decoding="async"
+              onload="this.parentElement.classList.add('loaded')"
+            >
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/90 transition-all duration-300"></div>
+        </div>
+
         <div class="gallery-item break-inside-avoid mb-4 relative group overflow-hidden rounded-2xl shadow-lg" data-category="worship">
           <div class="blur-load" style="background-image: url('Gallery/drum-thumb.jpeg')">
             <img 
@@ -554,6 +582,7 @@
           </div>
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:from-black/90 transition-all duration-300"></div>
         </div>
+
         <div class="gallery-item break-inside-avoid mb-4 relative group overflow-hidden rounded-2xl shadow-lg" data-category="worship">
           <div class="blur-load" style="background-image: url('Gallery/drums2-thumb.jpeg')">
             <img 
@@ -569,10 +598,10 @@
         </div>
 
         <div class="gallery-item break-inside-avoid mb-4 relative group overflow-hidden rounded-2xl shadow-lg" data-category="community">
-          <div class="blur-load" style="background-image: url('Gallery/people-thumb.jpeg')">
+          <div class="blur-load" style="background-image: url('Gallery/Group-easter-thumb.jpeg')">
             <img 
-              src="Gallery/people.JPG" 
-              alt="Congregation during worship" 
+              src="Gallery/Group-easter .JPG" 
+              alt="Group photo from Easter celebration at Northampton PIWC" 
               class="w-full object-cover transform group-hover:scale-105 transition-transform duration-500"
               loading="lazy"
               decoding="async"
@@ -885,7 +914,7 @@
       const galleryItems = document.querySelectorAll('.gallery-item');
       const mobileItems = document.querySelectorAll('.gallery-mobile-item');
       const desktopItems = document.querySelectorAll('.gallery-desktop-grid .gallery-item');
-      const RECENT_ITEMS_COUNT = 8; // Show last 8 items for recent filter
+      const RECENT_ITEMS_COUNT = 9; // Changed from 8 to 9
 
       // Track filtered items for modal navigation
       let filteredGalleryItems = [];
@@ -1195,14 +1224,22 @@
       });
     })();
 
-    // Add this new function for viewing all photos
+    // Update the openAllPhotos function
     function openAllPhotos() {
-      const firstGalleryItem = document.querySelector('.gallery-item');
-      if (firstGalleryItem) {
-        firstGalleryItem.click();
+      if (window.innerWidth < 768) {
+        // For mobile view, show only mobile items
+        document.querySelectorAll('.gallery-mobile-item').forEach(item => item.classList.remove('hidden'));
+        window.getFilteredGalleryItems = () => Array.from(document.querySelectorAll('.gallery-mobile-item'));
+      } else {
+        // For desktop view, show only desktop grid items
+        document.querySelectorAll('.gallery-desktop-grid .gallery-item').forEach(item => item.classList.remove('hidden'));
+        window.getFilteredGalleryItems = () => Array.from(document.querySelectorAll('.gallery-desktop-grid .gallery-item'));
       }
-      // Hide album navigation when viewing all photos
-      document.getElementById('albumNav').classList.add('hidden');
+      // Remove active state from filter buttons
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active', 'bg-primary', 'text-white');
+        btn.classList.add('bg-gray-200');
+      });
     }
 
     // Skeleton loader removal for images
