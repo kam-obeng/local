@@ -235,7 +235,7 @@
     <nav class="bg-primary px-6 py-4">
       <div class="container mx-auto flex justify-between items-center">
         <a href="index.html" class="flex items-center space-x-3">
-          <img src="pics/logo.JPG" alt="Church Logo" class="h-12 w-12 rounded-full shadow-lg">
+          <img src="pics/logo.JPG" alt="Church Logo" class="h-12 w-12 rounded-full shadow-lg" loading="eager" fetchpriority="high">
           <div>
             <h1 class="text-2xl md:text-4xl font-bold text-white">Northampton PIWC</h1>
           </div>
@@ -505,6 +505,7 @@
   <!-- Background Image Carousel Script -->
   <script>
       let bgImages;
+      let preloadedImages = new Map();
       
       if (window.innerWidth <= 768) {
         bgImages = [
@@ -527,10 +528,24 @@
       const currentBg = document.getElementById('hero-bg-current');
       const nextBg = document.getElementById('hero-bg-next');
       
-      // Preload images
+      // Enhanced preloading with priority
       const preloadImages = () => {
-        bgImages.forEach(src => {
+        bgImages.forEach((src, index) => {
           const img = new Image();
+          
+          img.onload = () => {
+            preloadedImages.set(src, img);
+          };
+          
+          // Set high priority for first image
+          if (index === 0) {
+            img.fetchPriority = "high";
+            img.loading = "eager";
+          } else {
+            img.fetchPriority = "low";
+            img.loading = "lazy";
+          }
+          
           img.src = src;
         });
       };
@@ -540,8 +555,24 @@
         isTransitioning = true;
         
         const nextIndex = (currentIndex + 1) % bgImages.length;
-        nextBg.style.backgroundImage = `url('${bgImages[nextIndex]}')`;
+        const nextImageSrc = bgImages[nextIndex];
         
+        // Use preloaded image if available
+        if (preloadedImages.has(nextImageSrc)) {
+          nextBg.style.backgroundImage = `url('${nextImageSrc}')`;
+          performTransition();
+        } else {
+          // Fallback if image isn't preloaded
+          const tempImg = new Image();
+          tempImg.onload = () => {
+            nextBg.style.backgroundImage = `url('${nextImageSrc}')`;
+            performTransition();
+          };
+          tempImg.src = nextImageSrc;
+        }
+      };
+      
+      const performTransition = () => {
         nextBg.classList.add('cross-fade');
         currentBg.style.opacity = '0';
         
@@ -549,14 +580,26 @@
           currentBg.style.backgroundImage = nextBg.style.backgroundImage;
           currentBg.style.opacity = '1';
           nextBg.classList.remove('cross-fade');
-          currentIndex = nextIndex;
+          currentIndex = (currentIndex + 1) % bgImages.length;
           isTransitioning = false;
         }, 1200);
       };
       
-      // Initialize
-      preloadImages();
-      currentBg.style.backgroundImage = `url('${bgImages[0]}')`;
+      // Initialize with enhanced error handling
+      const initializeCarousel = () => {
+        preloadImages();
+        const firstImage = new Image();
+        firstImage.onload = () => {
+          currentBg.style.backgroundImage = `url('${bgImages[0]}')`;
+        };
+        firstImage.onerror = () => {
+          console.error('Failed to load first carousel image');
+          currentBg.style.backgroundColor = '#395886'; // Fallback color
+        };
+        firstImage.src = bgImages[0];
+      };
+      
+      initializeCarousel();
       setInterval(changeBackground, 5000);
   </script>
   
