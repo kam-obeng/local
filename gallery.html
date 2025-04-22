@@ -225,6 +225,23 @@
       opacity: 0;
       transition: opacity 200ms ease-in-out;
     }
+
+    /* Add gallery animation styles */
+    .gallery-item.fade-up {
+      animation: galleryFadeUp 0.4s ease forwards;
+      opacity: 0;
+    }
+    
+    @keyframes galleryFadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
@@ -936,50 +953,44 @@
         filteredGalleryItems = [];
 
         // Hide all items first
-        mobileItems.forEach(item => item.classList.add('hidden'));
-        desktopItems.forEach(item => item.classList.add('hidden'));
+        mobileItems.forEach(item => {
+          item.classList.add('hidden');
+          item.classList.remove('fade-up');
+        });
+        desktopItems.forEach(item => {
+          item.classList.add('hidden');
+          item.classList.remove('fade-up');
+        });
+
+        // Function to show items with animation
+        const showItem = (item) => {
+          item.classList.remove('hidden');
+          // Reset animation by removing and re-adding class
+          requestAnimationFrame(() => {
+            item.classList.add('fade-up');
+          });
+          filteredGalleryItems.push(item);
+        };
 
         if (filter === 'recent') {
           if (isMobile()) {
-            // Show last 8 mobile items
             const recent = Array.from(mobileItems).slice(-RECENT_ITEMS_COUNT);
-            recent.forEach(item => {
-              item.classList.remove('hidden');
-              filteredGalleryItems.push(item);
-            });
+            recent.forEach(showItem);
           } else {
-            // Show last 8 desktop items
             const recent = Array.from(desktopItems).slice(-RECENT_ITEMS_COUNT);
-            recent.forEach(item => {
-              item.classList.remove('hidden');
-              filteredGalleryItems.push(item);
-            });
+            recent.forEach(showItem);
           }
         } else {
           if (isMobile()) {
             mobileItems.forEach(item => {
-              let show = false;
-              if (item.dataset.category === 'albums') {
-                show = (filter === 'albums');
-              } else {
-                show = (item.dataset.category === filter);
-              }
-              if (show) {
-                item.classList.remove('hidden');
-                filteredGalleryItems.push(item);
+              if (item.dataset.category === filter) {
+                showItem(item);
               }
             });
           } else {
             desktopItems.forEach(item => {
-              let show = false;
-              if (item.dataset.category === 'albums') {
-                show = (filter === 'albums');
-              } else {
-                show = (item.dataset.category === filter);
-              }
-              if (show) {
-                item.classList.remove('hidden');
-                filteredGalleryItems.push(item);
+              if (item.dataset.category === filter) {
+                showItem(item);
               }
             });
           }
@@ -1226,16 +1237,44 @@
 
     // Update the openAllPhotos function
     function openAllPhotos() {
-      if (window.innerWidth < 768) {
-        // For mobile view, show only mobile items
-        document.querySelectorAll('.gallery-mobile-item').forEach(item => item.classList.remove('hidden'));
-        window.getFilteredGalleryItems = () => Array.from(document.querySelectorAll('.gallery-mobile-item'));
-      } else {
-        // For desktop view, show only desktop grid items
-        document.querySelectorAll('.gallery-desktop-grid .gallery-item').forEach(item => item.classList.remove('hidden'));
-        window.getFilteredGalleryItems = () => Array.from(document.querySelectorAll('.gallery-desktop-grid .gallery-item'));
-      }
-      // Remove active state from filter buttons
+      const items = window.innerWidth < 768 
+        ? document.querySelectorAll('.gallery-mobile-item')
+        : document.querySelectorAll('.gallery-desktop-grid .gallery-item');
+
+      // First hide all items
+      items.forEach(item => {
+        item.classList.add('hidden');
+        item.classList.remove('fade-up');
+      });
+
+      // Show items with staggered animation and smooth image loading
+      items.forEach((item, index) => {
+        const img = item.querySelector('img');
+        
+        // Start loading image if it hasn't been loaded yet
+        if (img && !img.complete) {
+          img.classList.add('opacity-0');
+        }
+
+        setTimeout(() => {
+          item.classList.remove('hidden');
+          requestAnimationFrame(() => {
+            item.classList.add('fade-up');
+            
+            // Fade in image once loaded
+            if (img) {
+              img.addEventListener('load', () => {
+                img.classList.remove('opacity-0');
+                img.classList.add('opacity-100', 'transition-opacity', 'duration-500');
+              }, { once: true });
+            }
+          });
+        }, index * 150); // Increased delay between items for smoother effect
+      });
+
+      window.getFilteredGalleryItems = () => Array.from(items);
+
+      // Update filter buttons state
       document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.classList.remove('active', 'bg-primary', 'text-white');
         btn.classList.add('bg-gray-200');
