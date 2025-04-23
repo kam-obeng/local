@@ -471,13 +471,13 @@
         <div class="w-full">
           <h3 class="text-lg md:text-xl font-bold mb-4">Connect</h3>
           <div class="flex space-x-6 justify-center sm:justify-start">
-            <a href="https://www.tiktok.com/@northampton_piwc" class="text-gray-400 hover:text-white transition-colors">
+            <a id="social-tiktok" href="https://www.tiktok.com/@northampton_piwc" class="text-gray-400 hover:text-white transition-colors">
               <i class="fab fa-tiktok text-xl"></i>
             </a>
-            <a href="https://www.instagram.com/northampton.piwc/" class="text-gray-400 hover:text-white transition-colors">
+            <a id="social-instagram" href="https://www.instagram.com/northampton.piwc/" class="text-gray-400 hover:text-white transition-colors">
               <i class="fab fa-instagram text-xl"></i>
             </a>
-            <a href="https://www.youtube.com/@NorthamptonPIWC" class="text-gray-400 hover:text-white transition-colors">
+            <a id="social-youtube" href="https://www.youtube.com/@NorthamptonPIWC" class="text-gray-400 hover:text-white transition-colors">
               <i class="fab fa-youtube text-xl"></i>
             </a>
           </div>
@@ -594,5 +594,27 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   </script>
+  <script>
+  function isMobileOrTablet() {
+    return /Mobi|Android|iPad|iPhone/i.test(navigator.userAgent);
+  }
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    if (isMobileOrTablet()) {
+      const tiktokLink = document.getElementById('social-tiktok');
+      const instagramLink = document.getElementById('social-instagram');
+      const youtubeLink = document.getElementById('social-youtube');
+      
+      if(instagramLink) {
+        // Instagram deep link
+        instagramLink.href = "instagram://user?username=northampton.piwc";
+      }
+      if(youtubeLink) {
+        // YouTube deep link
+        youtubeLink.href = "vnd.youtube://channel/UCFvRPF6BAJow6MeiCtFGcBg";
+      }
+    }
+  });
+</script>
 </body>
 </html>
