@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en-GB" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NPIWC Admin Dashboard</title>
+  <link rel="icon" type="image/x-icon" href="pics/logo.JPG">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/aca9f57730.js" crossorigin="anonymous"></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- DataTables -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#2c5282', // More corporate blue
+            secondary: '#2b6cb0',
+            accent: '#4299e1',
+            dark: {
+              100: '#1a202c',
+              200: '#2d3748',
+              300: '#4a5568'
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    .stat-card {
+      transition: transform 0.2s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .stat-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .data-table {
+      background: rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(10px);
+      border-radius: 0.75rem;
+    }
+
+    .chart-container {
+      transition: all 0.2s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .chart-container:hover {
+      transform: scale(1.01);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* DataTable Dark Theme */
+    table.dataTable {
+      color: #e2e8f0 !important;
+      background: transparent;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+      color: #e2e8f0 !important;
+      background: transparent !important;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+      background: #2c5282 !important;
+      border: 1px solid #4a5568 !important;
+      color: white !important;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+      background: #2c5282 !important;
+      border: 1px solid #4a5568 !important;
+      color: white !important;
+    }
+
+    .dataTables_wrapper .dataTables_info {
+      color: #a0aec0 !important;
+    }
+
+    /* Add these new styles */
+    table.dataTable tbody tr {
+      background-color: transparent !important;
+      border-bottom: 1px solid #4a5568;
+    }
+
+    table.dataTable tbody td {
+      color: #e2e8f0 !important;
+      padding: 1rem !important;
+    }
+
+    table.dataTable thead th {
+      color: #a0aec0 !important;
+      background-color: rgba(74, 85, 104, 0.2) !important;
+      border-bottom: 2px solid #4a5568 !important;
+    }
+
+    /* Mobile sidebar transition */
+    #mobileSidebar {
+      transition: transform 0.3s ease;
+    }
+  </style>
+</head>
+
+<body class="bg-dark-100 text-gray-100 min-h-screen">
+  <!-- Mobile Sidebar (only visible on mobile/tablet) -->
+  <div id="mobileSidebar" class="fixed inset-0 z-50 hidden">
+    <div id="mobileOverlay" class="absolute inset-0 bg-black bg-opacity-50"></div>
+    <aside class="absolute left-0 top-0 w-64 h-full bg-dark-200 border-r border-gray-700">
+      <!-- ...existing sidebar content... -->
+      <div class="flex items-center gap-3 p-6 border-b border-gray-700">
+        <img src="pics/logo.JPG" alt="NPIWC Logo" class="w-10 h-10 rounded-full">
+        <h1 class="text-xl font-bold">N-PIWC Admin</h1>
+      </div>
+      <nav class="p-4 space-y-2">
+        <a href="#dashboard" class="flex items-center gap-3 px-4 py-3 bg-primary rounded-lg">
+          <i class="fas fa-chart-pie"></i>
+          Dashboard
+        </a>
+        <a href="#members" class="flex items-center gap-3 px-4 py-3 hover:bg-dark-300 rounded-lg transition-colors">
+          <i class="fas fa-users"></i>
+          Members
+        </a>
+        <a href="#gallery" class="flex items-center gap-3 px-4 py-3 hover:bg-dark-300 rounded-lg transition-colors">
+          <i class="fas fa-images"></i>
+          Gallery
+        </a>
+        <a href="#prayers" class="flex items-center gap-3 px-4 py-3 hover:bg-dark-300 rounded-lg transition-colors">
+          <i class="fas fa-pray"></i>
+          Prayer Requests
+        </a>
+        <a href="#events-signup" class="flex items-center gap-3 px-4 py-3 hover:bg-dark-300 rounded-lg transition-colors">
+          <i class="fas fa-clipboard-list"></i>
+          Event Sign-ups
+        </a>
+        <a href="#events" class="flex items-center gap-3 px-4 py-3 hover:bg-dark-300 rounded-lg transition-colors">
+          <i class="fas fa-calendar"></i>
+          Events
+        </a>
+        <a href="#ministries" class="flex items-center gap-3 px-4 py-3 hover:bg-dark-300 rounded-lg transition-colors">
+          <i class="fas fa-hands-helping"></i>
+          Ministries
+        </a>
+        <a href="#donations" class="flex items-center gap-3 px-4 py-3 hover:bg-dark-300 rounded-lg transition-colors">
+          <i class="fas fa-hand-holding-usd"></i>
+          Donations
+        </a>
+        <a href="#settings" class="flex items-center gap-3 px-4 py-3 hover:bg-dark-300 rounded-lg transition-colors">
+          <i class="fas fa-cog"></i>
+          Settings
+        </a>
+      </nav>
+    </aside>
+  </div>
+
+  <!-- Sidebar for desktop (hidden on mobile) -->
+  <aside class="hidden md:block fixed top-0 left-0 h-screen w-64 bg-dark-200 border-r border-gray-700">
+    <div class="flex items-center gap-3 p-6 border-b border-gray-700">
+      <img src="pics/logo.JPG" alt="NPIWC Logo" class="w-10 h-10 rounded-full">
+      <h1 class="text-xl font-bold">N-PIWC Admin</h1>
+    </div>
+    
+    <nav class="p-4 space-y-2">
+      <a href="#dashboard" class="flex items-center gap-3 px-4 py-3 bg-primary rounded-lg">
+        <i class="fas fa-chart-pie"></i>
+        Dashboard
+      </a>
+      <a href="#members" class="flex items-center gap-3 px-4 py-3 hover:bg-dark-300 rounded-lg transition-colors">
+        <i class="fas fa-users"></i>
+        New Members
+      </a>
+      <a href="#gallery" class="flex items-center gap-3 px-4 py-3 hover:bg-dark-300 rounded-lg transition-colors">
+        <i class="fas fa-images"></i>
+        Gallery
+      </a>
+      <a href="#prayers" class="flex items-center gap-3 px-4 py-3 hover:bg-dark-300 rounded-lg transition-colors">
+        <i class="fas fa-pray"></i>
+        Prayer Requests
+      </a>
+      <a href="#events-signup" class="flex items-center gap-3 px-4 py-3 hover:bg-dark-300 rounded-lg transition-colors">
+        <i class="fas fa-clipboard-list"></i>
+        Event Sign-ups
+      </a>
+      <a href="#events" class="flex items-center gap-3 px-4 py-3 hover:bg-dark-300 rounded-lg transition-colors">
+        <i class="fas fa-calendar"></i>
+        Events
+      </a>
+      <a href="#ministries" class="flex items-center gap-3 px-4 py-3 hover:bg-dark-300 rounded-lg transition-colors">
+        <i class="fas fa-hands-helping"></i>
+        Ministries
+      </a>
+      <a href="#donations" class="flex items-center gap-3 px-4 py-3 hover:bg-dark-300 rounded-lg transition-colors">
+        <i class="fas fa-hand-holding-usd"></i>
+        Donations
+      </a>
+      <a href="#settings" class="flex items-center gap-3 px-4 py-3 hover:bg-dark-300 rounded-lg transition-colors">
+        <i class="fas fa-cog"></i>
+        Settings
+      </a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="ml-0 md:ml-64 p-8">
+    <!-- Header -->
+    <header class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 bg-dark-200 p-6 rounded-xl border border-gray-700 gap-4">
+      <div class="flex items-center gap-4 w-full md:w-auto justify-between">
+        <div class="flex items-center gap-4">
+          <!-- Hamburger button visible only on mobile/tablet -->
+          <button id="mobileMenuButton" class="md:hidden p-2">
+            <i class="fas fa-bars text-2xl"></i>
+          </button>
+          <div>
+            <h1 class="text-2xl font-semibold text-gray-100">Dashboard Overview</h1>
+            <p class="text-gray-400 text-sm mt-1">Welcome back, Administrator</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="flex items-center gap-4 w-full md:w-auto justify-end">
+        <button class="p-2 hover:bg-dark-300 rounded-lg transition-colors relative">
+          <i class="fas fa-bell text-lg text-gray-300"></i>
+          <span class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full text-xs flex items-center justify-center">3</span>
+        </button>
+        <div class="relative">
+          <div class="flex items-center gap-3 px-4 py-2 bg-dark-300 rounded-lg cursor-pointer border border-gray-700" id="adminDropdown">
+            <img src="pics/logo.JPG" alt="Admin" class="w-8 h-8 rounded-full border-2 border-gray-600">
+            <span class="text-sm font-medium hidden md:inline">Administrator</span>
+            <i class="fas fa-chevron-down text-xs text-gray-400"></i>
+          </div>
+          <div id="dropdownMenu" class="hidden absolute right-0 mt-2 w-48 bg-dark-200 rounded-lg shadow-lg border border-gray-700 py-2">
+            <a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-dark-300 transition-colors">
+              <i class="fas fa-sign-out-alt mr-2"></i> Logout
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Stats Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div class="stat-card bg-dark-200 p-6 rounded-xl">
+        <div class="flex justify-between items-start">
+          <div>
+            <p class="text-gray-400">Announcements</p>
+            <h3 class="text-3xl font-bold mt-1">8</h3>
+          </div>
+          <div class="p-3 bg-blue-500/10 text-blue-500 rounded-lg">
+            <i class="fas fa-bullhorn text-xl"></i>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 mt-4 text-green-400">
+          <i class="fas fa-clock"></i>
+          <span>3 new this week</span>
+        </div>
+      </div>
+
+      <div class="stat-card bg-dark-200 p-6 rounded-xl">
+        <div class="flex justify-between items-start">
+          <div>
+            <p class="text-gray-400">Prayer Requests</p>
+            <h3 class="text-3xl font-bold mt-1">24</h3>
+          </div>
+          <div class="p-3 bg-yellow-500/10 text-yellow-500 rounded-lg">
+            <i class="fas fa-pray text-xl"></i>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 mt-4 text-blue-400">
+          <i class="fas fa-plus"></i>
+          <span>12 testimonies</span>
+        </div>
+      </div>
+
+      <div class="stat-card bg-dark-200 p-6 rounded-xl">
+        <div class="flex justify-between items-start">
+          <div>
+            <p class="text-gray-400">Event Sign-ups</p>
+            <h3 class="text-3xl font-bold mt-1">156</h3>
+          </div>
+          <div class="p-3 bg-green-500/10 text-green-500 rounded-lg">
+            <i class="fas fa-clipboard-check text-xl"></i>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 mt-4 text-green-400">
+          <i class="fas fa-arrow-up"></i>
+          <span>15% increase</span>
+        </div>
+      </div>
+
+      <div class="stat-card bg-dark-200 p-6 rounded-xl">
+        <div class="flex justify-between items-start">
+          <div>
+            <p class="text-gray-400">New Here Forms</p>
+            <h3 class="text-3xl font-bold mt-1">18</h3>
+          </div>
+          <div class="p-3 bg-purple-500/10 text-purple-500 rounded-lg">
+            <i class="fa-regular fa-circle-user"></i>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 mt-4 text-yellow-400">
+          <i class="fas fa-user-plus"></i>
+          <span>5 pending</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Charts Row -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+      <div class="chart-container bg-dark-200 p-6 rounded-xl">
+        <h3 class="text-xl font-semibold mb-4">Attendance Trends</h3>
+        <canvas id="attendanceChart" height="300"></canvas>
+      </div>
+      
+      <div class="chart-container bg-dark-200 p-6 rounded-xl">
+        <h3 class="text-xl font-semibold mb-4">Donation Overview</h3>
+        <canvas id="donationChart" height="300"></canvas>
+      </div>
+    </div>
+
+    <!-- Recent Members Table -->
+    <div class="bg-dark-200 rounded-xl p-6">
+      <div class="flex justify-between items-center mb-6">
+        <h3 class="text-xl font-semibold">New Members</h3>
+        <button class="px-4 py-2 bg-primary hover:bg-primary/80 rounded-lg transition-colors">
+          View All
+        </button>
+      </div>
+      
+      <div class="overflow-x-auto">
+        <table id="membersTable" class="w-full">
+          <thead>
+            <tr>
+              <th class="text-left py-3 px-4">Name</th>
+              <th class="text-left py-3 px-4">Ministry</th>
+              <th class="text-left py-3 px-4">Joined Date</th>
+              <th class="text-left py-3 px-4">Status</th>
+              <th class="text-left py-3 px-4">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Table rows will be populated by DataTables -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Initialize charts
+    const attendanceCtx = document.getElementById('attendanceChart').getContext('2d');
+    new Chart(attendanceCtx, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        datasets: [{
+          label: 'Sunday Service',
+          data: [650, 700, 680, 720, 750, 790],
+          borderColor: '#395886',
+          tension: 0.4
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            display: false
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            grid: {
+              color: 'rgba(255, 255, 255, 0.1)'
+            }
+          },
+          x: {
+            grid: {
+              display: false
+            }
+          }
+        }
+      }
+    });
+
+    const donationCtx = document.getElementById('donationChart').getContext('2d');
+    new Chart(donationCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        datasets: [{
+          label: 'Donations',
+          data: [5200, 5800, 6400, 7200, 8500, 8540],
+          backgroundColor: '#317a86'
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            display: false
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            grid: {
+              color: 'rgba(255, 255, 255, 0.1)'
+            }
+          },
+          x: {
+            grid: {
+              display: false
+            }
+          }
+        }
+      }
+    });
+
+    // Initialize DataTable
+    $(document).ready(function() {
+      $('#membersTable').DataTable({
+        data: [
+          ['John Doe', 'Music', '2024-01-15', 'Active', '<button class="px-3 py-1 bg-primary rounded-lg">Edit</button>'],
+          ['Jane Smith', 'PEMEM', '2024-01-14', 'Active', '<button class="px-3 py-1 bg-primary rounded-lg">Edit</button>'],
+          ['Mike Johnson', 'Tech', '2024-01-13', 'Pending', '<button class="px-3 py-1 bg-primary rounded-lg">Edit</button>'],
+          ['Sarah Williams', 'Welcoming', '2024-01-12', 'Active', '<button class="px-3 py-1 bg-primary rounded-lg">Edit</button>'],
+        ],
+        columns: [
+          { title: 'Name' },
+          { title: 'Ministry' },
+          { title: 'Joined Date' },
+          { title: 'Status' },
+          { title: 'Actions' }
+        ],
+        pageLength: 5,
+        lengthChange: false,
+        searching: false,
+        "dom": 'tp',
+        "drawCallback": function() {
+          $('.paginate_button.current').addClass('bg-primary text-white');
+        }
+      });
+    });
+
+    // Dropdown toggle functionality
+    const adminDropdown = document.getElementById('adminDropdown');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+
+    adminDropdown.addEventListener('click', () => {
+      dropdownMenu.classList.toggle('hidden');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!adminDropdown.contains(e.target)) {
+        dropdownMenu.classList.add('hidden');
+      }
+    });
+
+    // Mobile menu toggle functionality
+    const mobileMenuButton = document.getElementById('mobileMenuButton');
+    const mobileSidebar = document.getElementById('mobileSidebar');
+    const mobileOverlay = document.getElementById('mobileOverlay');
+
+    mobileMenuButton.addEventListener('click', () => {
+      mobileSidebar.classList.remove('hidden');
+    });
+
+    mobileOverlay.addEventListener('click', () => {
+      mobileSidebar.classList.add('hidden');
+    });
+
+    // Close mobile sidebar on window resize (if switching to desktop)
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768) {
+        mobileSidebar.classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+</html>
